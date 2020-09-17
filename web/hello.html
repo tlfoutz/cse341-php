@@ -6,6 +6,19 @@
         <title>Hello World</title>
     </head>
     <body>
-        <h1>Hello World</h1>
+        <h1 id="display">Hello World</h1>
+        <button id="English">English</button>
+        <br>
+        <button id="Japanese">日本語</button>
     </body>
+    <script>
+        document.getElementById("English").addEventListener("click", hwEnglish);
+        document.getElementById("Japanese").addEventListener("click", hwJapanese);
+        function hwEnglish() {
+            document.getElementById("display").textContent = "Hello World";
+        }
+        function hwJapanese() {
+            document.getElementById("display").textContent = "こんにちは世界";
+        }
+    </script>
 </html>
