@@ -1,6 +1,9 @@
 ﻿<?php
-  session_start();
-  alert("Started a session");
+  alert("Hello User");
+
+  function alert($msg) {
+    echo "<script type='text/javascript'>alert('$msg');</script>";
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en" >
