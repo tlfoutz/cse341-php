@@ -12,17 +12,17 @@
     </head>
     <body>
         <nav class="navbar navbar-expand-md">
-            <a class="navbar-brand" href="homepage.html"><img src="images/moon.gif" alt="Logo" style="width:33%;height:33%;"></a>
+            <a class="navbar-brand" href="homepage.php"><img src="images/moon.gif" alt="Logo" style="width:33%;height:33%;"></a>
             <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#main-navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="main-navigation">
               <ul class="navbar-nav">
                 <li class="nav-item">
-                  <a class="nav-link" href="homepage.html">Home</a>
+                  <a class="nav-link" href="homepage.php">Home</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="assignments.html">Assignments</a>
+                  <a class="nav-link" href="assignments.php">Assignments</a>
                 </li>
               </ul>
             </div>
