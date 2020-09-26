@@ -19,7 +19,7 @@
     </head>
     <body>
         <nav class="navbar navbar-expand-md">
-            <a class="navbar-brand" href="homepage.php"><img src="images/moon.gif" alt="Logo" style="width:33%;height:33%;"></a>
+          <a class="navbar-brand" href="homepage.php"><img src="images/moon.gif" alt="Logo" style="width:33%;height:33%;"></a>
             <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#main-navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
