@@ -1,11 +1,4 @@
-﻿<?php
-if (confirm('Want cookie?') {
-  setcookie("user", "$visitor", time() + (86400 * 30), "/");
-  echo "You got yummy cookie!";
-} else {
-  echo "Okay, me eat cookie!";
-}
-?>
+﻿
 <!DOCTYPE html>
 <html lang="en" >
     <head>
