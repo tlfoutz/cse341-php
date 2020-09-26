@@ -1,11 +1,4 @@
-﻿<?php
-  alert("Hello User");
-
-  function alert($msg) {
-    echo "<script type='text/javascript'>alert('$msg');</script>";
-  }
-?>
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" >
     <head>
         <meta charset="utf-8">
