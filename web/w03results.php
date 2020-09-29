@@ -52,6 +52,7 @@ $comments = htmlspecialchars($_POST["comments"]);
             foreach ($continents as $continent)
             {
                 $place = $map->get($continent);
+                echo 'console.log('.$place.')';
                 // $continent_clean = htmlspecialchars($continent);
                 echo "<li><p>$place</p></li>";
             }
