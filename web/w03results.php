@@ -43,7 +43,7 @@ $comments = htmlspecialchars($_POST["comments"]);
             // }
 
 
-}
+
             $map = array("na" => "North America", "sa" => "South America", "asia" => "Asia",
                 "eu" => "Europe", "af" => "Africa", "aus" => "Australia", "ant" => "Antarctica");
 
