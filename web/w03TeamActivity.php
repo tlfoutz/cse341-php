@@ -45,7 +45,7 @@
         <?php
             echo "<form action='w03results.php' method='post'>";
 
-            // $majors = array('Computer Science', 'Web Design and Developement', 'Computer Information Technology', 'Computer Engineering');
+            $majors = array('Computer Science', 'Web Design and Developement', 'Computer Information Technology', 'Computer Engineering');
             // $ids = array('cs', 'wdd', 'cit', 'ce')
             
             // for ($i = 0; $i < 4; $i++){
