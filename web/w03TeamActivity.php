@@ -46,13 +46,13 @@
             echo "<form action='w03results.php' method='post'>";
 
             $majors = array('Computer Science', 'Web Design and Developement', 'Computer Information Technology', 'Computer Engineering');
-            // $ids = array('cs', 'wdd', 'cit', 'ce')
+            $ids = array('cs', 'wdd', 'cit', 'ce')
             
-            // for ($i = 0; $i < 4; $i++){
-            //     echo '<input type="radio" name="major" id="'.$ids[$i].'" value="'.$majors[$i].'">
-            //     <label for="'.$ids[$i].'">'.$majors[$i].'</label><br>';
-            // }
-            // echo '<br>';
+            for ($i = 0; $i < 4; $i++){
+                echo '<input type="radio" name="major" id="'.$ids[$i].'" value="'.$majors[$i].'">
+                <label for="'.$ids[$i].'">'.$majors[$i].'</label><br>';
+            }
+            echo '<br>';
             
             // echo '<p>Continents you have visited:</p>
             //     <input type="checkbox" name="continents[]" id="place-na" value="North America"><label for="place-na">North America</label><br />
