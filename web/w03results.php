@@ -51,10 +51,10 @@ $comments = htmlspecialchars($_POST["comments"]);
             
             //$visited = array_map('toName', $continents);
             //foreach ($visited as $place)
-            foreach($continent as $continents) {
+            foreach($continents as $continent) {
 
                 foreach ($map as $key => $value) {
-                    if ($continents == $key) {
+                    if ($continent == $key) {
                         echo '<li><p>'.$key.'</p></li>';
                     }
                 }
