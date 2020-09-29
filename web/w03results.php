@@ -55,7 +55,7 @@ $comments = htmlspecialchars($_POST["comments"]);
 
                 foreach ($map as $key => $value) {
                     if ($continent == $key) {
-                        echo '<li><p>'.$key.'</p></li>';
+                        echo '<li><p>'.$value.'</p></li>';
                     }
                 }
                     // $place = $map->get($continent);
