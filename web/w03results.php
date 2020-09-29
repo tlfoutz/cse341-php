@@ -22,31 +22,38 @@ $comments = htmlspecialchars($_POST["comments"]);
     <p>Continents visited:</p>
 	<ul>
         <?
-            function toName($contintent)
-            {
-                switch ($continent) {
-                    case "na":
-                        return "North America";
-                    case "sa":
-                        return "South America";
-                    case "asia":
-                        return "Asia";
-                    case "eu":
-                        return "Europe";
-                    case "af":
-                        return "Africa";
-                    case "aus":
-                        return "Australia";
-                    case "ant":
-                        return "Antarctica";
-                }            
-            }
+            // function toName($contintent)
+            // {
+            //     switch ($continent) {
+            //         case "na":
+            //             return "North America";
+            //         case "sa":
+            //             return "South America";
+            //         case "asia":
+            //             return "Asia";
+            //         case "eu":
+            //             return "Europe";
+            //         case "af":
+            //             return "Africa";
+            //         case "aus":
+            //             return "Australia";
+            //         case "ant":
+            //             return "Antarctica";
+            //     }            
+            // }
+
+            $map = new \Ds\Map(["na" => "North America", "sa" => "South America", "asia" => "Asia",
+                "eu" => "Europe", "af" => "Africa", "aus" => "Australia", "ant" => "Antarctica"]);
+
+            //var_dump($map->get("a"));
             
             $visited = array_map('toName', $continents);
-            foreach ($visited as $place)
+            //foreach ($visited as $place)
+            foreach ($continents as $continent)
             {
+                var_dump($map->get($continent))
                 // $continent_clean = htmlspecialchars($continent);
-                echo "<li><p>$place</p></li>";
+                //echo "<li><p>$place</p></li>";
             }
         ?>		
 	</ul>
