@@ -22,10 +22,31 @@ $comments = htmlspecialchars($_POST["comments"]);
     <p>Continents visited:</p>
 	<ul>
         <?
-            foreach ($continents as $continent)
+            function toName($contintent)
             {
-                $continent_clean = htmlspecialchars($continent);
-                echo "<li><p>$continent_clean</p></li>";
+                switch ($continent) {
+                    case "na":
+                        return "North America";
+                    case "sa":
+                        return "South America";
+                    case "asia":
+                        return "Asia";
+                    case "eu":
+                        return "Europe";
+                    case "af":
+                        return "Africa";
+                    case "aus":
+                        return "Australia";
+                    case "ant":
+                        return "Antarctica";
+                }            
+            }
+            
+            $visited = array_map('toName', $continents);
+            foreach ($visited as $place)
+            {
+                // $continent_clean = htmlspecialchars($continent);
+                echo "<li><p>$place</p></li>";
             }
         ?>		
 	</ul>
