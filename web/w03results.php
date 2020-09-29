@@ -51,9 +51,9 @@ $comments = htmlspecialchars($_POST["comments"]);
             //foreach ($visited as $place)
             foreach ($continents as $continent)
             {
-                var_dump($map->get($continent));
+                $place = var_dump($map->get($continent));
                 // $continent_clean = htmlspecialchars($continent);
-                //echo "<li><p>$place</p></li>";
+                echo "<li><p>$place</p></li>";
             }
         ?>		
 	</ul>
