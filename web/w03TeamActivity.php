@@ -6,6 +6,7 @@
         <title>Week 03 Team Activity</title> 
     </head>
     <body>
+        <h1>Week 03 Team Activity</h1><br>
         <!-- HTML form version -->
 
         <!-- <form action="w03results.php" method="post">
@@ -42,32 +43,32 @@
 
         <!-- PHP form version -->
         <?php
-            echo "<form action='w03results.php' method='post'>";
+            // echo "<form action='w03results.php' method='post'>";
 
-            $majors = array('Computer Science', 'Web Design and Developement', 'Computer Information Technology', 'Computer Engineering');
-            $ids = array('cs', 'wdd', 'cit', 'ce')
+            // $majors = array('Computer Science', 'Web Design and Developement', 'Computer Information Technology', 'Computer Engineering');
+            // $ids = array('cs', 'wdd', 'cit', 'ce')
             
-            for ($i = 0; $i < 4; $i++){
-                echo '<input type="radio" name="major" id="'.$ids[$i].'" value="'.$majors[$i].'">
-                <label for="'.$ids[$i].'">'.$majors[$i].'</label><br>';
-            }
-            echo '<br>';
+            // for ($i = 0; $i < 4; $i++){
+            //     echo '<input type="radio" name="major" id="'.$ids[$i].'" value="'.$majors[$i].'">
+            //     <label for="'.$ids[$i].'">'.$majors[$i].'</label><br>';
+            // }
+            // echo '<br>';
             
-            echo '<p>Continents you have visited:</p>
-                <input type="checkbox" name="continents[]" id="place-na" value="North America"><label for="place-na">North America</label><br />
-                <input type="checkbox" name="continents[]" id="place-sa" value="South America"><label for="place-sa">South America</label><br />
-                <input type="checkbox" name="continents[]" id="place-asia" value="Asia"><label for="place-asia">Asia America</label><br />
-                <input type="checkbox" name="continents[]" id="place-eu" value="Europe"><label for="place-eu">Europe</label><br />
-                <input type="checkbox" name="continents[]" id="place-af" value="Africa"><label for="place-af">Africa</label><br />
-                <input type="checkbox" name="continents[]" id="place-aus" value="Australia"><label for="place-aus">Australia</label><br />
-                <input type="checkbox" name="continents[]" id="place-ant" value="Antarctica"><label for="place-ant">Antarctica</label><br />
-                <br />';
+            // echo '<p>Continents you have visited:</p>
+            //     <input type="checkbox" name="continents[]" id="place-na" value="North America"><label for="place-na">North America</label><br />
+            //     <input type="checkbox" name="continents[]" id="place-sa" value="South America"><label for="place-sa">South America</label><br />
+            //     <input type="checkbox" name="continents[]" id="place-asia" value="Asia"><label for="place-asia">Asia America</label><br />
+            //     <input type="checkbox" name="continents[]" id="place-eu" value="Europe"><label for="place-eu">Europe</label><br />
+            //     <input type="checkbox" name="continents[]" id="place-af" value="Africa"><label for="place-af">Africa</label><br />
+            //     <input type="checkbox" name="continents[]" id="place-aus" value="Australia"><label for="place-aus">Australia</label><br />
+            //     <input type="checkbox" name="continents[]" id="place-ant" value="Antarctica"><label for="place-ant">Antarctica</label><br />
+            //     <br />';
 
-            echo '<label for="comments"> Comments:</label><br>
-                <textarea id="comments" name="comments" placeholder="Write something.." style="height:200px;width: 600px;"></textarea><br>';
+            // echo '<label for="comments"> Comments:</label><br>
+            //     <textarea id="comments" name="comments" placeholder="Write something.." style="height:200px;width: 600px;"></textarea><br>';
 
-            echo '<button type="submit">Submit</button>';
-            echo '</form>';
+            // echo '<button type="submit">Submit</button>';
+            // echo '</form>';
         ?>
     </body>
 </html>
