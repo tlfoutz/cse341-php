@@ -36,7 +36,7 @@
             <br />
             
             <label for="comments"> Comments:</label><br>
-            <textarea id="comments" name="comments" placeholder="Write something.." style="height:200px;width: 600px;"></textarea><br>
+            <textarea id="comments" name="comments" placeholder="Write something.." style="height:200px;width: 98%;"></textarea><br>
             
             <input type="submit">
         </form> -->
@@ -65,7 +65,7 @@
                 <br />';
 
             echo '<label for="comments"> Comments:</label><br>
-                <textarea id="comments" name="comments" placeholder="Write something.." style="height:200px;width: 600px;"></textarea><br>';
+                <textarea id="comments" name="comments" placeholder="Write something.." style="height:200px;width: 98%;"></textarea><br>';
 
             echo '<button type="submit">Submit</button>';
             echo '</form>';
