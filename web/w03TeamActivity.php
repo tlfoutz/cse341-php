@@ -48,10 +48,10 @@
             $majors = array('Computer Science', 'Web Design and Developement', 'Computer Information Technology', 'Computer Engineering');
             $ids = array('cs', 'wdd', 'cit', 'ce')
             
-            for ($i = 0; $i < 4; $i++) {
-                echo '<input type="radio" name="major" id="'.$ids[$i].'" value="'.$majors[$i].'">';
-                echo '<label for="'.$ids[$i].'">'.$majors[$i].'</label><br>';
-            }
+            // for ($i = 0; $i < 4; $i++) {
+            //     echo '<input type="radio" name="major" id="'.$ids[$i].'" value="'.$majors[$i].'">';
+            //     echo '<label for="'.$ids[$i].'">'.$majors[$i].'</label><br>';
+            // }
             echo '<br>';
             
             // echo '<p>Continents you have visited:</p>
