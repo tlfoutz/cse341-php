@@ -43,12 +43,12 @@
 
         <!-- PHP form version -->
         <?php
-            echo '<form action='w03results.php' method='post'>
+            echo '<form action="w03results.php" method="post">
             <label for="name"> Name:</label>
             <input type="text" id="name" name="name"><br><br>
             <label for="email"> Email:</label>
             <input type="text" id="email" name="email"><br><br>';
-            
+
             $majors = array('Computer Science', 'Web Design and Developement', 'Computer Information Technology', 'Computer Engineering');
             $ids = array('cs', 'wdd', 'cit', 'ce');
             
