@@ -43,14 +43,18 @@
 
         <!-- PHP form version -->
         <?php
-            echo "<form action='w03results.php' method='post'>";
-
+            echo '<form action='w03results.php' method='post'>
+            <label for="name"> Name:</label>
+            <input type="text" id="name" name="name"><br><br>
+            <label for="email"> Email:</label>
+            <input type="text" id="email" name="email"><br><br>';
+            
             $majors = array('Computer Science', 'Web Design and Developement', 'Computer Information Technology', 'Computer Engineering');
             $ids = array('cs', 'wdd', 'cit', 'ce');
             
             for ($i = 0; $i < 4; $i++) {
-                echo '<input type="radio" name="major" id="'.$ids[$i].'" value="'.$majors[$i].'">';
-                echo '<label for="'.$ids[$i].'">'.$majors[$i].'</label><br>';
+                echo '<input type="radio" name="major" id="'.$ids[$i].'" value="'.$majors[$i].'">
+                    <label for="'.$ids[$i].'">'.$majors[$i].'</label><br>';
             }
             echo '<br>';
             
