@@ -30,6 +30,6 @@ session_start();
         <form action="checkout.php">
             <input type="submit" value="Go to checkout"/>
         </form> 
-        <script src="cartRemoval.js"></script>
+        <!-- <script src="cartRemoval.js"></script> -->
     </body>
 </html>
