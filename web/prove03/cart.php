@@ -8,7 +8,7 @@ session_start();
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="author" content="Travis Foutz">
         <meta name="description" content="Shopping Cart Assignment 03 - CSE 341">
-        <!-- <link rel="icon" type="image/png" href="images/moon.gif"> -->
+        <link rel="icon" type="image/png" href="images/moon.gif">
         <title>Cart</title>
     </head>
     <body>
@@ -24,6 +24,9 @@ session_start();
                 <?php include 'fillCart.php';?>
             </table>
         </form>
+        <form action="browse.php">
+            <input type="submit" value="Go back to browse page to continue shopping"/>
+        </form> 
         <form action="checkout.php">
             <input type="submit" value="Go to checkout"/>
         </form> 

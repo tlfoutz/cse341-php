@@ -12,5 +12,11 @@ session_start();
         <title>Checkout</title>
     </head>
     <body>
+    <form action="cart.php">
+            <input type="submit" value="Go back to cart"/>
+        </form> 
+        <form action="confirmation.php">
+            <input type="submit" value="Confirm"/>
+        </form> 
     </body>
 </html>
