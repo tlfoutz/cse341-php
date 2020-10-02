@@ -17,5 +17,4 @@
     if(isset($_POST['delete6'])) { 
         unset($_SESSION["cartItem6"]);
     }
-    var_dump($_SESSION);
 ?>

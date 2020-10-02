@@ -53,5 +53,4 @@
             <td><input type=\"submit\" name=\"delete6\" id=\"6delete\" value=\"Remove from cart\"/>
             </tr>";           
         }
-        var_dump($_SESSION);
 ?>
