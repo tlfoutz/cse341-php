@@ -21,6 +21,7 @@ session_start();
                     <th>Amount</th>
                 </tr>
                 <?php include 'cartRemoval.php';?>
+                <?php include 'updateAmounts.php';?>
                 <?php include 'fillCart.php';?>
             </table>
         </form>
@@ -30,6 +31,5 @@ session_start();
         <form action="checkout.php">
             <input type="submit" value="Go to checkout"/>
         </form> 
-        <!-- <script src="cartRemoval.js"></script> -->
     </body>
 </html>
