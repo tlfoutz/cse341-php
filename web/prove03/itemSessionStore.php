@@ -52,5 +52,6 @@
             <td><input type=\"number\" name=\"num6\" value=\"" . $_POST['num6'] . "\"\>
             <td><input type=\"submit\" name=\"delete6\" id=\"6delete\" value=\"Remove from cart\"/>
             </tr>";           
-        } 
+        }
+        var_dump($_SESSION);
 ?>
