@@ -15,6 +15,7 @@ session_start();
         <title>Checkout</title>
     </head>
     <body>
+        <?php include 'cartRemoval.php';?>
         <h1>Checkout</h1>
         <h2>USA shipping address</h2>
         <form action="confirmation.php" method="post">
