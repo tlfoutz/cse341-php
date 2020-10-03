@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nameErr = "Name is required";
   } else {
     $fullname = test_input($_POST["fullname"]);
-    if (!preg_match("/^[a-zA-Z-' ]*$/",$fullname)) {
+    if (!preg_match("/^[a-zA-Z-' ]*$/", $fullname)) {
       $valid = false;
       $nameErr = "Only letters and white space allowed";
     }
@@ -33,6 +33,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $addressErr = "Address is required";
   } else {
     $address = test_input($_POST["address"]);
+    if (!preg_match("/^[0-9a-zA-Z-' ]*$/", $address)) {
+      $valid = false;
+      $addressErr = "Only numbers, letters, and white space allowed";
+    }
   }
 
   if (empty($_POST["city"])) {
@@ -40,6 +44,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $cityErr = "City is required";
   } else {
     $city = test_input($_POST["city"]);
+    if (!preg_match("/^[a-zA-Z-' ]*$/", $city)) {
+      $valid = false;
+      $nameErr = "Only letters and white space allowed";
+    }
   }
 
   if (empty($_POST["state"])) {
@@ -47,6 +55,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stateErr = "State is required";
   } else {
     $state = test_input($_POST["state"]);
+    if (!preg_match("/^[a-zA-Z-' ]*$/", $state)) {
+      $valid = false;
+      $nameErr = "Only letters and white space allowed";
+    }
   }
 
   if (empty($_POST["zip"])) {
