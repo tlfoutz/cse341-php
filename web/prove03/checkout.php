@@ -42,9 +42,7 @@ session_start();
             <input type="text" id="zip" name="zip" value="<?php echo $zip;?>">
             <span class="error">* <?php echo $zipErr;?></span>
             <br><br>
-            <form action="cart.php">
-                <input type="submit" value="Go back to cart"/>
-            </form> 
+            <button onclick="location.href=cart.php">Go back to cart</button>
             <input type="submit" value="Confirm"/>
         </form> 
     </body>
