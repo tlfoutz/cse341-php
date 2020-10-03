@@ -3,7 +3,7 @@ $nameErr = $emailErr = $addressErr = $cityErr = $stateErr = $zipErr = "";
 $fullname = $email = $address = $city = $state = $zip = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  if (empty($_POST["name"])) {
+  if (empty($_POST["fullname"])) {
     $nameErr = "Name is required";
   } else {
     $fullname = test_input($_POST["fullname"]);
