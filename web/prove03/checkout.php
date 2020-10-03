@@ -18,7 +18,7 @@ session_start();
         <?php include 'cartRemoval.php';?>
         <h1>Checkout</h1>
         <h2>USA shipping address</h2>
-        <form action="confirmation.php" method="post">
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
             <label for="fname">Full Name</label>
             <input type="text" id="fname" name="fullname" value="<?php echo $name;?>">
             <span class="error">* <?php echo $nameErr;?></span>
