@@ -44,16 +44,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   if (empty($_POST["state"])) {
     $valid = false;
-    $cityErr = "State is required";
+    $stateErr = "State is required";
   } else {
-    $city = test_input($_POST["state"]);
+    $state = test_input($_POST["state"]);
   }
 
   if (empty($_POST["zip"])) {
     $valid = false;
-    $nameErr = "Zipcode is required";
+    $zipErr = "Zipcode is required";
   } else {
-    $name = test_input($_POST["zip"]);
+    $zip = test_input($_POST["zip"]);
     if (!preg_match("/^[0-9]{5}*$/", $zip)) {
       $valid = false;
       $zipErr = "Exactly 5 digits allowed";
