@@ -52,7 +52,7 @@ session_start();
                     <td><input type="number" name="num6" min="0" value="0">
                 </tr>
             </table>
-            <<input type="submit" name="addToCart" value="Add to cart"/>
+            <input type="submit" name="addToCart" value="Add to cart"/>
         </form>
         <form action="cart.php">
             <input type="submit" value="Go to cart"/>

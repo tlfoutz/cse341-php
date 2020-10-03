@@ -26,7 +26,7 @@ session_start();
             </table>
         </form>
         <form action="browse.php">
-            <input type="submit" value="Go back to browse page to continue shopping"/>
+            <input type="submit" value="Continue shopping"/>
         </form> 
         <form action="checkout.php">
             <input type="submit" value="Go to checkout"/>
