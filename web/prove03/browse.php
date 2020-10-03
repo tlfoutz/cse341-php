@@ -53,6 +53,7 @@ session_start();
                 </tr>
             </table>
             <input type="submit" name="addToCart" value="Add to cart"/>
+            <br><br>
         </form>
         <form action="cart.php">
             <input type="submit" value="Go to cart"/>

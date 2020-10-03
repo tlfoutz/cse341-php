@@ -45,6 +45,7 @@ session_start();
             <span class="error">* <?php echo $zipErr;?></span>
             <br><br>
             <button onclick="location.href=cart.php">Go back to cart</button>
+            <br><br>
             <input type="submit" value="Confirm"/>
         </form> 
     </body>
