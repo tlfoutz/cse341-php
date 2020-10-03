@@ -24,37 +24,37 @@ session_start();
                 <tr>
                     <td>Item #1</td>
                     <td>The first item</td>
-                    <td><input type="number" name="num1" value="0">
+                    <td><input type="number" name="num1" min="0" value="0">
                     <td><input type="submit" name="button1" value="Add to cart"/>
                 </tr>
                 <tr>
                     <td>Item #2</td>
                     <td>The second item</td>
-                    <td><input type="number" name="num2" value="0">
+                    <td><input type="number" name="num2" min="0" value="0">
                     <td><input type="submit" name="button2" value="Add to cart"/>
                 </tr>
                 <tr>
                     <td>Item #3</td>
                     <td>The third item</td>
-                    <td><input type="number" name="num3" value="0">
+                    <td><input type="number" name="num3" min="0" value="0">
                     <td><input type="submit" name="button3" value="Add to cart"/>
                 </tr>
                 <tr>
                     <td>Item #4</td>
                     <td>The fourth item</td>
-                    <td><input type="number" name="num4" value="0">
+                    <td><input type="number" name="num4" min="0" value="0">
                     <td><input type="submit" name="button4" value="Add to cart"/>
                 </tr>
                 <tr>
                     <td>Item #5</td>
                     <td>The fifth item</td>
-                    <td><input type="number" name="num5" value="0">
+                    <td><input type="number" name="num5" min="0" value="0">
                     <td><input type="submit" name="button5" value="Add to cart"/>
                 </tr>
                 <tr>
                     <td>Item #6</td>
                     <td>The sixth item</td>
-                    <td><input type="number" name="num6" value="0">
+                    <td><input type="number" name="num6" min="0" value="0">
                     <td><input type="submit" name="button6" value="Add to cart"/>
                 </tr>
             </table>
