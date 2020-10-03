@@ -6,9 +6,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   if (empty($_POST["name"])) {
     $nameErr = "Name is required";
   } else {
-    $name = test_input($_POST["name"]);
-    // check if name only contains letters and whitespace
-    if (!preg_match("/^[a-zA-Z-' ]*$/",$name)) {
+    $fullname = test_input($_POST["fullname"]);
+    if (!preg_match("/^[a-zA-Z-' ]*$/",$fullname)) {
       $nameErr = "Only letters and white space allowed";
     }
   }
@@ -17,7 +16,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $emailErr = "Email is required";
   } else {
     $email = test_input($_POST["email"]);
-    // check if e-mail address is well-formed
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
       $emailErr = "Invalid email format";
     }
@@ -45,11 +43,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nameErr = "Zipcode is required";
   } else {
     $name = test_input($_POST["zip"]);
-    // check if name only contains letters and whitespace
     if (!preg_match("/^[0-9]{5}?$/", $zip)) {
       $zipErr = "Exactly 5 digits allowed";
     }
   }
+}
+
+if($valid){
+  header('location:confirmation.php');
+  exit();
 }
 
 function test_input($data) {

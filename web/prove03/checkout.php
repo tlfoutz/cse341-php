@@ -21,7 +21,7 @@ session_start();
         <p><span class="error">* required field</span></p>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
             <label for="fname">Full Name</label>
-            <input type="text" id="fname" name="fullname" value="<?php echo $name;?>">
+            <input type="text" id="fname" name="fullname" value="<?php echo $fullname;?>">
             <span class="error">* <?php echo $nameErr;?></span>
             <br><br>
             <label for="email">Email</label>
