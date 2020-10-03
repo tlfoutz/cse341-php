@@ -15,9 +15,10 @@ session_start();
         <title>Checkout</title>
     </head>
     <body>
-        <?php include 'cartRemoval.php';?>
+        <?php include 'formHandling.php';?>
         <h1>Checkout</h1>
         <h2>USA shipping address</h2>
+        <p><span class="error">* required field</span></p>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
             <label for="fname">Full Name</label>
             <input type="text" id="fname" name="fullname" value="<?php echo $name;?>">
