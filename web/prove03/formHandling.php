@@ -54,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $zipErr = "Zipcode is required";
   } else {
     $zip = test_input($_POST["zip"]);
-    if (!preg_match("/^[0-9]{5}*$/", $zip)) {
+    if (!preg_match("/^[0-9]{5}?$/", $zip)) {
       $valid = false;
       $zipErr = "Exactly 5 digits allowed";
     }
