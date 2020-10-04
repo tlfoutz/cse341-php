@@ -31,7 +31,7 @@
             <div class="overlay"></div>
             <div class="description">
                 <h1>Assignments</h1>
-                <p>Coming Soon!</p>
+                <p>See below for each assignment!</p>
             </div>
         </header>
         <div class="container features">
