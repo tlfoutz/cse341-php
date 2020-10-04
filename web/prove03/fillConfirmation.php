@@ -18,7 +18,7 @@
         echo "<tr><td>Item #6</td><td>" . $_SESSION["itemAmount6"] . "</td></tr>";
     }
 
-    echo "</table>";
+    echo "</table><br>";
     echo $_SESSION["fullname"];
     echo "<br>";
     echo $_SESSION["email"];

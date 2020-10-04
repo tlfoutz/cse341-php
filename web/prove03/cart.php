@@ -24,6 +24,7 @@ session_start();
                 <?php include 'updateAmounts.php';?>
                 <?php include 'fillCart.php';?>
             </table>
+            <br>
         </form>
         <form action="browse.php">
             <input type="submit" value="Continue shopping"/>
