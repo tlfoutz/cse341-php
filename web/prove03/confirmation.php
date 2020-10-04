@@ -18,6 +18,6 @@ session_start();
                 <th>Item</th>
                 <th>Amount</th>
             </tr>
-            <?php include 'fillCart.php';?>
+            <?php include 'fillConfirmation.php';?>
     </body>
 </html>
