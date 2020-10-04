@@ -34,6 +34,15 @@
                 <p>Coming Soon!</p>
             </div>
         </header>
+        <div class="container features">
+          <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-12">
+              <h3 class="feature-title">Shopping Cart Simulation</h3>
+              <a href="/prove03/browse.php"><img src="images/shopping_cart.png" class="img-fluid"></a>
+              <p>Create a simple PHP application to simulate a shopping cart.</p>
+            </div>
+          </div> 
+        </div>
         <footer class="page-footer">
           <div class="col-lg-4 col-md-4 col-sm-12">
              <h6 class="text-uppercase font-weight-bold">Contact</h6>
