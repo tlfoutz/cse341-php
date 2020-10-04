@@ -46,7 +46,7 @@ session_start();
             <br><br>
             <input type="submit" value="Confirm"/>
         </form>
-        <br><br>
+        <br>
         <form action="cart.php">
             <input type="submit" value="Go back to cart"/>
         </form>
