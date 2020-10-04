@@ -44,11 +44,11 @@ session_start();
             <input type="text" id="zip" name="zip" value="<?php echo $zip;?>">
             <span class="error">* <?php echo $zipErr;?></span>
             <br><br>
-            <form action="cart.php">
-                <input type="submit" value="Go back to cart"/>
-            <br><br>
-            </form>
             <input type="submit" value="Confirm"/>
-        </form> 
+        </form>
+        <br><br>
+        <form action="cart.php">
+            <input type="submit" value="Go back to cart"/>
+        </form>
     </body>
 </html>

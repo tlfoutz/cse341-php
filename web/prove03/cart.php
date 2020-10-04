@@ -26,12 +26,12 @@ session_start();
             </table>
             <br>
         </form>
-        <form action="browse.php">
-            <input type="submit" value="Continue shopping"/>
-            <br><br>
-        </form> 
         <form action="checkout.php">
             <input type="submit" value="Go to checkout"/>
+            <br><br>
+        </form>
+        <form action="browse.php">
+            <input type="submit" value="Continue shopping"/>
         </form> 
     </body>
 </html>
