@@ -25,9 +25,7 @@
     echo "<br>";
     echo $_SESSION["address"];
     echo "<br>";
-    echo $_SESSION["city"];
-    echo "<br>";
-    echo $_SESSION["state"];
+    echo $_SESSION["city"] . ", " . $_SESSION["state"];
     echo "<br>";
     echo $_SESSION["zip"];
     echo "<br>";
