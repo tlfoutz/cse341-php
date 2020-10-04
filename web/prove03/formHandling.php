@@ -14,6 +14,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!preg_match("/^[a-zA-Z-' ]*$/", $fullname)) {
       $valid = false;
       $nameErr = "Only letters and white space allowed";
+    } else {
+      $_SESSION["fullname"] = $fullname;
     }
   }
   
@@ -25,6 +27,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
       $valid = false;
       $emailErr = "Invalid email format";
+    } else {
+      $_SESSION["email"] = $email;
     }
   }
 
@@ -36,6 +40,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!preg_match("/^[0-9a-zA-Z-' ]*$/", $address)) {
       $valid = false;
       $addressErr = "Only numbers, letters, and white space allowed";
+    } else {
+      $_SESSION["address"] = $address;
     }
   }
 
@@ -47,6 +53,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!preg_match("/^[a-zA-Z-' ]*$/", $city)) {
       $valid = false;
       $nameErr = "Only letters and white space allowed";
+    } else {
+      $_SESSION["city"] = $city;
     }
   }
 
@@ -58,6 +66,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!preg_match("/^[a-zA-Z-' ]*$/", $state)) {
       $valid = false;
       $nameErr = "Only letters and white space allowed";
+    } else {
+      $_SESSION["state"] = $state;
     }
   }
 
@@ -69,6 +79,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!preg_match("/^[0-9]{5}?$/", $zip)) {
       $valid = false;
       $zipErr = "Exactly 5 digits allowed";
+    } else {
+      $_SESSION["zip"] = $zip;
     }
   }
 }

@@ -13,6 +13,11 @@ session_start();
     </head>
     <body>
         <h1>Confirmation</h1>
-
+        <table>
+            <tr>
+                <th>Item</th>
+                <th>Amount</th>
+            </tr>
+            <?php include 'fillCart.php';?>
     </body>
 </html>

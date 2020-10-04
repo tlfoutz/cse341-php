@@ -9,6 +9,7 @@
                 <td><input type=\"submit\" name=\"update1\" value=\"Update amount\"/>
                 <td><input type=\"submit\" name=\"delete1\" id=\"1delete\" value=\"Remove from cart\"/>
                 </tr>";
+            $_SESSION["itemAmount1"] = $_POST['num1'];
         }
         if($_POST['num2'] != 0) {
             $_SESSION["cartItem2"] =
@@ -19,6 +20,7 @@
                 <td><input type=\"submit\" name=\"update2\" value=\"Update amount\"/>
                 <td><input type=\"submit\" name=\"delete2\" id=\"2delete\" value=\"Remove from cart\"/>
                 </tr>"; 
+            $_SESSION["itemAmount2"] = $_POST['num2'];
         }
         if($_POST['num3'] != 0) {
             $_SESSION["cartItem3"] =
@@ -29,6 +31,7 @@
                 <td><input type=\"submit\" name=\"update3\" value=\"Update amount\"/>
                 <td><input type=\"submit\" name=\"delete3\" id=\"3delete\" value=\"Remove from cart\"/>
                 </tr>"; 
+            $_SESSION["itemAmount3"] = $_POST['num3'];
         }
         if($_POST['num4'] != 0) {
             $_SESSION["cartItem4"] =
@@ -39,6 +42,7 @@
                 <td><input type=\"submit\" name=\"update4\" value=\"Update amount\"/>
                 <td><input type=\"submit\" name=\"delete4\" id=\"4delete\" value=\"Remove from cart\"/>
                 </tr>";  
+            $_SESSION["itemAmount4"] = $_POST['num4'];
         }
         if($_POST['num5'] != 0) {
             $_SESSION["cartItem5"] =
@@ -48,7 +52,8 @@
                 <td><input type=\"number\" name=\"num5\" value=\"" . $_POST['num5'] . "\"\>
                 <td><input type=\"submit\" name=\"update5\" value=\"Update amount\"/>
                 <td><input type=\"submit\" name=\"delete5\" id=\"5delete\" value=\"Remove from cart\"/>
-                </tr>";  
+                </tr>";
+            $_SESSION["itemAmount5"] = $_POST['num5'];
         }
         if($_POST['num6'] != 0) {
             $_SESSION["cartItem6"] =
@@ -58,7 +63,8 @@
                 <td><input type=\"number\" name=\"num6\" value=\"" . $_POST['num6'] . "\"\>
                 <td><input type=\"submit\" name=\"update6\" value=\"Update amount\"/>
                 <td><input type=\"submit\" name=\"delete6\" id=\"6delete\" value=\"Remove from cart\"/>
-                </tr>";   
+                </tr>";
+            $_SESSION["itemAmount6"] = $_POST['num6'];
         }
     }
 ?>
