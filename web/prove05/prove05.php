@@ -69,10 +69,8 @@
                         if ($row['quantity'] != 1 && $row['unit']) { echo 's';}
                         echo '</td></tr>';
                     }
-                } else {
-                    echo 'No food at this location.'
-                }
-                echo '</table>';
+                    echo '</table>';
+                } else { echo 'No food at this location.'; }
             }
         ?>
     </body>
