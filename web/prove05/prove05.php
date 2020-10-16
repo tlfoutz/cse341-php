@@ -36,7 +36,7 @@
             echo '<form method="post" action="';
             echo htmlspecialchars($_SERVER["PHP_SELF"]);
             echo '">';
-            echo '<select name="users" id="users"><option disabled selected value> -- Select user -- </option>';
+            echo '<select name="users" id="users"><option value="0" disabled selected> -- Select user -- </option>';
             foreach ($db->query('SELECT id, user_name FROM users') as $row) {
                 echo '<option value="' . $row['id'] . '"';
                 if ($_POST['users'] == $row['id']) { echo ' selected'; }
@@ -44,7 +44,7 @@
             }
             echo '</select><br>';
             if ($_POST['users']) {
-                echo '<select name="locations" id="locations"><option disabled selected value> -- Select location -- </option>';
+                echo '<select name="locations" id="locations"><option value="0" disabled selected> -- Select location -- </option>';
                 $id = $_POST['users'];
                 $statement = $db->prepare('SELECT id, location_name FROM locations WHERE added_by = :id');
                 $statement->execute(array(':id' => $id));
@@ -59,18 +59,20 @@
 
             if ($_POST['locations']) {
                 $id = $_POST['locations'];
-                $statement = $db->prepare('SELECT food_name, quantity, unit FROM foods WHERE location_id = :id');
-                $statement->execute(array(':id' => $id));
-                $counter = 0;
-                echo '<table><tr><th>Food</th><th>Quantity</th></tr>';
-                while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-                    echo '<tr><td>' . $row['food_name'] . '</td><td>' . $row['quantity'] . ' ' . $row['unit'];
-                    if ($row['quantity'] != 1 && $row['unit']) { echo 's';}
-                    echo '</td></tr>';
-                    $counter++;
+                if ($id == 0) { echo ''; } else {
+                    $statement = $db->prepare('SELECT food_name, quantity, unit FROM foods WHERE location_id = :id');
+                    $statement->execute(array(':id' => $id));
+                    $counter = 0;
+                    echo '<table><tr><th>Food</th><th>Quantity</th></tr>';
+                    while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
+                        echo '<tr><td>' . $row['food_name'] . '</td><td>' . $row['quantity'] . ' ' . $row['unit'];
+                        if ($row['quantity'] != 1 && $row['unit']) { echo 's';}
+                        echo '</td></tr>';
+                        $counter++;
+                    }
+                    echo '</table>';
+                    if ($counter == 0) { echo 'No food found at this location.'; }
                 }
-                echo '</table>';
-                if ($counter == 0) { echo 'No food found at this location.'; }
             }
         ?>
     </body>
