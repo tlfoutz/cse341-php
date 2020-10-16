@@ -61,16 +61,16 @@
                 $id = $_POST['locations'];
                 $statement = $db->prepare('SELECT food_name, quantity, unit FROM foods WHERE location_id = :id');
                 $statement->execute(array(':id' => $id));
-                $results = $statement->num_rows;
-                if ($results > 0) {
-                    echo '<table><tr><th>Food</th><th>Quantity</th></tr>';
-                    while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-                        echo '<tr><td>' . $row['food_name'] . '</td><td>' . $row['quantity'] . ' ' . $row['unit'];
-                        if ($row['quantity'] != 1 && $row['unit']) { echo 's';}
-                        echo '</td></tr>';
-                    }
-                    echo '</table>';
-                 } else { echo 'No food at this location.'; }
+                $counter = 0;
+                echo '<table><tr><th>Food</th><th>Quantity</th></tr>';
+                while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
+                    echo '<tr><td>' . $row['food_name'] . '</td><td>' . $row['quantity'] . ' ' . $row['unit'];
+                    if ($row['quantity'] != 1 && $row['unit']) { echo 's';}
+                    echo '</td></tr>';
+                    $counter++;
+                }
+                echo '</table>';
+                if ($counter == 0) { echo 'No food found at this location.'; }
             }
         ?>
     </body>
