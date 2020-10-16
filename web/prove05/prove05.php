@@ -42,6 +42,7 @@
                 if ($_POST['users'] == $row['id']) { echo ' selected'; }
                 echo '>' . $row['user_name'] . '</option>';
             }
+            echo '</select>';
             if ($_POST['users']) {
                 echo '<select name="locations" id="locations"><option disabled selected value> -- Select location -- </option>';
                 $id = $_POST['users'];
@@ -52,8 +53,9 @@
                     if ($_POST['locations'] == $row['id']) { echo ' selected'; }
                     echo '>' . $row['location_name'] . '</option>';
                 }
+                echo '</select>';
             }
-            echo '</select><input type="submit" name="submit" value="Next"></form><br>';
+            echo '<input type="submit" name="submit" value="Next"></form><br>';
 
             if ($_POST['locations']) {
                 echo '<table><tr><th>Food</th><th>Quantity</th></tr>';
