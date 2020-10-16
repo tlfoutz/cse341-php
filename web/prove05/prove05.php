@@ -42,7 +42,7 @@
                 if ($_POST['users'] == $row['id']) { echo ' selected'; }
                 echo '>' . $row['user_name'] . '</option>';
             }
-            echo '</select>';
+            echo '</select><br>';
             if ($_POST['users']) {
                 echo '<select name="locations" id="locations"><option disabled selected value> -- Select location -- </option>';
                 $id = $_POST['users'];
@@ -53,14 +53,14 @@
                     if ($_POST['locations'] == $row['id']) { echo ' selected'; }
                     echo '>' . $row['location_name'] . '</option>';
                 }
-                echo '</select>';
+                echo '</select><br>';
             }
             echo '<input type="submit" name="submit" value="Next"></form><br>';
 
             if ($_POST['locations']) {
                 echo '<table><tr><th>Food</th><th>Quantity</th></tr>';
                 $id = $_POST['locations'];
-                $statement = $db->prepare('SELECT food_name, quantity, unit FROM foods WHERE locations_id = :id');
+                $statement = $db->prepare('SELECT food_name, quantity, unit FROM foods WHERE location_id = :id');
                 $statement->execute(array(':id' => $id));
                 while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
                     echo '<tr><td>' . $row['food_name'] . '</td><td>' . $row['quantity'] . ' ' . $row['unit'];
