@@ -39,7 +39,7 @@
             echo htmlspecialchars($_SERVER["PHP_SELF"]);
             echo '">';
             echo '<select name="users" id="users"><option disabled selected value> -- Select user -- </option>';
-            foreach ($db->query('SELECT user_name FROM users') as $row) {
+            foreach ($db->query('SELECT id, user_name FROM users') as $row) {
                 echo '<option value="' . $row['id'] . 'user">' . $row['user_name'] . '</option>';
             }
             echo '</select><input type="submit" name="submit" value="Next"></form><br>';
@@ -49,8 +49,8 @@
                 echo htmlspecialchars($_SERVER["PHP_SELF"]);
                 echo '">';
                 echo '<select name="locations" id="locations"><option disabled selected value> -- Select location -- </option>';
-                $statement = $db->prepare('SELECT location_name FROM locations WHERE added_by = :id');
-                $statement->execute(array(':id' => $_SESSION["userID"]));
+                $statement = $db->prepare('SELECT id, location_name FROM locations WHERE added_by = :id');
+                $statement->execute(array(':id' => $_SESSION["user"]));
                 while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
                     echo '<option value="' . $row['id'] . 'location">' . $row['location_name'] . '</option>';
                 }
