@@ -1,7 +1,5 @@
 <?php
     session_start();
-    $_SESSION["user"] = $_POST['users'];
-    $_SESSION["location"] = $_POST['locations'];
     try {
         $dbUrl = getenv('DATABASE_URL');
 
@@ -40,27 +38,28 @@
             echo '">';
             echo '<select name="users" id="users"><option disabled selected value> -- Select user -- </option>';
             foreach ($db->query('SELECT id, user_name FROM users') as $row) {
-                echo '<option value="' . $row['id'] . 'user">' . $row['user_name'] . '</option>';
+                echo '<option value="' . $row['id'] . '"';
+                if ($_POST['users'] == $row['id']) { echo ' selected'; }
+                echo '>' . $row['user_name'] . '</option>';
+            }
+            if ($_POST['users']) {
+                echo '<select name="locations" id="locations"><option disabled selected value> -- Select location -- </option>';
+                $id = $_POST['users'];
+                $statement = $db->prepare('SELECT id, location_name FROM locations WHERE added_by = :id');
+                $statement->execute(array(':id' => $id));
+                while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
+                    echo '<option value="' . $row['id'] . '"';
+                    if ($_POST['locations'] == $row['id']) { echo ' selected'; }
+                    echo '>' . $row['location_name'] . '</option>';
+                }
             }
             echo '</select><input type="submit" name="submit" value="Next"></form><br>';
 
-            if ($_SESSION["user"]) {
-                echo '<form method="post" action="';
-                echo htmlspecialchars($_SERVER["PHP_SELF"]);
-                echo '">';
-                echo '<select name="locations" id="locations"><option disabled selected value> -- Select location -- </option>';
-                $statement = $db->prepare('SELECT id, location_name FROM locations WHERE added_by = :id');
-                $statement->execute(array(':id' => $_SESSION["user"]));
-                while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-                    echo '<option value="' . $row['id'] . 'location">' . $row['location_name'] . '</option>';
-                }
-                echo '</select><input type="submit" name="submit" value="Next"></form><br>';
-            }
-
-            if ($_SESSION["location"]) {
+            if ($_POST['locations']) {
                 echo '<table><tr><th>Food</th><th>Quantity</th></tr>';
+                $id = $_POST['locations'];
                 $statement = $db->prepare('SELECT food_name, quantity, units FROM foods WHERE locations_id = :id');
-                $statement->execute(array(':id' => $_SESSION["locationID"]));
+                $statement->execute(array(':id' => $id));
                 while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
                     echo '<tr><td>' . $row['food_name'] . '</td><td>' . $row['quantity'] . ' ' . $row['units'] . '</td></tr>';
                 }
