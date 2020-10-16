@@ -63,7 +63,7 @@
                 $statement = $db->prepare('SELECT food_name, quantity, units FROM foods WHERE locations_id = :id');
                 $statement->execute(array(':id' => $id));
                 while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-                    echo '<tr><td>' . $row['food_name'] . '</td><td>' . $row['quantity'] . ' ' . $row['units'] . '</td></tr>';
+                    echo '<tr><td>' . $row['food_name'] . '</td><td>' . $row['quantity'] . ' ' . $row['unit'] . '</td></tr>';
                 }
                 echo '</table>';
             }
