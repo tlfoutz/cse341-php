@@ -35,7 +35,7 @@ CREATE TABLE locations (
 CREATE TABLE units (
     id          SERIAL      PRIMARY KEY     NOT NULL,
     unit_name   VARCHAR(16)                 NOT NULL,
-    unit_abbr   VARCHAR(4),
+    unit_abbr   VARCHAR(6),
     UNIQUE(unit_name),
     UNIQUE(unit_abbr)
 );
@@ -49,7 +49,7 @@ CREATE TABLE foods (
     location_id     INT             REFERENCES locations(id)    NOT NULL,
     foodtype_id     INT             REFERENCES foodtypes(id)    NOT NULL,
     quantity        INT                                         NOT NULL,
-    units           INT             REFERENCES units(id),        
+    unit            VARCHAR(16)     REFERENCES units(unit_name),        
     date_added      DATE                                        NOT NULL,
     added_by        INT             REFERENCES users(id)        NOT NULL,
     date_modified   DATE                                        NOT NULL
