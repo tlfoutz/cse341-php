@@ -58,12 +58,14 @@
             echo '<input type="submit" name="submit" value="Next"></form><br>';
 
             if ($_POST['locations']) {
-                if($_SESSION['recentUser'] != $_POST['users'] && isset($_SESSION['recentUser'])) {
+                if($_SESSION['recentUser'] != $_POST['users'] && isset($_SESSION['recentUser']) &&
+                  (isset($_SESSION['recentLocationUser']) && $_SESSION['recentLocationUser'] != $_POST['users'])) {
                     echo '';
                     unset($_SESSION['recentUser']);
+                    unset($_SESSION['recentLocationUser']);
                 } else {
                     $id = $_POST['locations'];
-                    $statement = $db->prepare('SELECT food_name, quantity, unit FROM foods WHERE location_id = :id');
+                    $statement = $db->prepare('SELECT food_name, quantity, unit, added_by FROM foods WHERE location_id = :id');
                     $statement->execute(array(':id' => $id));
                     $counter = 0;
                     echo '<table><tr><th>Food</th><th>Quantity</th></tr>';
@@ -72,6 +74,7 @@
                         if ($row['quantity'] != 1 && $row['unit']) { echo 's';}
                         echo '</td></tr>';
                         $counter++;
+                        $_SESSION['recentLocationUser'] = $row['added_by'];
                     }
                     echo '</table>';
                     if ($counter == 0) { echo 'No food found at this location.'; }
