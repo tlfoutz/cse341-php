@@ -18,6 +18,7 @@ $chapter = htmlspecialchars($_POST['txtChapter']);
 $verse = htmlspecialchars($_POST['txtVerse']);
 $content = htmlspecialchars($_POST['txtContent']);
 $topicIds = htmlspecialchars($_POST['chkTopics']);
+$topicName = htmlspecialchars($_POST['newTopic']);
 
 // For debugging purposes, you might include some echo statements like this
 // and then not automatically redirect until you have everything working.
@@ -68,8 +69,7 @@ try
 		$statement->execute();
 	}
 
-	if (isset($_POST['add_topic'])) {
-        $topicName = htmlspecialchars($_POST['topic_name']);
+	if (isset($_POST['newTopic'])) {
         $statement = $db->prepare('INSERT INTO topics(name) VALUES(:name)');
         $statment->bindValue(':name', $topicName);
         $stmtTopic->execute();

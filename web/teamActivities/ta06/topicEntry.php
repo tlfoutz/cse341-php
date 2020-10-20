@@ -84,7 +84,7 @@ try
 		echo "\n";
 	}
 	echo "<input type='checkbox' name='chkTopics[]' id='chkTopics$counter' value='$counter'>";
-	echo "<input type='text' name='topic_name'><br>";
+	echo "<input type='text' name='newTopic'><br>";
 	echo "\n";
 }
 catch (PDOException $ex)
