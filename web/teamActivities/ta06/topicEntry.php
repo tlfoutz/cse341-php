@@ -66,7 +66,7 @@ try
 	// Go through each result
 	while ($row = $statement->fetch(PDO::FETCH_ASSOC))
 	{
-		++$counter;
+		$counter++;
 		$id = $row['id'];
 		$name = $row['name'];
 
