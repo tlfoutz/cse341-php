@@ -13,11 +13,11 @@
 ***********************************************************/
 
 // get the data from the POST
-$book = $_POST['txtBook'];
-$chapter = $_POST['txtChapter'];
-$verse = $_POST['txtVerse'];
-$content = $_POST['txtContent'];
-$topicIds = $_POST['chkTopics'];
+$book = htmlspecialchars($_POST['txtBook']);
+$chapter = htmlspecialchars($_POST['txtChapter']);
+$verse = htmlspecialchars($_POST['txtVerse']);
+$content = htmlspecialchars($_POST['txtContent']);
+$topicIds = htmlspecialchars($_POST['chkTopics']);
 
 // For debugging purposes, you might include some echo statements like this
 // and then not automatically redirect until you have everything working.
@@ -67,6 +67,22 @@ try
 
 		$statement->execute();
 	}
+
+	if (isset($_POST['add_topic'])) {
+        $topicName = htmlspecialchars($_POST['topic_name']);
+        $insertTopic = "INSERT INTO topics (name) VALUES(:name)";
+        $stmtTopic = $db->prepare($insertTopic);
+        $stmtTopic->bindParam(':name', $topicName, PDO::PARAM_STR);
+        $stmtTopic->execute();
+        $stmtTopicId = $db->lastInsertId('topics_id_seq');
+        $insertScriptureTopic = "INSERT INTO scriptures_topics (scriptureId, topicId) VALUES(:scriptureId, :topicId)";
+        $insertScriptureTopic = $db->prepare($insertScriptureTopic);
+        $insertScriptureTopic->bindParam(':scriptureId', $scriptureId, PDO::PARAM_INT);
+        $insertScriptureTopic->bindParam(':topicId', $stmtTopicId, PDO::PARAM_INT);
+		$insertScriptureTopic->execute();
+		$scriptureId = $db->lastInsertId("scriptures_id_seq");
+	}
+
 }
 catch (Exception $ex)
 {
