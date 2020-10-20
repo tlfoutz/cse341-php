@@ -23,7 +23,6 @@ $db = get_db();
 <h1>Scripture and Topic List</h1>
 
 <?php
-print_r($_POST);
 
 try
 {
