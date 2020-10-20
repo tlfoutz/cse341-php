@@ -23,7 +23,7 @@ $db = get_db();
 <h1>Scripture and Topic List</h1>
 
 <?php
-
+echo array_keys($_POST);
 
 try
 {
@@ -40,11 +40,6 @@ try
 	// prepare the statement
 	$statement = $db->prepare('SELECT id, book, chapter, verse, content FROM scriptures');
 	$statement->execute();
-	echo $_POST['txtBook'];
-	echo $_POST['txtChapter'];
-	echo $_POST['txtVerse'];
-	echo $_POST['txtContent'];
-	echo $_POST['chkTopics'];
 	// Go through each result
 	while ($row = $statement->fetch(PDO::FETCH_ASSOC))
 	{
