@@ -70,17 +70,16 @@ try
 
 	if (isset($_POST['add_topic'])) {
         $topicName = htmlspecialchars($_POST['topic_name']);
-        $insertTopic = "INSERT INTO topics (name) VALUES(:name)";
-        $stmtTopic = $db->prepare($insertTopic);
-        $stmtTopic->bindParam(':name', $topicName, PDO::PARAM_STR);
+        $statement = $db->prepare('INSERT INTO topics(name) VALUES(:name)');
+        $statment->bindValue(':name', $topicName);
         $stmtTopic->execute();
-        $stmtTopicId = $db->lastInsertId('topics_id_seq');
-        $insertScriptureTopic = "INSERT INTO scriptures_topics (scriptureId, topicId) VALUES(:scriptureId, :topicId)";
-        $insertScriptureTopic = $db->prepare($insertScriptureTopic);
-        $insertScriptureTopic->bindParam(':scriptureId', $scriptureId, PDO::PARAM_INT);
-        $insertScriptureTopic->bindParam(':topicId', $stmtTopicId, PDO::PARAM_INT);
-		$insertScriptureTopic->execute();
-		$scriptureId = $db->lastInsertId("scriptures_id_seq");
+        $newTopicId = $db->lastInsertId('topics_id_seq');
+
+		echo "ScriptureId: $scriptureId, topicId: $topicId";
+		$statement = $db->prepare('INSERT INTO scriptures_topics(scriptureId, topicId) VALUES(:scriptureId, :topicId)');
+		$statement->bindValue(':scriptureId', $scriptureId);
+		$statement->bindValue(':topicId', $topicId);
+		$statement->execute();
 	}
 
 }
