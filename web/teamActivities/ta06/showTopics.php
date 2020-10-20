@@ -23,7 +23,7 @@ $db = get_db();
 <h1>Scripture and Topic List</h1>
 
 <?php
-echo array_keys($_POST);
+print_r($_POST);
 
 try
 {
