@@ -83,9 +83,10 @@ try
 		// put a newline out there just to make our "view source" experience better
 		echo "\n";
 	}
-	echo "<input type='checkbox' name='chkTopics[]' id='chkTopics$counter' value='$counter'>";
-	echo "<input type='text' name='newTopic'><br>";
+	echo "<input type='checkbox' name='add_topic' id='chkTopics$counter' value='$counter'>";
+	echo "<input type='text' name='topic_name'><br>";
 	echo "\n";
+
 }
 catch (PDOException $ex)
 {
