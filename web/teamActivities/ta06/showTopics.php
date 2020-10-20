@@ -51,7 +51,7 @@ try
 		echo 'Topics: ';
 
 		// get the topics now for this scripture
-		$stmtTopics = $db->prepare('SELECT name FROM topic t'
+		$stmtTopics = $db->prepare('SELECT name FROM topics t'
 			. ' INNER JOIN scriptures_topics st ON st.topicId = t.id'
 			. ' WHERE st.scriptureId = :scriptureId');
 
