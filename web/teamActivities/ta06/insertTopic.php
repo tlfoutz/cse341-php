@@ -79,6 +79,7 @@ try
 		$statement = $db->prepare('INSERT INTO scriptures_topics(scriptureId, topicId) VALUES(:scriptureId, :topicId)');
 		$statement->bindValue(':scriptureId', $scriptureId);
 		$statement->bindValue(':topicId', $topicId);
+
 		$statement->execute();
 	}
 
