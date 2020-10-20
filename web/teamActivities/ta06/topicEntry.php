@@ -62,10 +62,11 @@ try
 	// prepare the statement
 	$statement = $db->prepare('SELECT id, name FROM topics');
 	$statement->execute();
-
+	$counter = 1;
 	// Go through each result
 	while ($row = $statement->fetch(PDO::FETCH_ASSOC))
 	{
+		++$counter;
 		$id = $row['id'];
 		$name = $row['name'];
 
@@ -82,7 +83,9 @@ try
 		// put a newline out there just to make our "view source" experience better
 		echo "\n";
 	}
-
+	echo "<input type='checkbox' name='chkTopics[]' id='chkTopics$counter' value='$counter'>";
+	echo "<input type='text' name='topic_name'>";
+	echo "\n";
 }
 catch (PDOException $ex)
 {
