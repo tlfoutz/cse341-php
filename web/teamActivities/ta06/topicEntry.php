@@ -24,7 +24,7 @@ $(document).ready(function(){
   $('#submit').click(function(e) {
         e.preventDefault();
 		$.post("insertTopic.php", $("form").serialize());
-		$("#results").load("showTopics.php");
+		$("#results").html("<?php include 'showTopics.php';?>");
   });
 });
 </script>
