@@ -74,7 +74,7 @@ try
 			$statement->bindValue(':scriptureId', $scriptureId);
 			$statement->bindValue(':topicId', $topicId);
 			$statement->execute();
-		}
+		
 	}
 }
 catch (Exception $ex)
@@ -94,3 +94,4 @@ die(); // we always include a die after redirects. In this case, there would be 
        // to see.
 
 ?>
+
