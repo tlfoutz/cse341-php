@@ -1,5 +1,4 @@
-<?php
-/**********************************************************
+<!-- ?php /**********************************************************
 * File: showTopics.php
 * Author: Br. Burton
 * 
@@ -7,11 +6,11 @@
 * from the DB.
 ***********************************************************/
 
-require("dbConnect.php");
-$db = get_db();
+// require("dbConnect.php");
+// $db = get_db();
 
-?>
-<!DOCTYPE html>
+? -->
+<!-- <!DOCTYPE html>
 <html>
 <head>
 	<title>Scripture and Topic List</title>
@@ -20,7 +19,7 @@ $db = get_db();
 <body>
 <div>
 
-<h1>Scripture and Topic List</h1>
+<h1>Scripture and Topic List</h1> -->
 
 <?php
 
