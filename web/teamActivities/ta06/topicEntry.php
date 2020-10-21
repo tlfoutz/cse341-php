@@ -24,10 +24,12 @@ $(document).ready(function(){
   $('#submit').click(function(e) {
         e.preventDefault();
 		$.post("insertTopic.php", $("form").serialize());
-
+		showData();
   });
 });
+function showData() {
 $("#results").load('showTopics.php');
+}
 </script>
 </head>
 
@@ -118,7 +120,7 @@ catch (PDOException $ex)
 
 </div>
 <div id="results">
-	<?php include "showTopics.php";?>>
+	<?php include "showTopics.php";?>
 </div>
 
 </body>
