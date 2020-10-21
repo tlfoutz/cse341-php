@@ -20,12 +20,15 @@ $db = get_db();
 	<title>Topic Entry</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
+function showList() {
+	$("#results").load('showTopics.php');
+
+}
 $(document).ready(function(){
   $('#submit').click(function(e) {
         e.preventDefault();
 		$.post("insertTopic.php", $("form").serialize());
-		$("#results").load('showTopics.php');
-	});
+showList();	});
 });
 
 </script>
