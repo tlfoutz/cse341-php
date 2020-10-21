@@ -75,8 +75,7 @@ try
 		// 	$statement->bindValue(':topicId', $newTopicId);
 		// 	$statement->execute();
 		// } else {
-			echo "ScriptureId: $scriptureId, topicId: $topicId";
-			if (!empty($_POST['topic_name'])) { echo "<br>topicName: $topicName";}
+			// echo "ScriptureId: $scriptureId, topicId: $topicId";
 			$statement = $db->prepare('INSERT INTO scriptures_topics(scriptureId, topicId) VALUES(:scriptureId, :topicId)');
 			$statement->bindValue(':scriptureId', $scriptureId);
 			$statement->bindValue(':topicId', $topicId);
@@ -88,14 +87,14 @@ catch (Exception $ex)
 {
 	// Please be aware that you don't want to output the Exception message in
 	// a production environment
-	echo "Error with DB. Details: $ex";
+	//echo "Error with DB. Details: $ex";
 	die();
 }
 
 // finally, redirect them to a new page to actually show the topics
 //header("Location: topicEntry.php");
 
-die(); // we always include a die after redirects. In this case, there would be no
+//die(); // we always include a die after redirects. In this case, there would be no
        // harm if the user got the rest of the page, because there is nothing else
        // but in general, there could be things after here that we don't want them
        // to see.

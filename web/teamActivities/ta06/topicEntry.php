@@ -18,22 +18,16 @@ $db = get_db();
 <html>
 <head>
 	<title>Topic Entry</title>
-	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-    <script>
-      $(function () {
-        $('form').bind('submit', function () {
-          $.ajax({
-            type: 'post',
-            url: 'insertTopic.php',
-            data: $('form').serialize(),
-            success: function () {
-              alert('form was submitted');
-            }
-          });
-          return false;
-        });
-      });
-    </script>
+	<script>
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {}
+    };
+    xmlhttp.open("POST", "insertTopic.php", true);
+    xmlhttp.send();
+  }
+}
+</script>
 </head>
 
 <body>
@@ -41,7 +35,7 @@ $db = get_db();
 
 <h1>Enter New Scriptures and Topics</h1>
 
-<form id="mainForm" method="POST">
+<form id="mainForm" action="">
 
 	<input type="text" id="txtBook" name="txtBook"></input>
 	<label for="txtBooK">Book</label>
