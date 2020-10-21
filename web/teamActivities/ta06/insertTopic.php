@@ -17,10 +17,8 @@ $book = htmlspecialchars($_POST['txtBook']);
 $chapter = htmlspecialchars($_POST['txtChapter']);
 $verse = htmlspecialchars($_POST['txtVerse']);
 $content = htmlspecialchars($_POST['txtContent']);
-$topicIds = htmlspecialchars($_POST['chkTopics[]']);
-foreach ($topicIds as $topicId)
-{ 
-echo "topic=$topicId\n";}
+$topicIds = htmlspecialchars($_POST['chkTopics']);
+
 // For debugging purposes, you might include some echo statements like this
 // and then not automatically redirect until you have everything working.
 
@@ -58,19 +56,19 @@ try
 	// Now go through each topic id in the list from the user's checkboxes
 	foreach ($topicIds as $topicId)
 	{
-		if (isset($_POST['topic_name'])) {
-			$topicName = htmlspecialchars($_POST['topic_name']);
-			$statement = $db->prepare('INSERT INTO topics(name) VALUES(:name)');
-			$statment->bindValue(':name', $topicName);
-			$stmtTopic->execute();
-			$newTopicId = $db->lastInsertId('topics_id_seq');
+		// if (isset($_POST['topic_name'])) {
+		// 	$topicName = htmlspecialchars($_POST['topic_name']);
+		// 	$statement = $db->prepare('INSERT INTO topics(name) VALUES(:name)');
+		// 	$statment->bindValue(':name', $topicName);
+		// 	$stmtTopic->execute();
+		// 	$newTopicId = $db->lastInsertId('topics_id_seq');
 			
-			echo "ScriptureId: $scriptureId, topicId: $newTopicId";
-			$statement = $db->prepare('INSERT INTO scriptures_topics(scriptureId, topicId) VALUES(:scriptureId, :newTopicId)');
-			$statement->bindValue(':scriptureId', $scriptureId);
-			$statement->bindValue(':topicId', $newTopicId);
-			$statement->execute();
-		} else {
+		// 	echo "ScriptureId: $scriptureId, topicId: $newTopicId";
+		// 	$statement = $db->prepare('INSERT INTO scriptures_topics(scriptureId, topicId) VALUES(:scriptureId, :newTopicId)');
+		// 	$statement->bindValue(':scriptureId', $scriptureId);
+		// 	$statement->bindValue(':topicId', $newTopicId);
+		// 	$statement->execute();
+		// } else {
 			echo "ScriptureId: $scriptureId, topicId: $topicId";
 			$statement = $db->prepare('INSERT INTO scriptures_topics(scriptureId, topicId) VALUES(:scriptureId, :topicId)');
 			$statement->bindValue(':scriptureId', $scriptureId);
@@ -88,7 +86,7 @@ catch (Exception $ex)
 }
 
 // finally, redirect them to a new page to actually show the topics
-//header("Location: topicEntry.php");
+header("Location: topicEntry.php");
 
 die(); // we always include a die after redirects. In this case, there would be no
        // harm if the user got the rest of the page, because there is nothing else
