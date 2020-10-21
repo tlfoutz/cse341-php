@@ -18,6 +18,8 @@ $chapter = htmlspecialchars($_POST['txtChapter']);
 $verse = htmlspecialchars($_POST['txtVerse']);
 $content = htmlspecialchars($_POST['txtContent']);
 $topicIds = $_POST['chkTopics'];
+$topicName = htmlspecialchars($_POST['topic_name']);
+
 
 // For debugging purposes, you might include some echo statements like this
 // and then not automatically redirect until you have everything working.
@@ -56,25 +58,24 @@ try
 	// Now go through each topic id in the list from the user's checkboxes
 	foreach ($topicIds as $topicId)
 	{
-		if (isset($_POST['topic_name'])) {
-			$topicName = htmlspecialchars($_POST['topic_name']);
-			$statement = $db->prepare('INSERT INTO topics(name) VALUES(:name)');
-			$statment->bindValue(':name', $topicName);
-			$stmtTopic->execute();
-			$newTopicId = $db->lastInsertId('topics_id_seq');
+		// if (isset($_POST['topic_name'])) {
+		// 	$statement = $db->prepare('INSERT INTO topics(name) VALUES(:name)');
+		// 	$statment->bindValue(':name', $topicName);
+		// 	$stmtTopic->execute();
+		// 	$newTopicId = $db->lastInsertId('topics_id_seq');
 			
-			echo "ScriptureId: $scriptureId, topicId: $newTopicId";
-			$statement = $db->prepare('INSERT INTO scriptures_topics(scriptureId, topicId) VALUES(:scriptureId, :newTopicId)');
-			$statement->bindValue(':scriptureId', $scriptureId);
-			$statement->bindValue(':topicId', $newTopicId);
-			$statement->execute();
-		} else {
-			echo "ScriptureId: $scriptureId, topicId: $topicId";
+		// 	echo "ScriptureId: $scriptureId, topicId: $newTopicId";
+		// 	$statement = $db->prepare('INSERT INTO scriptures_topics(scriptureId, topicId) VALUES(:scriptureId, :newTopicId)');
+		// 	$statement->bindValue(':scriptureId', $scriptureId);
+		// 	$statement->bindValue(':topicId', $newTopicId);
+		// 	$statement->execute();
+		// } else {
+			echo "ScriptureId: $scriptureId, topicId: $topicId, topicName: $topicName";
 			$statement = $db->prepare('INSERT INTO scriptures_topics(scriptureId, topicId) VALUES(:scriptureId, :topicId)');
 			$statement->bindValue(':scriptureId', $scriptureId);
 			$statement->bindValue(':topicId', $topicId);
 			$statement->execute();
-		}
+		//}
 	}
 }
 catch (Exception $ex)
