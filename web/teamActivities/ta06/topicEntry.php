@@ -18,6 +18,22 @@ $db = get_db();
 <html>
 <head>
 	<title>Topic Entry</title>
+	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script>
+      $(function () {
+        $('form').bind('submit', function () {
+          $.ajax({
+            type: 'post',
+            url: 'insertTopic.php',
+            data: $('form').serialize(),
+            success: function () {
+              alert('form was submitted');
+            }
+          });
+          return false;
+        });
+      });
+    </script>
 </head>
 
 <body>
