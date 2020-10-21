@@ -70,7 +70,8 @@ try
 		// 	$statement->bindValue(':topicId', $newTopicId);
 		// 	$statement->execute();
 		// } else {
-			echo "ScriptureId: $scriptureId, topicId: $topicId, topicName: $topicName";
+			echo "ScriptureId: $scriptureId, topicId: $topicId";
+			if (isset($_POST['topic_name'])) { echo "<br>topicName: $topicName";}
 			$statement = $db->prepare('INSERT INTO scriptures_topics(scriptureId, topicId) VALUES(:scriptureId, :topicId)');
 			$statement->bindValue(':scriptureId', $scriptureId);
 			$statement->bindValue(':topicId', $topicId);
