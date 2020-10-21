@@ -25,7 +25,7 @@ $db = get_db();
 
 <h1>Enter New Scriptures and Topics</h1>
 
-<form id="mainForm" action="insertTopic.php" method="POST">
+<form id="mainForm" action="topicEntry.php" method="POST">
 
 	<input type="text" id="txtBook" name="txtBook"></input>
 	<label for="txtBooK">Book</label>
@@ -104,6 +104,7 @@ catch (PDOException $ex)
 	<input type="submit" value="Add to Database" />
 
 </form>
+<?php echo '<script>alert("' . $_POST['topic_name'] . '")</script>'; ?>
 
 
 </div>
