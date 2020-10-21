@@ -18,15 +18,14 @@ $db = get_db();
 <html>
 <head>
 	<title>Topic Entry</title>
-	<script>
-    var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function() {
-      if (this.readyState == 4 && this.status == 200) {}
-    };
-    xmlhttp.open("POST", "insertTopic.php", true);
-    xmlhttp.send();
-  }
-}
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $('#submit').click(function(e) {
+        e.preventDefault();
+		$.post("insertTopic.php", $("#mainForm").serialize());
+  });
+});
 </script>
 </head>
 
@@ -35,7 +34,7 @@ $db = get_db();
 
 <h1>Enter New Scriptures and Topics</h1>
 
-<form id="mainForm" action="">
+<form id=mainForm method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"> 
 
 	<input type="text" id="txtBook" name="txtBook"></input>
 	<label for="txtBooK">Book</label>
@@ -111,7 +110,7 @@ catch (PDOException $ex)
 
 	<br />
 
-	<input type="submit" value="Add to Database" />
+	<input type="submit" id="submit" value="Add to Database">
 
 </form>
 
