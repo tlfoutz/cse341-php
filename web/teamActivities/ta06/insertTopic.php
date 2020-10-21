@@ -17,8 +17,8 @@ $book = htmlspecialchars($_POST['txtBook']);
 $chapter = htmlspecialchars($_POST['txtChapter']);
 $verse = htmlspecialchars($_POST['txtVerse']);
 $content = htmlspecialchars($_POST['txtContent']);
-$topicIds = $_POST['chkTopics'];
-
+$topicIds = htmlspecialchars($_POST['chkTopics']);
+ echo "topics=$topicIds\n";
 // For debugging purposes, you might include some echo statements like this
 // and then not automatically redirect until you have everything working.
 
@@ -86,7 +86,7 @@ catch (Exception $ex)
 }
 
 // finally, redirect them to a new page to actually show the topics
-header("Location: topicEntry.php");
+//header("Location: topicEntry.php");
 
 die(); // we always include a die after redirects. In this case, there would be no
        // harm if the user got the rest of the page, because there is nothing else
