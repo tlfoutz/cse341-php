@@ -57,8 +57,8 @@ try
 
 	if (!empty($_POST['topic_name'])) { 
 		$statement = $db->prepare('INSERT INTO topics(name) VALUES(:name)');
-		$statment->bindValue(':name', $topicName);
-		$stmtTopic->execute();
+		$statement->bindValue(':name', $topicName);
+		$statement->execute();
 	}
 	// Now go through each topic id in the list from the user's checkboxes
 	foreach ($topicIds as $topicId)
