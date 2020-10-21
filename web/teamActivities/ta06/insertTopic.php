@@ -18,7 +18,9 @@ $chapter = htmlspecialchars($_POST['txtChapter']);
 $verse = htmlspecialchars($_POST['txtVerse']);
 $content = htmlspecialchars($_POST['txtContent']);
 $topicIds = htmlspecialchars($_POST['chkTopics']);
- echo "topics=$topicIds\n";
+foreach ($topicIds as $topicId)
+{ 
+echo "topic=$topicId\n";}
 // For debugging purposes, you might include some echo statements like this
 // and then not automatically redirect until you have everything working.
 
