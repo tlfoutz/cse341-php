@@ -55,6 +55,11 @@ try
 	// get the new id
 	$scriptureId = $db->lastInsertId("scriptures_id_seq");
 
+	if (!empty($_POST['topic_name'])) { 
+		$statement = $db->prepare('INSERT INTO topics(name) VALUES(:name)');
+		$statment->bindValue(':name', $topicName);
+		$stmtTopic->execute();
+	}
 	// Now go through each topic id in the list from the user's checkboxes
 	foreach ($topicIds as $topicId)
 	{
@@ -71,7 +76,7 @@ try
 		// 	$statement->execute();
 		// } else {
 			echo "ScriptureId: $scriptureId, topicId: $topicId";
-			if (isset($_POST['topic_name'])) { echo "<br>topicName: $topicName";}
+			if (!empty($_POST['topic_name'])) { echo "<br>topicName: $topicName";}
 			$statement = $db->prepare('INSERT INTO scriptures_topics(scriptureId, topicId) VALUES(:scriptureId, :topicId)');
 			$statement->bindValue(':scriptureId', $scriptureId);
 			$statement->bindValue(':topicId', $topicId);
