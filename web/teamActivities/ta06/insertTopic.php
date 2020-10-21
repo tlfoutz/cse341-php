@@ -56,25 +56,25 @@ try
 	// Now go through each topic id in the list from the user's checkboxes
 	foreach ($topicIds as $topicId)
 	{
-		// if (isset($_POST['topic_name'])) {
-		// 	$topicName = htmlspecialchars($_POST['topic_name']);
-		// 	$statement = $db->prepare('INSERT INTO topics(name) VALUES(:name)');
-		// 	$statment->bindValue(':name', $topicName);
-		// 	$stmtTopic->execute();
-		// 	$newTopicId = $db->lastInsertId('topics_id_seq');
+		if (isset($_POST['topic_name'])) {
+			$topicName = htmlspecialchars($_POST['topic_name']);
+			$statement = $db->prepare('INSERT INTO topics(name) VALUES(:name)');
+			$statment->bindValue(':name', $topicName);
+			$stmtTopic->execute();
+			$newTopicId = $db->lastInsertId('topics_id_seq');
 			
-		// 	echo "ScriptureId: $scriptureId, topicId: $newTopicId";
-		// 	$statement = $db->prepare('INSERT INTO scriptures_topics(scriptureId, topicId) VALUES(:scriptureId, :newTopicId)');
-		// 	$statement->bindValue(':scriptureId', $scriptureId);
-		// 	$statement->bindValue(':topicId', $newTopicId);
-		// 	$statement->execute();
-		// } else {
+			echo "ScriptureId: $scriptureId, topicId: $newTopicId";
+			$statement = $db->prepare('INSERT INTO scriptures_topics(scriptureId, topicId) VALUES(:scriptureId, :newTopicId)');
+			$statement->bindValue(':scriptureId', $scriptureId);
+			$statement->bindValue(':topicId', $newTopicId);
+			$statement->execute();
+		} else {
 			echo "ScriptureId: $scriptureId, topicId: $topicId";
 			$statement = $db->prepare('INSERT INTO scriptures_topics(scriptureId, topicId) VALUES(:scriptureId, :topicId)');
 			$statement->bindValue(':scriptureId', $scriptureId);
 			$statement->bindValue(':topicId', $topicId);
 			$statement->execute();
-		
+		}
 	}
 }
 catch (Exception $ex)
