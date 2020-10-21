@@ -115,9 +115,7 @@ catch (PDOException $ex)
 </form>
 
 </div id="results">
-<script>
-      document.write('<?php echo include_once "showTopics.php";?>');
-   </script>
+	<?php include "showTopics.php";?>
 <div>
 </div>
 </body>
