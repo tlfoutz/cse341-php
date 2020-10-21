@@ -56,8 +56,9 @@ try
 	// Now go through each topic id in the list from the user's checkboxes
 	foreach ($topicIds as $topicId)
 	{
+		echo '<script>alert("' . $_POST['topic_name'] . '")</script>';
+
 		if (isset($_POST['topic_name'])) {
-			echo '<script>alert("' . $_POST['topic_name'] . '")</script>';
 			$topicName = htmlspecialchars($_POST['topic_name']);
 			$statement = $db->prepare('INSERT INTO topics(name) VALUES(:name)');
 			$statment->bindValue(':name', $topicName);
