@@ -23,7 +23,7 @@ $db = get_db();
 $(document).ready(function(){
   $('#submit').click(function(e) {
         e.preventDefault();
-		$.post("insertTopic.php", $("#mainForm").serialize());
+		$.post("insertTopic.php", $("form").serialize());
   });
 });
 </script>
@@ -34,7 +34,7 @@ $(document).ready(function(){
 
 <h1>Enter New Scriptures and Topics</h1>
 
-<form id=mainForm method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"> 
+<form> 
 
 	<input type="text" id="txtBook" name="txtBook"></input>
 	<label for="txtBooK">Book</label>
