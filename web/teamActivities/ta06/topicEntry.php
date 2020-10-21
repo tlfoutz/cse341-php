@@ -41,7 +41,7 @@ $db = get_db();
 
 <h1>Enter New Scriptures and Topics</h1>
 
-<form id="mainForm" action="insertTopic.php" method="POST">
+<form id="mainForm" method="POST">
 
 	<input type="text" id="txtBook" name="txtBook"></input>
 	<label for="txtBooK">Book</label>
