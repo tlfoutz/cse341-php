@@ -18,17 +18,17 @@ $db = get_db();
 <html>
 <head>
 	<title>Topic Entry</title>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 
 $(document).ready(function(){
   $('#submit').click(function(e) {
         e.preventDefault();
-		// $.post("insertTopic.php", $("form").serialize());
-		$('#results').load('showTopics.php');
+		$.post("insertTopic.php", $("form").serialize());
+		$('#results').load("showTopics.php");
 });
 
-</script>
+</script> -->
 </head>
 
 <body>
