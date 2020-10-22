@@ -58,7 +58,6 @@
                 $statement->execute(array(':id' => $_SESSION['userId']));
                 $counter = 0;
                 echo '<table><tr><th>Food</th><th>Location</th><th>Quantity</th></tr>';
-                if($)
                 while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
                     echo '<tr id="' . $row['id'] . 'food"><td>' . $row['food_name'] . '</td><td>' . $row['location_id'] . '</td><<td>' . $row['quantity'] . ' ' . $row['unit'];
                     if ($row['quantity'] != 1 && $row['unit']) { echo 's';}
@@ -94,7 +93,7 @@
             //         if ($counter == 0) { echo 'No food found at this location.'; }
             //         $_SESSION['recentUser'] = $_POST['users'];
             //     }
-            }
+            //}
         ?>
     </body>
 </html>
