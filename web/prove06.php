@@ -2,6 +2,8 @@
     session_start();
     $_SESSION['userId'] = $_POST['users'];
     $_SESSION['selectedLocation'] = $_POST['locations'];
+    $_SESSION['foodSearch'] = $_POST['fname'];
+
     try {
         $dbUrl = getenv('DATABASE_URL');
 
@@ -55,7 +57,9 @@
                     if ($_SESSION['selectedLocation'] == $row['id']) { echo ' selected'; }
                     echo '>' . $row['location_name'] . '</option>';
                 }
-                echo '</select><br>';
+                echo '</select><br><label for="fname">Find food by name:</label><br><input type="text" id="fname" name="fname"';
+                if($_SESSION['foodSearch']) { echo ' value="' . $_SESSION['foodSearch'] . '"';}
+                echo '><br><br>';
             }
 
             echo '<input type="submit" name="submit" value="Submit"></form><br>';
