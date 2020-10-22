@@ -97,8 +97,23 @@
                 echo '</table>';
                 if ($counter == 0) { echo 'No food found.'; }
                 
-                echo '<br><label for="fadd">Add new food item:</label><br><input type="text" id="fadd" name="fadd"><br>';
-                echo '<label for="ladd">Add new location:</label><br><input type="text" id="ladd" name="ladd"><br><br>';
+                echo '<br><h2>Add new food item:</h2><label for="fAddName">Name:</label><br><input type="text" id="fAddName" name="fAddName"><br>';
+                echo '<label for="fAddLocation">Location:</label><br><input type="text" id="fAddLocation" name="fAddLocation"><br>';
+                echo '<label for="fAddQuantity">Quantity:</label><br><input type="text" id="fAddQuantity" name="fAddQuantity"><br>';
+                echo '<select name="fAddUnits" id="fAddUnits"><option value="0" selected> -- Select units (optional)-- </option>';
+                foreach ($db->query('SELECT id, unit_name FROM units') as $row) {
+                    echo '<option value="' . $row['id'] . '">' . $row['unit_name'] . '</option>';
+                }
+                echo '</select><br>';
+                echo '<select name="fAddType" id="fAddType"><option value="0" disabled selected> -- Select food type-- </option>';
+                foreach ($db->query('SELECT id, type_name FROM foodtypes') as $row) {
+                    echo '<option value="' . $row['id'] . '">' . $row['type_name'] . '</option>';
+                }
+                echo '</select><br>';
+                echo '<label for="fAddDetails">Details:</label><br><input type="textarea" id="fAddDetails" name="fAddDetails"><br>';
+                
+                echo '<h2>Add new food location:</h2><label for="lAddName">Name:</label><br><input type="text" id="lAddName" name="lAddName"><br>';
+                echo '<label for="lAddDetails">Details:</label><br><input type="textarea" id="lAddDetails" name="lAddDetails"><br><br>';
             }
 
 
