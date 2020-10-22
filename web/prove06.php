@@ -100,9 +100,9 @@
                 if ($counter == 0) { echo 'No food found.<br>'; }
 
                 // New food item input
-                echo '<br><h3>Add new food item:</h3><label for="fAddName">Name:</label><br><input type="text" id="fAddName" name="fAddName" required><br>';
-                echo '<label for="fAddLocation">Location:</label><br><input type="text" id="fAddLocation" name="fAddLocation" required><br>';
-                echo '<label for="fAddQuantity">Quantity:</label><br><input type="text" id="fAddQuantity" name="fAddQuantity" required><br><br>';
+                echo '<br><h3>Add new food item:</h3><label for="fAddName">Name:</label><br><input type="text" id="fAddName" name="fAddName"><br>';
+                echo '<label for="fAddLocation">Location:</label><br><input type="text" id="fAddLocation" name="fAddLocation"><br>';
+                echo '<label for="fAddQuantity">Quantity:</label><br><input type="text" id="fAddQuantity" name="fAddQuantity"><br><br>';
                 echo '<select name="fAddUnits" id="fAddUnits"><option value="0" selected> -- Select units (optional)-- </option>';
                 foreach ($db->query('SELECT id, unit_name FROM units') as $row) {
                     echo '<option value="' . $row['id'] . '">' . $row['unit_name'] . '</option>';
@@ -116,7 +116,7 @@
                 echo '<label for="fAddDetails">Details:</label><br><input type="textarea" id="fAddDetails" name="fAddDetails"><br><br>';
                 
                 // New location input
-                echo '<h3>Add new food location:</h3><label for="lAddName">Name:</label><br><input type="text" id="lAddName" name="lAddName" required><br>';
+                echo '<h3>Add new food location:</h3><label for="lAddName">Name:</label><br><input type="text" id="lAddName" name="lAddName"><br>';
                 echo '<label for="lAddDetails">Details:</label><br><input type="textarea" id="lAddDetails" name="lAddDetails"><br><br>';
                 
                 if ($_POST['lAddName']) {
