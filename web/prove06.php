@@ -67,7 +67,7 @@
                 echo '<table><tr><th>Food</th><th>Location</th><th>Quantity</th></tr>';
                 $counter = 0;
                 
-                if ($_SESSION['selectedLocation'] == 0) {
+                if ($_SESSION['selectedLocation'] == 0 || empty($_SESSION['selectedLocation'])) {
                     if ($_SESSION['foodSearch']) {
 
                     } else {
