@@ -120,13 +120,15 @@
                 echo '<label for="lAddDetails">Details:</label><br><input type="textarea" id="lAddDetails" name="lAddDetails"><br><br>';
                 
                 if ($_POST['lAddName']) {
-                    $statement = $db->prepare('INSERT INTO locations(location_name, data_added, added_by, date_modified) VALUES (:name, CURRENT_DATE, :id, CURRENT_DATE);');
+                    $statement = $db->prepare('INSERT INTO locations(location_name, data_added, added_by, date_modified) VALUES (:name, CURRENT_DATE, :id, CURRENT_DATE)');
                     $statement->execute(array(':name' => $_POST['lAddName'], ':id' => $_SESSION['userId']));
-                    echo 'Added ' . $_POST['lAddName'];
                 }
             }
 
             echo '<input type="submit" name="submit" value="Submit"></form><br>';
+            if ($_POST['lAddName']) {
+                echo '<p>Added ' . $_POST['lAddName'] . '</p>';
+            }
         ?>
     </body>
 </html>
