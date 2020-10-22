@@ -49,8 +49,8 @@
             echo '</select><br><br>';
 
             if ($_SESSION['userId']) {
+                // User's locations 
                 echo '<select name="locations" id="locations"><option value="0" selected>All locations</option>';
-
                 $statement = $db->prepare('SELECT id, location_name FROM locations WHERE added_by = :id');
                 $statement->execute(array(':id' => $_SESSION['userId']));
                 while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
@@ -58,8 +58,10 @@
                     if ($_SESSION['selectedLocation'] == $row['id']) { echo ' selected'; }
                     echo '>' . $row['location_name'] . '</option>';
                 }
+                echo '</select><br>';
                 
-                echo '</select><br><label for="fname">Find food by name:</label><br><input type="text" id="fname" name="fname"';
+                // Food name search
+                echo '<label for="fname">Find food by name:</label><br><input type="search" id="fname" name="fname"';
                 if($_SESSION['foodSearch']) { echo ' value="' . $_SESSION['foodSearch'] . '"';}
                 echo '><br><br>';
                 
@@ -96,15 +98,24 @@
                 }
                 echo '</table>';
                 if ($counter == 0) { echo 'No food found.'; }
-                
-                echo '<br><h2>Add new food item:</h2><label for="fAddName">Name:</label><br><input type="text" id="fAddName" name="fAddName"><br>';
+            }
+
+            echo '<input type="submit" name="submit" value="Submit"></form><br>';
+
+            if ($_SESSION['userId']) {
+                echo '<form method="post" action="';
+                echo htmlspecialchars($_SERVER["PHP_SELF"]);
+                echo '">';
+
+                // New food item input
+                echo '<br><h3>Add new food item:</h3><label for="fAddName">Name:</label><br><input type="text" id="fAddName" name="fAddName"><br>';
                 echo '<label for="fAddLocation">Location:</label><br><input type="text" id="fAddLocation" name="fAddLocation"><br>';
-                echo '<label for="fAddQuantity">Quantity:</label><br><input type="text" id="fAddQuantity" name="fAddQuantity"><br>';
+                echo '<label for="fAddQuantity">Quantity:</label><br><input type="text" id="fAddQuantity" name="fAddQuantity"><br><br>';
                 echo '<select name="fAddUnits" id="fAddUnits"><option value="0" selected> -- Select units (optional)-- </option>';
                 foreach ($db->query('SELECT id, unit_name FROM units') as $row) {
                     echo '<option value="' . $row['id'] . '">' . $row['unit_name'] . '</option>';
                 }
-                echo '</select><br>';
+                echo '</select><br><br>';
                 echo '<select name="fAddType" id="fAddType"><option value="0" disabled selected> -- Select food type-- </option>';
                 foreach ($db->query('SELECT id, type_name FROM foodtypes') as $row) {
                     echo '<option value="' . $row['id'] . '">' . $row['type_name'] . '</option>';
@@ -112,12 +123,19 @@
                 echo '</select><br>';
                 echo '<label for="fAddDetails">Details:</label><br><input type="textarea" id="fAddDetails" name="fAddDetails"><br>';
                 
-                echo '<h2>Add new food location:</h2><label for="lAddName">Name:</label><br><input type="text" id="lAddName" name="lAddName"><br>';
+                echo '<input type="submit" name="submit" value="Submit new food item"></form><br>';
+
+                // New location input
+                echo '<form method="post" action="';
+                echo htmlspecialchars($_SERVER["PHP_SELF"]);
+                echo '">';
+
+                echo '<h3>Add new food location:</h3><label for="lAddName">Name:</label><br><input type="text" id="lAddName" name="lAddName"><br>';
                 echo '<label for="lAddDetails">Details:</label><br><input type="textarea" id="lAddDetails" name="lAddDetails"><br><br>';
+                
+                echo '<input type="submit" name="submit" value="Submit new location"></form><br>';
             }
-
-
-            echo '<input type="submit" name="submit" value="Submit"></form><br>';
+            
         ?>
     </body>
 </html>
