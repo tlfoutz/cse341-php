@@ -44,17 +44,21 @@
             }
             echo '</select><br>';
             $_SESSION['userId'] = $_POST['users'];
+            $_SESSION['selectedLocation'] = $_POST['locations'];
             if ($_SESSION['userId']) {
                 echo '<select name="locations" id="locations"><option value="0" selected>All locations</option>';
                 $statement = $db->prepare('SELECT id, location_name FROM locations WHERE added_by = :id');
                 $statement->execute(array(':id' => $_SESSION['userId']));
                 while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-                    echo '<option value="' . $row['id'] . '"';
-                    if ($_POST['locations'] == $row['id']) { echo ' selected'; }
-                    echo '>' . $row['location_name'] . '</option>';
+                    echo '<option value="' . $row['id'] . '">' . $row['location_name'] . '</option>';
                 }
                 echo '</select><br>';
-                $statement = $db->prepare('SELECT id, food_name, location_id, quantity, unit FROM foods WHERE added_by = :id');
+                if($_SESSION['selectedLocation']) {
+                    $statement = $db->prepare('SELECT id, food_name, location_id, quantity, unit FROM foods WHERE added_by = :id AND location_id = :locationID');
+                    $statement->execute(array(':locationId' => $_SESSION['selectedLocation']));
+                } else {
+                    $statement = $db->prepare('SELECT id, food_name, location_id, quantity, unit FROM foods WHERE added_by = :id');
+                }
                 $statement->execute(array(':id' => $_SESSION['userId']));
                 $counter = 0;
                 echo '<table><tr><th>Food</th><th>Location</th><th>Quantity</th></tr>';
@@ -68,7 +72,7 @@
                 if ($counter == 0) { echo 'No food found for this user.'; }
 
             }
-            echo '<input type="submit" name="submit" value="Next"></form><br>';
+            echo '<input type="submit" name="submit" value="Submit"></form><br>';
 
             // if ($_POST['locations']) {
             //     if($_SESSION['recentUser'] != $_POST['users'] && isset($_SESSION['recentUser']) &&
