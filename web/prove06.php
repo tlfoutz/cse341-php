@@ -64,13 +64,14 @@
                 echo '><br><br>';
 
                 $id = $_SESSION['userId'];
-                $statement = $db->prepare('SELECT food_name, location_id, quantity, unit FROM foods WHERE added_by = :id');
+                $statement = $db->prepare('SELECT f.food_name, f.quantity, f.unit, l.location_name FROM foods f'
+                    . ' INNER JOIN locations l ON l.id = f.location_id WHERE f.added_by = :id');
                 $statement->execute(array(':id' => $id));
                 $counter = 0;
                 echo '<table><tr><th>Food</th><th>Location</th><th>Quantity</th></tr>';
                 while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-                    echo '<tr><td>' . $row['food_name'] . '</td><td>' . $row['location_id'] . '</td><td>' . $row['quantity'] . ' ' . $row['unit'];
-                    if ($row['quantity'] != 1 && $row['unit']) { echo 's';}
+                    echo '<tr><td>' . $row['f.food_name'] . '</td><td>' . $row['l.location_name'] . '</td><td>' . $row['f.quantity'] . ' ' . $row['f.unit'];
+                    if ($row['f.quantity'] != 1 && $row['f.unit']) { echo 's';}
                     echo '</td></tr>';
                     $counter++;
                 }
