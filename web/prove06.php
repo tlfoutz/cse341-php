@@ -98,14 +98,6 @@
                 }
                 echo '</table><br>';
                 if ($counter == 0) { echo 'No food found.<br>'; }
-            }
-
-            echo '<input type="submit" name="submit" value="Submit"></form><br>';
-
-            if ($_SESSION['userId']) {
-                echo '<form method="post" action="';
-                echo htmlspecialchars($_SERVER["PHP_SELF"]);
-                echo '">';
 
                 // New food item input
                 echo '<br><h3>Add new food item:</h3><label for="fAddName">Name:</label><br><input type="text" id="fAddName" name="fAddName" required><br>';
@@ -123,25 +115,18 @@
                 echo '</select><br>';
                 echo '<label for="fAddDetails">Details:</label><br><input type="textarea" id="fAddDetails" name="fAddDetails"><br><br>';
                 
-                echo '<input type="submit" name="submit" value="Submit new food item"></form><br>';
-
                 // New location input
-                echo '<form method="post" action="';
-                echo htmlspecialchars($_SERVER["PHP_SELF"]);
-                echo '">';
-
                 echo '<h3>Add new food location:</h3><label for="lAddName">Name:</label><br><input type="text" id="lAddName" name="lAddName" required><br>';
                 echo '<label for="lAddDetails">Details:</label><br><input type="textarea" id="lAddDetails" name="lAddDetails"><br><br>';
                 
-                echo '<input type="submit" name="submit" value="Submit new location"></form>';
-
                 if ($_POST['lAddName']) {
                     $statement = $db->prepare('INSERT INTO locations(location_name, data_added, added_by, date_modified) VALUES (:name, CURRENT_DATE, :id, CURRENT_DATE);');
                     $statement->execute(array(':name' => $_POST['lAddName'], ':id' => $_SESSION['userId']));
                     echo 'Added ' . $_POST['lAddName'];
                 }
             }
-            
+
+            echo '<input type="submit" name="submit" value="Submit"></form><br>';
         ?>
     </body>
 </html>
