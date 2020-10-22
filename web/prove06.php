@@ -50,6 +50,7 @@
 
             if ($_SESSION['userId']) {
                 echo '<select name="locations" id="locations"><option value="0" selected>All locations</option>';
+
                 $statement = $db->prepare('SELECT id, location_name FROM locations WHERE added_by = :id');
                 $statement->execute(array(':id' => $_SESSION['userId']));
                 while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
@@ -57,9 +58,31 @@
                     if ($_SESSION['selectedLocation'] == $row['id']) { echo ' selected'; }
                     echo '>' . $row['location_name'] . '</option>';
                 }
+                
                 echo '</select><br><label for="fname">Find food by name:</label><br><input type="text" id="fname" name="fname"';
                 if($_SESSION['foodSearch']) { echo ' value="' . $_SESSION['foodSearch'] . '"';}
                 echo '><br><br>';
+
+                $counter = 0;
+                echo '<table><tr><th>Food</th><th>Quantity</th></tr>';
+                
+                if ($_SESSION['selectedLocation'] != 0) {
+                    if ($_SESSION['foodSearch']) {
+
+                    } else {
+                        $statement = $db->prepare('SELECT f.food_name, f.quantity, f.unit, l.location_name FROM foods f'
+                            . ' INNER JOIN locations l ON l.id = f.location_id WHERE f.added_by = :id');
+                        $statement->execute(array(':id' => $_SESSION['userId']));
+                        while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
+                            echo '<tr><td>' . $row['f.food_name'] . '</td><td>' . $row['l.location_name'] . '</td><td>' . $row['f.quantity'] . ' ' . $row['f.unit'];
+                            if ($row['f.quantity'] != 1 && $row['f.unit']) { echo 's';}
+                            echo '</td></tr>';
+                            $counter++;
+                        }
+                    }
+                } else {
+
+                }
             }
 
             echo '<input type="submit" name="submit" value="Submit"></form><br>';
