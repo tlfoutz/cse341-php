@@ -118,6 +118,7 @@ catch (PDOException $ex)
 
 </div>
 <div id="results">
+<?php include "showTopics.php"?>
 </div>
 
 </body>
