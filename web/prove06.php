@@ -66,7 +66,10 @@
                 $id = $_SESSION['userId'];
                 $statement = $db->prepare('SELECT f.food_name, f.quantity, f.unit, l.location_name FROM foods f'
                     . ' INNER JOIN locations l ON l.id = f.location_id WHERE f.added_by = :id');
-                $statement->execute(array(':id' => $id));
+                
+                    $statement->bindValue(':id', $id);
+                    $statement->execute();
+                    // $statement->execute(array(':id' => $id));
                 $counter = 0;
                 echo '<table><tr><th>Food</th><th>Location</th><th>Quantity</th></tr>';
                 while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
