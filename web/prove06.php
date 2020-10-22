@@ -53,13 +53,13 @@
                     echo '<option value="' . $row['id'] . '">' . $row['location_name'] . '</option>';
                 }
                 echo '</select><br>';
-                if($_SESSION['selectedLocation']) {
-                    $statement = $db->prepare('SELECT id, food_name, location_id, quantity, unit FROM foods WHERE location_id = :locationID');
-                    $statement->execute(array(':locationId' => $_SESSION['selectedLocation']));
-                } else {
+                // if($_SESSION['selectedLocation']) {
+                //     $statement = $db->prepare('SELECT id, food_name, location_id, quantity, unit FROM foods WHERE location_id = :locationID');
+                //     $statement->execute(array(':locationId' => $_SESSION['selectedLocation']));
+                // } else {
                     $statement = $db->prepare('SELECT id, food_name, location_id, quantity, unit FROM foods WHERE added_by = :id');
                     $statement->execute(array(':id' => $_SESSION['userId']));
-                }
+                //}
                 $counter = 0;
                 echo '<table><tr><th>Food</th><th>Location</th><th>Quantity</th></tr>';
                 while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
