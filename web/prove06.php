@@ -64,12 +64,12 @@
                 echo '><br><br>';
 
                 $id = $_POST['users'];
-                $statement = $db->prepare('SELECT food_name, quantity, unit, added_by FROM foods WHERE location_id = :id');
+                $statement = $db->prepare('SELECT food_name, location_id, quantity, unit FROM foods WHERE added_by = :id');
                 $statement->execute(array(':id' => $id));
                 $counter = 0;
-                echo '<table><tr><th>Food</th><th>Quantity</th></tr>';
+                echo '<table><tr><th>Food</th><th>Location</th><th>Quantity</th></tr>';
                 while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-                    echo '<tr><td>' . $row['food_name'] . '</td><td>' . $row['quantity'] . ' ' . $row['unit'];
+                    echo '<tr><td>' . $row['food_name'] . '</td><td>' . $row['location_id'] . '</td><td>' . $row['quantity'] . ' ' . $row['unit'];
                     if ($row['quantity'] != 1 && $row['unit']) { echo 's';}
                     echo '</td></tr>';
                     $counter++;
