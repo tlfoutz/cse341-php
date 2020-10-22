@@ -62,36 +62,31 @@
                 echo '</select><br><label for="fname">Find food by name:</label><br><input type="text" id="fname" name="fname"';
                 if($_SESSION['foodSearch']) { echo ' value="' . $_SESSION['foodSearch'] . '"';}
                 echo '><br><br>';
-
-                $statement = $db->prepare('SELECT food_name, location_id, quantity, unit FROM foods WHERE added_by = :id');
-                $statement->execute(array(':id' => $_SESSION['userId']));
-                $counter = 0;
+                
+                // Food table
                 echo '<table><tr><th>Food</th><th>Location</th><th>Quantity</th></tr>';
-                while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-                    echo '<tr><td>' . $row['food_name'] . '</td><td>' . $row['location_id'] . '</td><td>' . $row['quantity'] . ' ' . $row['unit'];
-                    if ($row['quantity'] != 1 && $row['unit']) { echo 's';}
-                    echo '</td></tr>';
-                    $counter++;
-                }
-                echo '</table>';
-                if ($counter == 0) { echo 'No food found.'; }
-                // if ($_SESSION['selectedLocation'] != 0) {
-                //     if ($_SESSION['foodSearch']) {
+                $counter = 0;
+                
+                if ($_SESSION['selectedLocation'] == 0) {
+                    if ($_SESSION['foodSearch']) {
 
-                //     } else {
-                //         $statement = $db->prepare('SELECT f.food_name, f.quantity, f.unit, l.location_name FROM foods f'
-                //             . ' INNER JOIN locations l ON l.id = f.location_id WHERE f.added_by = :id');
-                //         $statement->execute(array(':id' => $_SESSION['userId']));
-                //         while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-                //             echo '<tr><td>' . $row['f.food_name'] . '</td><td>' . $row['l.location_name'] . '</td><td>' . $row['f.quantity'] . ' ' . $row['f.unit'];
-                //             if ($row['f.quantity'] != 1 && $row['f.unit']) { echo 's';}
-                //             echo '</td></tr>';
-                //             $counter++;
-                //         }
-                //     }
+                    } else {
+                            $statement = $db->prepare('SELECT food_name, location_id, quantity, unit FROM foods WHERE added_by = :id');
+                            $statement->execute(array(':id' => $_SESSION['userId']));
+                            while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
+                                echo '<tr><td>' . $row['food_name'] . '</td><td>' . $row['location_id'] . '</td><td>' . $row['quantity'] . ' ' . $row['unit'];
+                                if ($row['quantity'] != 1 && $row['unit']) { echo 's';}
+                                echo '</td></tr>';
+                                $counter++;
+                            }
+                        }
+                    }
                 // } else {
 
                 // }
+                echo '</table>';
+                if ($counter == 0) { echo 'No food found.'; }
+                echo '<br><br>';
             }
 
             echo '<input type="submit" name="submit" value="Submit"></form><br>';
