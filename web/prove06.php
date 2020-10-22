@@ -67,7 +67,7 @@
                 echo '<table><tr><th>Food</th><th>Location</th><th>Quantity</th></tr>';
                 $statement = $db->prepare('SELECT f.food_name, f.quantity, f.unit, l.location_name FROM foods f'
                     . ' INNER JOIN locations l ON l.id = f.location_id WHERE f.added_by = :id');
-                $statement->execute(array(':id' => $_SESSION['userId']));
+                $statement->execute(array(':id' => $_POST['users']));
                 while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
                     echo '<tr><td>' . $row['f.food_name'] . '</td><td>' . $row['l.location_name'] . '</td><td>' . $row['f.quantity'] . ' ' . $row['f.unit'];
                     if ($row['f.quantity'] != 1 && $row['f.unit']) { echo 's';}
