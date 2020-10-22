@@ -71,19 +71,30 @@
                     if ($_SESSION['foodSearch']) {
 
                     } else {
-                            $statement = $db->prepare('SELECT food_name, location_id, quantity, unit FROM foods WHERE added_by = :id');
-                            $statement->execute(array(':id' => $_SESSION['userId']));
-                            while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-                                echo '<tr><td>' . $row['food_name'] . '</td><td>' . $row['location_id'] . '</td><td>' . $row['quantity'] . ' ' . $row['unit'];
-                                if ($row['quantity'] != 1 && $row['unit']) { echo 's';}
-                                echo '</td></tr>';
-                                $counter++;
-                            }
+                        $statement = $db->prepare('SELECT food_name, location_id, quantity, unit FROM foods WHERE added_by = :id');
+                        $statement->execute(array(':id' => $_SESSION['userId']));
+                        while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
+                            echo '<tr><td>' . $row['food_name'] . '</td><td>' . $row['location_id'] . '</td><td>' . $row['quantity'] . ' ' . $row['unit'];
+                            if ($row['quantity'] != 1 && $row['unit']) { echo 's';}
+                            echo '</td></tr>';
+                            $counter++;
                         }
                     }
-                // } else {
+                } else {
+                    if ($_SESSION['foodSearch']) {
 
-                // }
+                    } else {
+                        $statement = $db->prepare('SELECT food_name, location_id, quantity, unit FROM foods WHERE added_by = :id AND location_id = :locationId');
+                        $statement->execute(array(':id' => $_SESSION['userId']));
+                        $statement->execute(array(':locationId' => $_SESSION['selectedLocation']));
+                        while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
+                            echo '<tr><td>' . $row['food_name'] . '</td><td>' . $row['location_id'] . '</td><td>' . $row['quantity'] . ' ' . $row['unit'];
+                            if ($row['quantity'] != 1 && $row['unit']) { echo 's';}
+                            echo '</td></tr>';
+                            $counter++;
+                        }
+                    }
+                }
                 echo '</table>';
                 if ($counter == 0) { echo 'No food found.'; }
                 echo '<br><br>';
