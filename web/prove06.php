@@ -43,61 +43,7 @@
                 echo '>' . $row['user_name'] . '</option>';
             }
             echo '</select><br>';
-            $_SESSION['userId'] = $_POST['users'];
-            $_SESSION['selectedLocation'] = $_POST['locations'];
-            if ($_SESSION['userId']) {
-                echo '<select name="locations" id="locations"><option value="0" selected>All locations</option>';
-                $statement = $db->prepare('SELECT id, location_name FROM locations WHERE added_by = :id');
-                $statement->execute(array(':id' => $_SESSION['userId']));
-                while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-                    echo '<option value="' . $row['id'] . '">' . $row['location_name'] . '</option>';
-                }
-                echo '</select><br>';
-                // if($_SESSION['selectedLocation']) {
-                //     $statement = $db->prepare('SELECT id, food_name, location_id, quantity, unit FROM foods WHERE location_id = :locationID');
-                //     $statement->execute(array(':locationId' => $_SESSION['selectedLocation']));
-                // } else {
-                    $statement = $db->prepare('SELECT id, food_name, location_id, quantity, unit FROM foods WHERE added_by = :id');
-                    $statement->execute(array(':id' => $_SESSION['userId']));
-                //}
-                $counter = 0;
-                echo '<table><tr><th>Food</th><th>Location</th><th>Quantity</th></tr>';
-                while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-                    echo '<tr id="' . $row['id'] . 'food"><td>' . $row['food_name'] . '</td><td>' . $row['location_id'] . '</td><<td>' . $row['quantity'] . ' ' . $row['unit'];
-                    if ($row['quantity'] != 1 && $row['unit']) { echo 's';}
-                    echo '</td></tr>';
-                    $counter++;
-                }
-                echo '</table>';
-                if ($counter == 0) { echo 'No food found for this user.'; }
-
-            }
             echo '<input type="submit" name="submit" value="Submit"></form><br>';
-
-            // if ($_POST['locations']) {
-            //     if($_SESSION['recentUser'] != $_POST['users'] && isset($_SESSION['recentUser']) &&
-            //       (isset($_SESSION['recentLocationUser']) && $_SESSION['recentLocationUser'] != $_POST['users'])) {
-            //         echo '';
-            //         unset($_SESSION['recentUser']);
-            //         unset($_SESSION['recentLocationUser']);
-            //     } else {
-            //         $id = $_POST['locations'];
-            //         $statement = $db->prepare('SELECT food_name, quantity, unit, added_by FROM foods WHERE location_id = :id');
-            //         $statement->execute(array(':id' => $id));
-            //         $counter = 0;
-            //         echo '<table><tr><th>Food</th><th>Quantity</th></tr>';
-            //         while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-            //             echo '<tr><td>' . $row['food_name'] . '</td><td>' . $row['quantity'] . ' ' . $row['unit'];
-            //             if ($row['quantity'] != 1 && $row['unit']) { echo 's';}
-            //             echo '</td></tr>';
-            //             $counter++;
-            //             $_SESSION['recentLocationUser'] = $row['added_by'];
-            //         }
-            //         echo '</table>';
-            //         if ($counter == 0) { echo 'No food found at this location.'; }
-            //         $_SESSION['recentUser'] = $_POST['users'];
-            //     }
-            //}
         ?>
     </body>
 </html>
