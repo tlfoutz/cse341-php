@@ -96,11 +96,12 @@
                 }
                 echo '</table>';
                 if ($counter == 0) { echo 'No food found.'; }
-                echo '<br>';
+                
+                echo '<br><label for="fadd">Add new food item:</label><br><input type="text" id="fadd" name="fadd"><br>';
+                echo '<label for="ladd">Add new location:</label><br><input type="text" id="ladd" name="ladd"><br><br>';
             }
-            echo '<label for="fadd">Add new food item:</label><br><input type="text" id="fadd" name="fadd"><br>';
-            echo '<label for="ladd">Add new location:</label><br><input type="text" id="ladd" name="ladd"><br>';
-            
+
+
             echo '<input type="submit" name="submit" value="Submit"></form><br>';
         ?>
     </body>
