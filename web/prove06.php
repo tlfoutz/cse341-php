@@ -74,6 +74,8 @@
                     echo '</td></tr>';
                     $counter++;
                 }
+                echo '</table>';
+                if ($counter == 0) { echo 'No food found.'; }
                 // if ($_SESSION['selectedLocation'] != 0) {
                 //     if ($_SESSION['foodSearch']) {
 
