@@ -96,8 +96,8 @@
                         }
                     }
                 }
-                echo '</table>';
-                if ($counter == 0) { echo 'No food found.'; }
+                echo '</table><br>';
+                if ($counter == 0) { echo 'No food found.<br>'; }
             }
 
             echo '<input type="submit" name="submit" value="Submit"></form><br>';
@@ -108,9 +108,9 @@
                 echo '">';
 
                 // New food item input
-                echo '<br><h3>Add new food item:</h3><label for="fAddName">Name:</label><br><input type="text" id="fAddName" name="fAddName"><br>';
-                echo '<label for="fAddLocation">Location:</label><br><input type="text" id="fAddLocation" name="fAddLocation"><br>';
-                echo '<label for="fAddQuantity">Quantity:</label><br><input type="text" id="fAddQuantity" name="fAddQuantity"><br><br>';
+                echo '<br><h3>Add new food item:</h3><label for="fAddName">Name:</label><br><input type="text" id="fAddName" name="fAddName" required><br>';
+                echo '<label for="fAddLocation">Location:</label><br><input type="text" id="fAddLocation" name="fAddLocation" required><br>';
+                echo '<label for="fAddQuantity">Quantity:</label><br><input type="text" id="fAddQuantity" name="fAddQuantity" required><br><br>';
                 echo '<select name="fAddUnits" id="fAddUnits"><option value="0" selected> -- Select units (optional)-- </option>';
                 foreach ($db->query('SELECT id, unit_name FROM units') as $row) {
                     echo '<option value="' . $row['id'] . '">' . $row['unit_name'] . '</option>';
@@ -121,7 +121,7 @@
                     echo '<option value="' . $row['id'] . '">' . $row['type_name'] . '</option>';
                 }
                 echo '</select><br>';
-                echo '<label for="fAddDetails">Details:</label><br><input type="textarea" id="fAddDetails" name="fAddDetails"><br>';
+                echo '<label for="fAddDetails">Details:</label><br><input type="textarea" id="fAddDetails" name="fAddDetails"><br><br>';
                 
                 echo '<input type="submit" name="submit" value="Submit new food item"></form><br>';
 
@@ -130,10 +130,16 @@
                 echo htmlspecialchars($_SERVER["PHP_SELF"]);
                 echo '">';
 
-                echo '<h3>Add new food location:</h3><label for="lAddName">Name:</label><br><input type="text" id="lAddName" name="lAddName"><br>';
+                echo '<h3>Add new food location:</h3><label for="lAddName">Name:</label><br><input type="text" id="lAddName" name="lAddName" required><br>';
                 echo '<label for="lAddDetails">Details:</label><br><input type="textarea" id="lAddDetails" name="lAddDetails"><br><br>';
                 
-                echo '<input type="submit" name="submit" value="Submit new location"></form><br>';
+                echo '<input type="submit" name="submit" value="Submit new location"></form>';
+
+                if ($_POST['lAddName']) {
+                    $statement = $db->prepare('INSERT INTO locations(location_name, data_added, added_by, date_modified) VALUES (:name, CURRENT_DATE, :id, CURRENT_DATE);');
+                    $statement->execute(array(':name' => $_POST['lAddName'], ':id' => $_SESSION['userId']));
+                    echo 'Added ' . $_POST['lAddName'];
+                }
             }
             
         ?>
