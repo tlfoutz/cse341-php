@@ -63,7 +63,7 @@
                 if($_SESSION['foodSearch']) { echo ' value="' . $_SESSION['foodSearch'] . '"';}
                 echo '><br><br>';
 
-                $id = $_POST['users'];
+                $id = $_SESSION['userId'];
                 $statement = $db->prepare('SELECT food_name, location_id, quantity, unit FROM foods WHERE added_by = :id');
                 $statement->execute(array(':id' => $id));
                 $counter = 0;
