@@ -63,9 +63,8 @@
                 if($_SESSION['foodSearch']) { echo ' value="' . $_SESSION['foodSearch'] . '"';}
                 echo '><br><br>';
 
-                $id = $_SESSION['userId'];
                 $statement = $db->prepare('SELECT food_name, location_id, quantity, unit FROM foods WHERE added_by = :id');
-                $statement->execute(array(':id' => $id));
+                $statement->execute(array(':id' => $_SESSION['userId']));
                 $counter = 0;
                 echo '<table><tr><th>Food</th><th>Location</th><th>Quantity</th></tr>';
                 while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
