@@ -1,5 +1,7 @@
 <?php
     session_start();
+    $_SESSION['userId'] = $_POST['users'];
+    $_SESSION['selectedLocation'] = $_POST['locations'];
     try {
         $dbUrl = getenv('DATABASE_URL');
 
@@ -42,7 +44,20 @@
                 if ($_POST['users'] == $row['id']) { echo ' selected'; }
                 echo '>' . $row['user_name'] . '</option>';
             }
-            echo '</select><br>';
+            echo '</select><br><br>';
+
+            if ($_SESSION['userId']) {
+                echo '<select name="locations" id="locations"><option value="0" selected>All locations</option>';
+                $statement = $db->prepare('SELECT id, location_name FROM locations WHERE added_by = :id');
+                $statement->execute(array(':id' => $_SESSION['userId']));
+                while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
+                    echo '<option value="' . $row['id'] . '"';
+                    if ($_SESSION['selectedLocation'] == $row['id']) { echo ' selected'; }
+                    echo '>' . $row['location_name'] . '</option>';
+                }
+                echo '</select><br>';
+            }
+
             echo '<input type="submit" name="submit" value="Submit"></form><br>';
         ?>
     </body>
