@@ -39,17 +39,19 @@
             $_SESSION['addFoodErrMsg'] = '<p class="errMsg">Not all fields where filled out. New food not added.';
         } else {
             $_SESSION['addFoodErrMsg'] = '';
-            // if ($_POST['fAddDetails'] && $_POST['fAddUnits']) {
-
-            // } else if ($_POST['fAddUnits']) {
-
-            // } else if ($_POST['fAddDetails']) {
+            if ($_POST['fAddDetails'] && $_POST['fAddUnits']) {
+                $statement = $db->prepare('INSERT INTO foods(food_name, details, location_id, quantity, unit, added_by) VALUES (:name, :details, :locationId, :amount, :units, :id)');
+                $statement->execute(array(':name' => htmlspecialchars($_POST['fAddName']), ':details' => htmlspecialchars($_POST['fAddDetails']), ':locationId' => $_POST['fAddLocation'], ':amount' => $_POST['fAddQuantity'], ':units' => $_POST['fAddUnits'], ':id' => $_SESSION['userId'])); 
+            } else if ($_POST['fAddUnits']) {
+                $statement = $db->prepare('INSERT INTO foods(food_name, location_id, quantity, units, added_by) VALUES (:name, :locationId, :amount, :units, :id)');
+                $statement->execute(array(':name' => htmlspecialchars($_POST['fAddName']), ':locationId' => $_POST['fAddLocation'], ':amount' => $_POST['fAddQuantity'], ':units' => $_POST['fAddUnits'], ':id' => $_SESSION['userId']));  
+            } else if ($_POST['fAddDetails']) {
                 $statement = $db->prepare('INSERT INTO foods(food_name, details, location_id, quantity, added_by) VALUES (:name, :details, :locationId, :amount, :id)');
                 $statement->execute(array(':name' => htmlspecialchars($_POST['fAddName']), ':details' => htmlspecialchars($_POST['fAddDetails']), ':locationId' => $_POST['fAddLocation'], ':amount' => $_POST['fAddQuantity'], ':id' => $_SESSION['userId'])); 
-            // } else {
+            } else {
                 $statement = $db->prepare('INSERT INTO foods(food_name, location_id, quantity, added_by) VALUES (:name, :locationId, :amount, :id)');
                 $statement->execute(array(':name' => htmlspecialchars($_POST['fAddName']), ':locationId' => $_POST['fAddLocation'], ':amount' => $_POST['fAddQuantity'], ':id' => $_SESSION['userId']));              
-            // }
+            }
         }
     }
 ?>
