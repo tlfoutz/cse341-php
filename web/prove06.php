@@ -57,7 +57,7 @@
             $foodId = trim($key,"newAmount");
             echo ' Updated food id: ' . $foodId;
             $statement = $db->prepare('UPDATE foods SET quantity = :quantity WHERE id = :id');
-            $statement->execute(array(':quantity' => 777, ':id' => 2));
+            $statement->execute(array(':quantity' => $val, ':id' => $foodId));
         }
     }
 ?>
