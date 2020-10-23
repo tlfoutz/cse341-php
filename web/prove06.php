@@ -62,8 +62,7 @@
         <h1>Food Inventory Data Modification</h1>
         <br>
         <?php
-            echo $_SESSION['addFoodErrMsg'];
-            echo $_POST['fAddUnits'];
+            if(true) {echo $_SESSION['addFoodErrMsg'];} // TODO:
             echo '<form method="post" action="';
             echo htmlspecialchars($_SERVER["PHP_SELF"]);
             echo '">';
@@ -93,18 +92,17 @@
                 echo '><br><br>';
                 
                 // Food table
-                echo '<table><tr><th>Food</th><th>Location</th><th>Current Quantity</th></tr>';
+                echo '<table><tr><th>Food</th><th>Location</th><th>Current Quantity</th><th>New Amount></th></tr>';
                 $counter = 0;
                 
                 if ($_SESSION['selectedLocation'] == 0 || empty($_SESSION['selectedLocation'])) {
                     if ($_SESSION['foodSearch']) {
                         // TODO:
                     } else {
-                        $statement = $db->prepare('SELECT food_name, location_id, quantity FROM foods WHERE added_by = :id');
+                        $statement = $db->prepare('SELECT id, food_name, location_id, quantity FROM foods WHERE added_by = :id');
                         $statement->execute(array(':id' => $_SESSION['userId']));
                         while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-                            echo '<tr><td>' . $row['food_name'] . '</td><td>' . $row['location_id'] . '</td><td>' . $row['quantity'];
-                            echo '</td></tr>';
+                            echo '<tr><td>' . $row['food_name'] . '</td><td>' . $row['location_id'] . '</td><td>' . $row['quantity'] . '</td><td><input type="number" id="' .$row['id'] . 'newFood" name="newFoods[]" min="0"></tr>';
                             $counter++;
                         }
                     }
@@ -112,11 +110,10 @@
                     if ($_SESSION['foodSearch']) {
                         // TOD0:
                     } else {
-                        $statement = $db->prepare('SELECT food_name, location_id, quantity FROM foods WHERE added_by = :id AND location_id = :locationId');
+                        $statement = $db->prepare('SELECT id, food_name, location_id, quantity FROM foods WHERE added_by = :id AND location_id = :locationId');
                         $statement->execute(array(':id' => $_SESSION['userId'], ':locationId' => $_SESSION['selectedLocation']));
                         while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-                            echo '<tr><td>' . $row['food_name'] . '</td><td>' . $row['location_id'] . '</td><td>' . $row['quantity'];
-                            echo '</td></tr>';
+                            echo '<tr><td>' . $row['food_name'] . '</td><td>' . $row['location_id'] . '</td><td>' . $row['quantity'] . '</td><td><input type="number" id="' .$row['id'] . 'newFood" name="newFoods[]" min="0"></tr>';
                             $counter++;
                         }
                     }
