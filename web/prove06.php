@@ -55,7 +55,11 @@
         // if ($key == 'newAmount2') {
             $foodId = trim($key,"newAmount");
             $statement = $db->prepare('UPDATE foods SET quantity = :quantity WHERE id = :id');
-            $statement->execute(array(':quantity' => $val, ':id' => $foodId));
+            try {$statement->execute(array(':quantity' => $val, ':id' => $foodId));}
+            catch (PDOException $ex) {
+                echo 'Error!: ' . $ex->getMessage();
+                die();
+            }
         }
     }
 ?>
