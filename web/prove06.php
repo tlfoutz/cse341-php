@@ -35,27 +35,19 @@
     }
 
     if ($_POST['fAddName']) {
-        if ((empty($_POST['fAddQuantity']) || $_POST['fAddQuantity'] <= 0) || $_POST['fAddLocation'] == 0 || $_POST['fAddType'] == 0) {
+        if ((empty($_POST['fAddQuantity']) || $_POST['fAddQuantity'] <= 0) || $_POST['fAddLocation'] == 0) {
             $_SESSION['addFoodErrMsg'] = '<p class="errMsg">Not all fields where filled out. New food not added.';
         } else {
             $_SESSION['addFoodErrMsg'] = '';
-            // if ($_POST['fAddDetails']) {
-            //     $statement = $db->prepare('INSERT INTO foods(food_name, details, location_id, foodtype_id, quantity, added_by) VALUES (:fname, :details, :locationId, :foodtypeId, :quantity, :userId)');
-            //     $statement->execute(array(':fname' => $_POST['fAddName'], ':details' => $_POST['fAddDetails'], ':locationId' => $_POST['fAddLocation'], ':foodtypeId' => $_POST['fAddType'], ':quantity' => $_POST['fAddQuantity'], ':userId' => $_SESSION['userId']));
+            // if ($_POST['fAddDetails'] && $_POST['fAddUnits']) {
+
             // } else if ($_POST['fAddUnits']) {
-            //     $statement = $db->prepare('INSERT INTO foods(food_name, location_id, foodtype_id, quantity, unit, added_by) VALUES (:fname, :locationId, :foodtypeId, :quantity, :unit, :userId)');
-            //     $statement->execute(array(':fname' => $_POST['fAddName'], ':locationId' => $_POST['fAddLocation'], ':foodtypeId' => $_POST['fAddType'], ':quantity' => $_POST['fAddQuantity'], ':unit' => $_POST['fAddUnits'], ':userId' => $_SESSION['userId']));
-            // } else if ($_POST['fAddDetails'] && $_POST['fAddUnits']) {
-            //     $statement = $db->prepare('INSERT INTO foods(food_name, details, location_id, foodtype_id, quantity, unit, added_by) VALUES (:fname, :details, :locationId, :foodtypeId, :quantity, :unit, :userId)');
-            //     $statement->execute(array(':fname' => $_POST['fAddName'], ':details' => $_POST['fAddDetails'], ':locationId' => $_POST['fAddLocation'], ':foodtypeId' => $_POST['fAddType'], ':quantity' => $_POST['fAddQuantity'], ':unit' => $_POST['fAddUnits'], ':userId' => $_SESSION['userId']));
+
+            // } else if ($_POST['fAddDetails']) {
+
             // } else {
-                $statement = $db->prepare('INSERT INTO foods(food_name,location_id,foodtype_id,quantity,added_by) VALUES (:fname, :locationId, :foodtypeId, :amount, :userId)');
-                $statement->bindValue(':fname', $_POST['fAddName'], PDO::PARAM_STR);
-                $statement->bindValue(':locationId', $_POST['fAddLocation'], PDO::PARAM_INT);
-                $statement->bindValue(':foodtypeId', $_POST['fAddType'], PDO::PARAM_INT);
-                $statement->bindValue(':amount', $_POST['fAddQuantity'], PDO::PARAM_INT);
-                $statement->bindValue(':userId', $_SESSION['userId'], PDO::PARAM_INT);
-                $stmt->execute();            
+                $statement = $db->prepare('INSERT INTO foods(food_name, location_id, quantity, added_by) VALUES (:name, :locationId, :amount, :id)');
+                $statement->execute(array(':name' => htmlspecialchars($_POST['fAddName']), ':locationId' => $_POST['fAddLocation'], ':amount' => $_POST['fAddQuantity'], ':id' => $_SESSION['userId']));              
             // }
         }
     }
@@ -149,11 +141,6 @@
                 echo '<select name="fAddUnits" id="fAddUnits"><option value="0" selected> -- Select units (optional) -- </option>';
                 foreach ($db->query('SELECT id, unit_name FROM units') as $row) {
                     echo '<option value="' . $row['id'] . '">' . $row['unit_name'] . '</option>';
-                }
-                echo '</select><br><br>';
-                echo '<select name="fAddType" id="fAddType"><option value="0" disabled selected> -- Select food type -- </option>';
-                foreach ($db->query('SELECT id, type_name FROM foodtypes') as $row) {
-                    echo '<option value="' . $row['id'] . '">' . $row['type_name'] . '</option>';
                 }
                 echo '</select><br>';
                 echo '<label for="fAddDetails">Details:</label><br><input type="textarea" id="fAddDetails" name="fAddDetails"><br><br>';
