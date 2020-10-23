@@ -50,6 +50,8 @@
     }
 
     foreach($_POST as $key => $val) {
+        echo 'Entered POST array<br>';
+
         if ($key == "/newAmount\d+/") {
             echo 'Key: ' . $key;
             echo ' Value: ' . $val;
