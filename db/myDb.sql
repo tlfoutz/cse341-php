@@ -24,9 +24,9 @@ CREATE TABLE locations (
     id	            SERIAL          PRIMARY KEY                 NOT NULL,
     location_name   VARCHAR(32)                                 NOT NULL,
     details         VARCHAR(160),
-    date_added      DATE                                        NOT NULL,
+    -- date_added      DATE                                        NOT NULL,
     added_by        INT             REFERENCES users(id)        NOT NULL,
-    date_modified   DATE                                        NOT NULL
+    -- date_modified   DATE                                        NOT NULL
 );
 
 -- will be a pre-seeded table of units
@@ -50,9 +50,9 @@ CREATE TABLE foods (
     foodtype_id     INT             REFERENCES foodtypes(id)    NOT NULL,
     quantity        INT                                         NOT NULL,
     unit            VARCHAR(16)     REFERENCES units(unit_name),        
-    date_added      DATE                                        NOT NULL,
+    -- date_added      DATE                                        NOT NULL,
     added_by        INT             REFERENCES users(id)        NOT NULL,
-    date_modified   DATE                                        NOT NULL
+    -- date_modified   DATE                                        NOT NULL
 );
 
 -- table of changes in quantity
