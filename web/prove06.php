@@ -56,8 +56,11 @@
             echo 'Entered newAmount loop<br>';
             $foodId = trim($key,"newAmount");
             echo ' Updated food id: ' . $foodId;
-            $statement = $db->prepare('UPDATE foods SET quantity=:quantity WHERE id=:id');
-            $statement->execute(array(':quantity' => $key, ':id' => $foodId));
+            $statement = $db->prepare('UPDATE foods SET quantity = :quantity WHERE id = :id');
+            $stmt->bindValue(':id', $foodId, PDO::PARAM_INT);
+            $stmt->bindValue(':quantity', $key, PDO::PARAM_INT);
+            $stmt->execute();
+            //$statement->execute(array(':quantity' => $key, ':id' => $foodId));
         }
     }
 ?>
