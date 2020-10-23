@@ -49,10 +49,11 @@
             }
         }
     }
-
+    
+    $regex = '/newAmount\d+/m';
     foreach($_POST as $key => $val) {
         // if ($key == "/newAmount\d+/") {
-        if ($key == "newAmount2") {
+        if ($key == $regex) {
             echo 'Entered newAmount loop<br>';
             $foodId = trim($val,"newAmount");
             echo ' Updated food id: ' . $foodId;
