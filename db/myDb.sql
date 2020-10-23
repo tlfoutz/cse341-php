@@ -49,7 +49,7 @@ CREATE TABLE foods (
     location_id     INT             REFERENCES locations(id)    NOT NULL,
     -- foodtype_id     INT             REFERENCES foodtypes(id)    NOT NULL,
     quantity        INT                                         NOT NULL,
-    unit            INT             REFERENCES units(id),        
+    -- unit            INT             REFERENCES units(id),        
     -- date_added      DATE                                        NOT NULL,
     -- date_modified   DATE                                        NOT NULL,
     added_by        INT             REFERENCES users(id)        NOT NULL
