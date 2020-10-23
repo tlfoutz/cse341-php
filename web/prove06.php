@@ -51,7 +51,10 @@
 
     foreach($_POST as $key => $val) {
         if ($key == "/newAmount\d+/") {
+            echo 'Key: ' . $key;
+            echo ' Value: ' . $val;
             $foodId = trim($key,"newAmount");
+            echo ' Updated food id: ' . $foodId;
             $statement = $db->prepare('UPDATE foods SET quantity=:quantity WHERE id=:id');
             $statement->execute(array(':quantity' => $val, ':id' => $foodId));
         }
