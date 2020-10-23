@@ -4,37 +4,6 @@
     $_SESSION['selectedLocation'] = $_POST['locations'];
     $_SESSION['foodSearch'] = htmlspecialchars($_POST['fname']);
 
-    if ($_POST['lAddName']) {
-        if ($_POST['lAddDetails']) {
-            $statement = $db->prepare('INSERT INTO locations(location_name, details, added_by) VALUES (:name, :details, :id)');
-            $statement->execute(array(':name' => htmlspecialchars($_POST['lAddName']), ':details' => htmlspecialchars($_POST['lAddDetails']), ':id' => $_SESSION['userId']));
-        } else {
-            $statement = $db->prepare('INSERT INTO locations(location_name, added_by) VALUES (:name, :id)');
-            $statement->execute(array(':name' => htmlspecialchars($_POST['lAddName']), ':id' => $_SESSION['userId']));
-        }
-    }
-
-    if ($_POST['fAddName']) {
-        if (empty($_POST['fAddQuantity']) || $_POST['fAddLocation'] == 0 || $_POST['fAddType'] == 0) {
-            $_SESSION['addFoodErrMsg'] = '<p class="errMsg">Not all fields where filled out. New food not added.';
-        } else {
-            $_SESSION['addFoodErrMsg'] = '';
-            // if ($_POST['fAddDetails']) {
-            //     $statement = $db->prepare('INSERT INTO foods(food_name, details, location_id, foodtype_id, quantity, added_by) VALUES (:name, :details, :locationId, :foodtypeId, :quantity, :userId)');
-            //     $statement->execute(array(':name' => $_POST['fAddName'], ':details' => $_POST['fAddDetails'], ':locationId' => $_POST['fAddLocation'], ':foodtypeId' => $_POST['fAddType'], ':quantity' => $_POST['fAddQuantity'], ':userId' => $_SESSION['userId']));
-            // } else if ($_POST['fAddUnits']) {
-            //     $statement = $db->prepare('INSERT INTO foods(food_name, location_id, foodtype_id, quantity, unit, added_by) VALUES (:name, :locationId, :foodtypeId, :quantity, :unit, :userId)');
-            //     $statement->execute(array(':name' => $_POST['fAddName'], ':locationId' => $_POST['fAddLocation'], ':foodtypeId' => $_POST['fAddType'], ':quantity' => $_POST['fAddQuantity'], ':unit' => $_POST['fAddUnits'], ':userId' => $_SESSION['userId']));
-            // } else if ($_POST['fAddDetails'] && $_POST['fAddUnits']) {
-            //     $statement = $db->prepare('INSERT INTO foods(food_name, details, location_id, foodtype_id, quantity, unit, added_by) VALUES (:name, :details, :locationId, :foodtypeId, :quantity, :unit, :userId)');
-            //     $statement->execute(array(':name' => $_POST['fAddName'], ':details' => $_POST['fAddDetails'], ':locationId' => $_POST['fAddLocation'], ':foodtypeId' => $_POST['fAddType'], ':quantity' => $_POST['fAddQuantity'], ':unit' => $_POST['fAddUnits'], ':userId' => $_SESSION['userId']));
-            // } else {
-                $statement = $db->prepare('INSERT INTO foods(food_name, location_id, foodtype_id, quantity, added_by) VALUES (:name, :locationId, :foodtypeId, :quantity, :userId)');
-                $statement->execute(array(':name' => $_POST['fAddName'], ':locationId' => $_POST['fAddLocation'], ':foodtypeId' => $_POST['fAddType'], ':quantity' => $_POST['fAddQuantity'], ':userId' => $_SESSION['userId']));
-            // }
-        }
-    }
-
     try {
         $dbUrl = getenv('DATABASE_URL');
 
@@ -53,6 +22,37 @@
     catch (PDOException $ex) {
         echo 'Error!: ' . $ex->getMessage();
         die();
+    }
+
+    if ($_POST['lAddName']) {
+        if ($_POST['lAddDetails']) {
+            $statement = $db->prepare('INSERT INTO locations(location_name, details, added_by) VALUES (:name, :details, :id)');
+            $statement->execute(array(':name' => htmlspecialchars($_POST['lAddName']), ':details' => htmlspecialchars($_POST['lAddDetails']), ':id' => $_SESSION['userId']));
+        } else {
+            $statement = $db->prepare('INSERT INTO locations(location_name, added_by) VALUES (:name, :id)');
+            $statement->execute(array(':name' => htmlspecialchars($_POST['lAddName']), ':id' => $_SESSION['userId']));
+        }
+    }
+
+    if ($_POST['fAddName']) {
+        if (empty($_POST['fAddQuantity']) || $_POST['fAddLocation'] == 0 || $_POST['fAddType'] == 0) {
+            $_SESSION['addFoodErrMsg'] = '<p class="errMsg">Not all fields where filled out. New food not added.';
+        } else {
+            $_SESSION['addFoodErrMsg'] = '';
+            // if ($_POST['fAddDetails']) {
+            //     $statement = $db->prepare('INSERT INTO foods(food_name, details, location_id, foodtype_id, quantity, added_by) VALUES (:fname, :details, :locationId, :foodtypeId, :quantity, :userId)');
+            //     $statement->execute(array(':fname' => $_POST['fAddName'], ':details' => $_POST['fAddDetails'], ':locationId' => $_POST['fAddLocation'], ':foodtypeId' => $_POST['fAddType'], ':quantity' => $_POST['fAddQuantity'], ':userId' => $_SESSION['userId']));
+            // } else if ($_POST['fAddUnits']) {
+            //     $statement = $db->prepare('INSERT INTO foods(food_name, location_id, foodtype_id, quantity, unit, added_by) VALUES (:fname, :locationId, :foodtypeId, :quantity, :unit, :userId)');
+            //     $statement->execute(array(':fname' => $_POST['fAddName'], ':locationId' => $_POST['fAddLocation'], ':foodtypeId' => $_POST['fAddType'], ':quantity' => $_POST['fAddQuantity'], ':unit' => $_POST['fAddUnits'], ':userId' => $_SESSION['userId']));
+            // } else if ($_POST['fAddDetails'] && $_POST['fAddUnits']) {
+            //     $statement = $db->prepare('INSERT INTO foods(food_name, details, location_id, foodtype_id, quantity, unit, added_by) VALUES (:fname, :details, :locationId, :foodtypeId, :quantity, :unit, :userId)');
+            //     $statement->execute(array(':fname' => $_POST['fAddName'], ':details' => $_POST['fAddDetails'], ':locationId' => $_POST['fAddLocation'], ':foodtypeId' => $_POST['fAddType'], ':quantity' => $_POST['fAddQuantity'], ':unit' => $_POST['fAddUnits'], ':userId' => $_SESSION['userId']));
+            // } else {
+                $statement = $db->prepare('INSERT INTO foods(food_name, location_id, foodtype_id, quantity, added_by) VALUES (:fname, :locationId, :foodtypeId, :quantity, :userId)');
+                $statement->execute(array(':name' => $_POST['fAddName'], ':locationId' => $_POST['fAddLocation'], ':foodtypeId' => $_POST['fAddType'], ':quantity' => $_POST['fAddQuantity'], ':userId' => $_SESSION['userId']));
+            // }
+        }
     }
 ?>
 <!DOCTYPE html>
