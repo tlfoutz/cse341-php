@@ -120,9 +120,15 @@
                 echo '<label for="lAddDetails">Details:</label><br><input type="textarea" id="lAddDetails" name="lAddDetails"><br><br>';
                 
                 if ($_POST['lAddName']) {
-                    $date = strtotime (date ("Y-m-d"));
-                    $statement = $db->prepare('INSERT INTO locations(location_name, data_added, added_by, date_modified) VALUES (:name, :date, :id, :date)');
-                    $statement->execute(array(':name' => $_POST['lAddName'], ':date' => $date, ':id' => $_SESSION['userId']));
+                    // $date = strtotime (date ("Y-m-d"));
+                    // $statement = $db->prepare('INSERT INTO locations(location_name, data_added, added_by, date_modified) VALUES (:name, :date, :id, :date)');
+                    // $statement->execute(array(':name' => $_POST['lAddName'], ':date' => $date, ':id' => $_SESSION['userId']));
+                    $query = "INSERT INTO locations(location_name, data_added, added_by, date_modified) VALUES (:lName, :currentTime, :id, :currentTime)";
+                    $statement = $db->prepare($sql);
+                    $statement->bindParam (":currentTime", strtotime (date ("Y-m-d")), PDO::PARAM_STR);
+                    $statement->bindParam (":lName", $_POST['lAddName'], PDO::PARAM_STR);
+                    $statement->bindParam (":id", $_SESSION['userId'], PDO::PARAM_STR);
+                    $statement->execute ();
                 }
             }
 
