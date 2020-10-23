@@ -1,5 +1,6 @@
 <?php
     session_start();
+    print_r($_POST);
     $_SESSION['userId'] = $_POST['users'];
     $_SESSION['selectedLocation'] = $_POST['locations'];
     $_SESSION['foodSearch'] = htmlspecialchars($_POST['fname']);
@@ -50,9 +51,6 @@
     }
 
     foreach($_POST as $key => $val) {
-        echo 'Value: ' . $val. '<br>';
-        echo 'Key: ' . $key. '<br>';
-
         if ($key == "/newAmount\d+/") {
             echo 'Entered newAmount loop<br>';
             $foodId = trim($val,"newAmount");
