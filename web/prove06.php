@@ -40,10 +40,10 @@
         } else {
             $_SESSION['addFoodErrMsg'] = '';
             if ($_POST['fAddDetails'] && $_POST['fAddUnits'] < 0) {
-                $statement = $db->prepare('INSERT INTO foods(food_name, details, location_id, quantity, added_by) VALUES (:name, :details, :locationId, :amount, :id)');
-                $statement->execute(array(':name' => htmlspecialchars($_POST['fAddName']), ':details' => htmlspecialchars($_POST['fAddDetails']), ':locationId' => $_POST['fAddLocation'], ':amount' => $_POST['fAddQuantity'], ':id' => $_SESSION['userId']));
+                $statement = $db->prepare('INSERT INTO foods(food_name, details, location_id, quantity, unit, added_by) VALUES (:name, :details, :locationId, :amount, :units, :id)');
+                $statement->execute(array(':name' => htmlspecialchars($_POST['fAddName']), ':details' => htmlspecialchars($_POST['fAddDetails']), ':locationId' => $_POST['fAddLocation'], ':amount' => $_POST['fAddQuantity'], ':units' => $_POST['fAddUnits'], ':id' => $_SESSION['userId'])); 
             } else if ($_POST['fAddUnits'] < 0) {
-                $statement = $db->prepare('INSERT INTO foods(food_name, location_id, quantity, unit, added_by) VALUES (:name, :locationId, :amount, :units, :id)');
+                $statement = $db->prepare('INSERT INTO foods(food_name, location_id, quantity, unit, added_by) VALUES (:name, :details, :locationId, :amount, :units, :id)');
                 $statement->execute(array(':name' => htmlspecialchars($_POST['fAddName']), ':locationId' => $_POST['fAddLocation'], ':amount' => $_POST['fAddQuantity'], ':units' => $_POST['fAddUnits'], ':id' => $_SESSION['userId']));  
             } else if ($_POST['fAddDetails']) {
                 $statement = $db->prepare('INSERT INTO foods(food_name, details, location_id, quantity, added_by) VALUES (:name, :details, :locationId, :amount, :id)');
@@ -69,7 +69,7 @@
         <br>
         <?php
             echo $_SESSION['addFoodErrMsg'];
-            //echo $_POST['fAddUnits'];
+            echo $_POST['fAddUnits'];
             echo '<form method="post" action="';
             echo htmlspecialchars($_SERVER["PHP_SELF"]);
             echo '">';
