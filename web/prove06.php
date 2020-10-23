@@ -102,7 +102,7 @@
                 echo '><br><br>';
                 
                 // Food table
-                echo '<table><tr><th>Food</th><th>Location</th><th>Current Quantity</th><th>New Amount</th></tr>';
+                echo '<table><tr><th>Food</th><th>Location</th><th>Quantity</th></tr>';
                 $counter = 0;
                 
                 if ($_SESSION['selectedLocation'] == 0 || empty($_SESSION['selectedLocation'])) {
@@ -112,7 +112,7 @@
                         $statement = $db->prepare('SELECT id, food_name, location_id, quantity FROM foods WHERE added_by = :id');
                         $statement->execute(array(':id' => $_SESSION['userId']));
                         while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-                            echo '<tr><td>' . $row['food_name'] . '</td><td>' . $row['location_id'] . '</td><td>' . $row['quantity'] . '</td><td><input type="number" name="newAmount' .$row['id'] . '" min="0"></tr>';
+                            echo '<tr><td>' . $row['food_name'] . '</td><td>' . $row['location_id'] . '</td><td><input type="number" value="' . $row['quantity'] . '" name="newAmount' .$row['id'] . '" min="0"></tr>';
                             $counter++;
                         }
                     }
