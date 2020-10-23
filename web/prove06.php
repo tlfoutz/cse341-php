@@ -15,7 +15,7 @@
     }
 
     if ($_POST['fAddName']) {
-        if (!isset($_POST['fAddQuantity']) || $_POST['fAddLocation'] == 0 || $_POST['fAddType'] == 0) {
+        if (empty($_POST['fAddQuantity']) || $_POST['fAddLocation'] == 0 || $_POST['fAddType'] == 0) {
             $_SESSION['addFoodErrMsg'] = '<p class="errMsg">Not all fields where filled out. New food not added.';
         } else {
             $_SESSION['addFoodErrMsg'] = '';
