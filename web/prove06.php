@@ -52,7 +52,7 @@
 
     foreach($_POST as $key => $val) {
         // if ($key == '/newAmount\d+/m') {
-        if ($key == 'newAmount2') {
+        if ($val == 'newAmount2') {
             echo 'Entered newAmount loop<br>';
             $foodId = trim($val,"newAmount");
             echo ' Updated food id: ' . $foodId;
