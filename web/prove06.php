@@ -50,10 +50,10 @@
     }
 
     foreach($_POST as $key => $val) {
-        echo 'Key: ' . $key. '<br>';
         echo 'Value: ' . $val. '<br>';
+        echo 'Key: ' . $key. '<br>';
 
-        if ($key == "/newAmount\d+/") {
+        if ($val == "/newAmount\d+/") {
             echo 'Entered newAmount loop<br>';
             $foodId = trim($val,"newAmount");
             echo ' Updated food id: ' . $foodId;
