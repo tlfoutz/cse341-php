@@ -36,7 +36,7 @@
 
     if ($_POST['fAddName']) {
         if ((empty($_POST['fAddQuantity']) || $_POST['fAddQuantity'] <= 0) || $_POST['fAddLocation'] == 0) {
-            $_SESSION['addFoodErrMsg'] = '<p class="errMsg">Not all fields where filled out. New food not added.';
+            $_SESSION['addFoodErrMsg'] = '<p class="errMsg">Not all fields for new food item where filled out correctly. New food not added.';
         } else {
             $_SESSION['addFoodErrMsg'] = '';
             if ($_POST['fAddDetails'] && $_POST['fAddUnits']) {
