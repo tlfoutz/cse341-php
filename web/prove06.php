@@ -52,9 +52,9 @@
 
     foreach($_POST as $key => $val) {
         // if ($key == '/newAmount\d+/m') {
-        if ($val == 'newAmount2') {
+        if ($key == 'newAmount2') {
             echo 'Entered newAmount loop<br>';
-            $foodId = trim($val,"newAmount");
+            $foodId = trim($key,"newAmount");
             echo ' Updated food id: ' . $foodId;
             $statement = $db->prepare('UPDATE foods SET quantity=:quantity WHERE id=:id');
             $statement->execute(array(':quantity' => $key, ':id' => $foodId));
