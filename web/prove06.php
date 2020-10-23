@@ -15,7 +15,7 @@
     }
 
     if ($_POST['fAddName']) {
-        if ($_POST['fAddQuantity'] || $_POST['fAddLocation'] == 0 || $_POST['fAddType'] == 0) {
+        if (!isset($_POST['fAddQuantity']) || $_POST['fAddLocation'] == 0 || $_POST['fAddType'] == 0) {
             $_SESSION['addFoodErrMsg'] = '<p class="errMsg">Not all fields where filled out. New food not added.';
         } else {
             $_SESSION['addFoodErrMsg'] = '';
@@ -133,14 +133,14 @@
                 if ($counter == 0) { echo 'No food found.<br>'; }
 
                 // New food item input
-                echo '<br><h3>Add new food item:</h3><label for="fAddName">Name:</label><br><input type="text" id="fAddName" name="fAddName"><br>';
+                echo '<br><h3>Add new food item:</h3><label for="fAddName">Name:</label><br><input type="text" id="fAddName" name="fAddName"><br><br>';
                 echo '<select name="fAddLocation" id="fAddLocation"><option value="0" disabled selected> -- Select location -- </option>';
                 $statement = $db->prepare('SELECT id, location_name FROM locations WHERE added_by = :id');
                 $statement->execute(array(':id' => $_SESSION['userId']));
                 while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
                     echo '<option value="' . $row['id'] . '">' . $row['location_name'] . '</option>';
                 }
-                echo '</select><br><br>';
+                echo '</select><br>';
                 echo '<label for="fAddQuantity">Quantity:</label><br><input type="number" id="fAddQuantity" name="fAddQuantity" min="0"><br><br>';
                 echo '<select name="fAddUnits" id="fAddUnits"><option value="0" selected> -- Select units (optional) -- </option>';
                 foreach ($db->query('SELECT id, unit_name FROM units') as $row) {
