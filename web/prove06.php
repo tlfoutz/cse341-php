@@ -39,10 +39,10 @@
             $_SESSION['addFoodErrMsg'] = '<p class="errMsg">Not all fields for new food item where filled out correctly. New food not added.';
         } else {
             $_SESSION['addFoodErrMsg'] = '';
-            if ($_POST['fAddDetails'] && $_POST['fAddUnits']) {
+            if ($_POST['fAddDetails'] && $_POST['fAddUnits'] < 0) {
                 $statement = $db->prepare('INSERT INTO foods(food_name, details, location_id, quantity, unit, added_by) VALUES (:name, :details, :locationId, :amount, :units, :id)');
                 $statement->execute(array(':name' => htmlspecialchars($_POST['fAddName']), ':details' => htmlspecialchars($_POST['fAddDetails']), ':locationId' => $_POST['fAddLocation'], ':amount' => $_POST['fAddQuantity'], ':units' => $_POST['fAddUnits'], ':id' => $_SESSION['userId'])); 
-            } else if ($_POST['fAddUnits']) {
+            } else if ($_POST['fAddUnits'] < 0) {
                 $statement = $db->prepare('INSERT INTO foods(food_name, location_id, quantity, added_by, unit) VALUES (:name, :details, :locationId, :amount, :id, :measurement)');
                 $statement->execute(array(':name' => htmlspecialchars($_POST['fAddName']), ':locationId' => $_POST['fAddLocation'], ':amount' => $_POST['fAddQuantity'], ':id' => $_SESSION['userId'], ':measurement' => $_POST['fAddUnits']));  
             } else if ($_POST['fAddDetails']) {
