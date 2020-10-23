@@ -120,7 +120,7 @@
                 echo '<label for="lAddDetails">Details:</label><br><input type="textarea" id="lAddDetails" name="lAddDetails"><br><br>';
                 
                 if ($_POST['lAddName']) {
-                    $date = date('Y-m-d');
+                    $date = strtotime (date ("Y-m-d"));
                     $statement = $db->prepare('INSERT INTO locations(location_name, data_added, added_by, date_modified) VALUES (:name, :date, :id, :date)');
                     $statement->execute(array(':name' => $_POST['lAddName'], ':date' => $date, ':id' => $_SESSION['userId']));
                 }
