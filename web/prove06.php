@@ -57,10 +57,7 @@
             $foodId = trim($key,"newAmount");
             echo ' Updated food id: ' . $foodId;
             $statement = $db->prepare('UPDATE foods SET quantity = :quantity WHERE id = :id');
-            $statement->bindValue(':id', $foodId, PDO::PARAM_INT);
-            $statement->bindValue(':quantity', $key, PDO::PARAM_INT);
-            $statement->execute();
-            //$statement->execute(array(':quantity' => $key, ':id' => $foodId));
+            $statement->execute(array(':quantity' => 777, ':id' => 2));
         }
     }
 ?>
