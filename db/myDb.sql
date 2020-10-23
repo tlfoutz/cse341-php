@@ -22,11 +22,11 @@ CREATE TABLE users (
 -- optional details help user clarify location
 CREATE TABLE locations (
     id	            SERIAL          PRIMARY KEY                 NOT NULL,
-    location_name   VARCHAR(32)                                 NOT NULL,
-    details         VARCHAR(160),
+    location_name   VARCHAR(64)                                 NOT NULL,
+    details         VARCHAR(255),
     -- date_added      DATE                                        NOT NULL,
-    added_by        INT             REFERENCES users(id)        NOT NULL,
-    -- date_modified   DATE                                        NOT NULL
+    -- date_modified   DATE                                        NOT NULL,
+    added_by        INT             REFERENCES users(id)        NOT NULL
 );
 
 -- will be a pre-seeded table of units
@@ -44,15 +44,15 @@ CREATE TABLE units (
 -- user enters food item (name, quantity, etc.)
 CREATE TABLE foods (
     id              SERIAL          PRIMARY KEY                 NOT NULL,
-    food_name       VARCHAR(32)                                 NOT NULL,
-    details         VARCHAR(160),
+    food_name       VARCHAR(64)                                 NOT NULL,
+    details         VARCHAR(255),
     location_id     INT             REFERENCES locations(id)    NOT NULL,
     -- foodtype_id     INT             REFERENCES foodtypes(id)    NOT NULL,
     quantity        INT                                         NOT NULL,
-    unit            VARCHAR(16)     REFERENCES units(unit_name),        
+    unit            INT             REFERENCES units(id),        
     -- date_added      DATE                                        NOT NULL,
-    added_by        INT             REFERENCES users(id)        NOT NULL,
-    -- date_modified   DATE                                        NOT NULL
+    -- date_modified   DATE                                        NOT NULL,
+    added_by        INT             REFERENCES users(id)        NOT NULL
 );
 
 -- table of changes in quantity
