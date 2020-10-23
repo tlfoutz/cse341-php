@@ -53,7 +53,7 @@
         echo 'Value: ' . $val. '<br>';
         echo 'Key: ' . $key. '<br>';
 
-        if ($val == "/newAmount\d+/") {
+        if ($key == "/newAmount\d+/") {
             echo 'Entered newAmount loop<br>';
             $foodId = trim($val,"newAmount");
             echo ' Updated food id: ' . $foodId;
