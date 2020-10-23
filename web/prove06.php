@@ -55,10 +55,10 @@
 
         if ($key == "/newAmount\d+/") {
             echo 'Entered newAmount loop<br>';
-            $foodId = trim($key,"newAmount");
+            $foodId = trim($val,"newAmount");
             echo ' Updated food id: ' . $foodId;
             $statement = $db->prepare('UPDATE foods SET quantity=:quantity WHERE id=:id');
-            $statement->execute(array(':quantity' => $val, ':id' => $foodId));
+            $statement->execute(array(':quantity' => $key, ':id' => $foodId));
         }
     }
 ?>
