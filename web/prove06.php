@@ -51,7 +51,7 @@
     }
 
     foreach($_POST as $key => $val) {
-        if (preg_match('/newAmount\d/m', $key) && !empty($_POST['$key'])) {
+        if (preg_match('/newAmount\d/m', $key) && empty($_POST['$key'])) {
         // if ($key == 'newAmount2') {
             $foodId = trim($key,"newAmount");
             $statement = $db->prepare('UPDATE foods SET quantity = :quantity WHERE id = :id');
