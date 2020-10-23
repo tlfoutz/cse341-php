@@ -69,6 +69,7 @@
         <br>
         <?php
             echo $_SESSION['addFoodErrMsg'];
+            echo $_POST['fAddUnits'];
             echo '<form method="post" action="';
             echo htmlspecialchars($_SERVER["PHP_SELF"]);
             echo '">';
@@ -108,7 +109,7 @@
                         $statement = $db->prepare('SELECT food_name, location_id, quantity, unit FROM foods WHERE added_by = :id');
                         $statement->execute(array(':id' => $_SESSION['userId']));
                         while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-                            echo '<tr><td>' . $row['food_name'] . '</td><td>' . $row['location_id'] . '</td><td>' . $row['quantity'] . ' test' . $row['unit'];
+                            echo '<tr><td>' . $row['food_name'] . '</td><td>' . $row['location_id'] . '</td><td>' . $row['quantity'] . ' ' . $row['unit'];
                             if ($row['quantity'] != 1 && $row['unit']) { echo 's';}
                             echo '</td></tr>';
                             $counter++;
