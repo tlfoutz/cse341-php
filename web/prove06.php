@@ -136,21 +136,6 @@
             // Display user info
             else {
                 echo '<h2>Welcome, ' . $_SESSION['userName'] . '</h2>';
-                // User's locations 
-                echo '<select name="locations" id="locations"><option value="0" selected>All locations</option>';
-                $statement = $db->prepare('SELECT id, location_name FROM locations WHERE added_by = :id');
-                $statement->execute(array(':id' => $_SESSION['userId']));
-                while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-                    echo '<option value="' . $row['id'] . '"';
-                    if ($_SESSION['selectedLocation'] == $row['id']) { echo ' selected'; }
-                    echo '>' . $row['location_name'] . '</option>';
-                }
-                echo '</select><br>';
-                
-                // Food name search
-                echo '<label for="fname">Find food by name:</label><br><input type="search" id="fname" name="fname"';
-                if($_SESSION['foodSearch']) { echo ' value="' . $_SESSION['foodSearch'] . '"';}
-                echo '><br><br>';
                 
                 // Food table
                 echo '<table><tr><th>Food</th><th>Location</th><th>Quantity</th></tr>';
@@ -182,8 +167,24 @@
                 echo '</table><br>';
                 if ($counter == 0) { echo 'No food found.<br>'; }
 
+                // User's locations 
+                echo '<select name="locations" id="locations"><option value="0" selected>All locations</option>';
+                $statement = $db->prepare('SELECT id, location_name FROM locations WHERE added_by = :id');
+                $statement->execute(array(':id' => $_SESSION['userId']));
+                while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
+                    echo '<option value="' . $row['id'] . '"';
+                    if ($_SESSION['selectedLocation'] == $row['id']) { echo ' selected'; }
+                    echo '>' . $row['location_name'] . '</option>';
+                }
+                echo '</select><br>';
+                
+                // Food name search
+                echo '<label for="fname">Find food by name:</label><br><input type="search" id="fname" name="fname"';
+                if($_SESSION['foodSearch']) { echo ' value="' . $_SESSION['foodSearch'] . '"';}
+                echo '><br><br>';
+
                 // New food item input
-                echo '<br><h3>Add new food item:</h3><label for="fAddName">Name:</label><br><input type="text" id="fAddName" name="fAddName"><br><br>';
+                echo '<br><h3>Add new food item:</h3><label for="fAddName">Name:</label><br><input type="text" id="fAddName" name="fAddName"><br>';
                 echo '<label for="fAddLocation">Location:</label><br>';
                 echo '<select name="fAddLocation" id="fAddLocation"><option value="0" disabled selected> -- Select location -- </option>';
                 $statement = $db->prepare('SELECT id, location_name FROM locations WHERE added_by = :id');
