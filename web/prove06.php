@@ -89,18 +89,18 @@
             // }
             // echo '</select><br><br>';
             echo '<h3>Return User Login</h3>';
-            echo '<label for="rname"><b>Username</b></label>';
-            echo '<input type="text" placeholder="Enter Username" name="rname"><br>';
-            echo '<label for="rpsw"><b>Password</b></label>';
+            echo '<label for="rname"><b>Username: </b></label>';
+            echo '<input type="text" placeholder="Enter Username" name="rname"><br><br>';
+            echo '<label for="rpsw"><b>Password: </b></label>';
             echo '<input type="password" placeholder="Enter Password" name="rpsw">';
 
             echo '<h3>New User Login</h3>';
-            echo '<label for="nname"><b>Username</b></label>';
-            echo '<input type="text" placeholder="Enter Username" name="nname"><br>';
-            echo '<label for="npsw"><b>Password</b></label>';
-            echo '<input type="password" placeholder="Enter Password" name="npsw">';
-            echo '<label for="cpsw"><b>Confirm Password</b></label>';
-            echo '<input type="password" placeholder="Confirm Password" name="cpsw">';
+            echo '<label for="nname"><b>Username: </b></label>';
+            echo '<input type="text" placeholder="Enter Username" name="nname"><br><br>';
+            echo '<label for="npsw"><b>Password: </b></label>';
+            echo '<input type="password" placeholder="Enter Password" name="npsw"><br><br>';
+            echo '<label for="cpsw"><b>Confirm Password: </b></label>';
+            echo '<input type="password" placeholder="Confirm Password" name="cpsw"><br><br>';
 
             if ($_SESSION['userId']) {
                 // User's locations 
