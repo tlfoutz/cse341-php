@@ -145,10 +145,10 @@
                     if ($_SESSION['foodSearch']) {
                         // TODO:
                     } else {
-                        $statement = $db->prepare('SELECT f.id, f.food_name, f.location_id, f.quantity, l.location_name FROM foods f INNER JOIN locations l ON f.location_id = l.id WHERE f.added_by = :id');
+                        $statement = $db->prepare('SELECT f.id, f.food_name, f.location_id, f.details, f.quantity, l.location_name FROM foods f INNER JOIN locations l ON f.location_id = l.id WHERE f.added_by = :id');
                         $statement->execute(array(':id' => $_SESSION['userId']));
                         while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-                            echo '<tr><td>' . $row['food_name'] . '</td><td>' . $row['location_name'] . '</td><td><input type="number" value="' . $row['quantity'] . '" name="newAmount' .$row['id'] . '" min="0"></tr>';
+                            echo '<tr><td>' . $row['food_name'] . '</td><td>' . $row['location_name'] . '</td><td><input type="number" value="' . $row['quantity'] . '" name="newAmount' .$row['id'] . '" min="0"></td><td>' . $row['details'] . '</td></tr>';
                             $counter++;
                         }
                         // $statement = $db->prepare('SELECT id, food_name, location_id, quantity FROM foods WHERE added_by = :id');
@@ -162,10 +162,10 @@
                     if ($_SESSION['foodSearch']) {
                         // TOD0:
                     } else {
-                        $statement = $db->prepare('SELECT f.id, f.food_name, f.location_id, f.quantity, l.location_name FROM foods f INNER JOIN locations l ON f.location_id = l.id WHERE f.added_by = :id AND f.location_id = :locationId');
+                        $statement = $db->prepare('SELECT f.id, f.food_name, f.location_id, f.details, f.quantity, l.location_name FROM foods f INNER JOIN locations l ON f.location_id = l.id WHERE f.added_by = :id AND f.location_id = :locationId');
                         $statement->execute(array(':id' => $_SESSION['userId'], ':locationId' => $_SESSION['selectedLocation']));
                         while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-                            echo '<tr><td>' . $row['food_name'] . '</td><td>' . $row['location_name'] . '</td><td><input type="number" value="' . $row['quantity'] . '" name="newAmount' .$row['id'] . '" min="0"></tr>';
+                            echo '<tr><td>' . $row['food_name'] . '</td><td>' . $row['location_name'] . '</td><td><input type="number" value="' . $row['quantity'] . '" name="newAmount' .$row['id'] . '" min="0"></td><td>' . $row['details'] . '</td></tr>';
                             $counter++;
                         }
                         // $statement = $db->prepare('SELECT id, food_name, location_id, quantity FROM foods WHERE added_by = :id AND location_id = :locationId');
