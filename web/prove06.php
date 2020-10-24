@@ -138,7 +138,7 @@
                 echo '<h2>Welcome, ' . $_SESSION['userName'] . '</h2>';
                 
                 // Food table
-                echo '<table><tr><th>Food</th><th>Location</th><th>Quantity</th></tr>';
+                echo '<table><tr><th>Food</th><th>Location</th><th>Quantity</th><th>Details</th></tr>';
                 $counter = 0;
                 
                 if ($_SESSION['selectedLocation'] == 0 || empty($_SESSION['selectedLocation'])) {
