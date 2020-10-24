@@ -151,12 +151,6 @@
                             echo '<tr><td>' . $row['food_name'] . '</td><td>' . $row['location_name'] . '</td><td><input type="number" value="' . $row['quantity'] . '" name="newAmount' .$row['id'] . '" min="0"></td><td>' . $row['details'] . '</td></tr>';
                             $counter++;
                         }
-                        // $statement = $db->prepare('SELECT id, food_name, location_id, quantity FROM foods WHERE added_by = :id');
-                        // $statement->execute(array(':id' => $_SESSION['userId']));
-                        // while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-                        //     echo '<tr><td>' . $row['food_name'] . '</td><td>' . $row['location_id'] . '</td><td><input type="number" value="' . $row['quantity'] . '" name="newAmount' .$row['id'] . '" min="0"></tr>';
-                        //     $counter++;
-                        // }
                     }
                 } else {
                     if ($_SESSION['foodSearch']) {
@@ -168,12 +162,6 @@
                             echo '<tr><td>' . $row['food_name'] . '</td><td>' . $row['location_name'] . '</td><td><input type="number" value="' . $row['quantity'] . '" name="newAmount' .$row['id'] . '" min="0"></td><td>' . $row['details'] . '</td></tr>';
                             $counter++;
                         }
-                        // $statement = $db->prepare('SELECT id, food_name, location_id, quantity FROM foods WHERE added_by = :id AND location_id = :locationId');
-                        // $statement->execute(array(':id' => $_SESSION['userId'], ':locationId' => $_SESSION['selectedLocation']));
-                        // while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-                        //     echo '<tr><td>' . $row['food_name'] . '</td><td>' . $row['location_id'] . '</td><td>' . $row['quantity'] . '</td><td><input type="number" name="newAmount' .$row['id'] . '" min="0"></tr>';
-                        //     $counter++;
-                        // }
                     }
                 }
                 echo '</table>';
