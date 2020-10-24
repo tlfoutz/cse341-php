@@ -164,8 +164,9 @@
                         }
                     }
                 }
-                echo '</table><br>';
+                echo '</table>';
                 if ($counter == 0) { echo 'No food found.<br>'; }
+                echo '<br><br>';
 
                 // User's locations 
                 echo '<select name="locations" id="locations"><option value="0" selected>All locations</option>';
@@ -181,7 +182,7 @@
                 // Food name search
                 echo '<label for="fname">Find food by name:</label><br><input type="search" id="fname" name="fname"';
                 if($_SESSION['foodSearch']) { echo ' value="' . $_SESSION['foodSearch'] . '"';}
-                echo '><br><br>';
+                echo '>';
 
                 // New food item input
                 echo '<br><h3>Add new food item:</h3><label for="fAddName">Name:</label><br><input type="text" id="fAddName" name="fAddName"><br>';
