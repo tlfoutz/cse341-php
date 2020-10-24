@@ -37,7 +37,7 @@
             }
             // set as the current user as well
             while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-                $_SESSION['userId'] = $db->lastInsertId('users_id_seq');
+                $_SESSION['userId'] = 8;
                 $_SESSION['userName'] = $_POST['nname'];
             }
         }
