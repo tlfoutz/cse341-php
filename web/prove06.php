@@ -45,7 +45,7 @@
     //SELECT return user
     if ($_POST['rname']) {
         $statement = $db->prepare('SELECT id, user_name, user_password FROM users WHERE user_name = :username AND user_password = :password');
-        try {$statement->execute(array(':name' => htmlspecialchars($_POST['rname']), ':password' => htmlspecialchars($_POST['rpsw'])));}
+        try {$statement->execute(array(':username' => htmlspecialchars($_POST['rname']), ':password' => htmlspecialchars($_POST['rpsw'])));}
         catch (PDOException $ex) {
             $_SESSION['errMsg'] = '<p class="errMsg">Incorrect username and/or password.</p>';
         }
@@ -107,7 +107,6 @@
         <br>
         <?php
             echo $_SESSION['errMsg'];
-            echo '<h2>Welcome, ' . $_SESSION['userName'] . '</h2>';
             echo '<form method="post" action="';
             echo htmlspecialchars($_SERVER["PHP_SELF"]);
             echo '">';
@@ -133,6 +132,7 @@
             echo '<input type="password" placeholder="8 to 16 characters" name="cpsw" minlength="8" maxlength="16"><br><br>';
 
             if ($_SESSION['userId']) {
+                echo '<h2>Welcome, ' . $_SESSION['userName'] . '</h2>';
                 // User's locations 
                 echo '<select name="locations" id="locations"><option value="0" selected>All locations</option>';
                 $statement = $db->prepare('SELECT id, location_name FROM locations WHERE added_by = :id');
