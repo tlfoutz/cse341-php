@@ -34,7 +34,6 @@
             try {$statement->execute(array(':name' => htmlspecialchars($_POST['nname']), ':password' => htmlspecialchars($_POST['npsw'])));}
             catch (PDOException $ex) {
                 $_SESSION['errMsg'] = 'Username already exists';
-                die();
             }
         }
     }
