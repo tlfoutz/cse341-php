@@ -5,6 +5,7 @@
     $_SESSION['foodSearch'] = htmlspecialchars($_POST['fname']);
     $_SESSION['errMsg'] = '';
 
+    // Connect to Postgres
     try {
         $dbUrl = getenv('DATABASE_URL');
 
@@ -114,13 +115,8 @@
             echo '<form method="post" action="';
             echo htmlspecialchars($_SERVER["PHP_SELF"]);
             echo '">';
-            // echo '<select name="users" id="users"><option value="0" disabled selected> -- Select user -- </option>';
-            // foreach ($db->query('SELECT id, user_name FROM users') as $row) {
-            //     echo '<option value="' . $row['id'] . '"';
-            //     if ($_POST['users'] == $row['id']) { echo ' selected'; }
-            //     echo '>' . $row['user_name'] . '</option>';
-            // }
-            // echo '</select><br><br>';
+
+            // Display login Info
             if (!isset($_SESSION['userId'])) {
                 echo '<h3>Return User Login</h3>';
                 echo '<label for="rname"><b>Username: </b></label>';
@@ -136,9 +132,9 @@
                 echo '<label for="cpsw"><b>Confirm Password: </b></label>';
                 echo '<input type="password" placeholder="8 to 16 characters" name="cpsw" minlength="8" maxlength="16"><br><br>';
             }
+            
+            // Display user info
             else {
-
-            // if ($_SESSION['userId']) {
                 echo '<h2>Welcome, ' . $_SESSION['userName'] . '</h2>';
                 // User's locations 
                 echo '<select name="locations" id="locations"><option value="0" selected>All locations</option>';
