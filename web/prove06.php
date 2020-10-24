@@ -145,7 +145,7 @@
                     if ($_SESSION['foodSearch']) {
                         // TODO:
                     } else {
-                        $statement = $db->prepare('SELECT f.id, f.food_name, f.location_id, f.quantity, l.location_name FROM foods f INNER JOIN locations l WHERE added_by = :id');
+                        $statement = $db->prepare('SELECT f.id, f.food_name, f.location_id, f.quantity, l.location_name FROM foods f INNER JOIN locations l WHERE f.added_by = :id');
                         $statement->execute(array(':id' => $_SESSION['userId']));
                         while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
                             echo '<tr><td>' . $row['f.food_name'] . '</td><td>' . $row['l.location_name'] . '</td><td><input type="number" value="' . $row['f.quantity'] . '" name="newAmount' .$row['f.id'] . '" min="0"></tr>';
