@@ -3,6 +3,7 @@
     $_SESSION['userId'] = $_POST['users'];
     $_SESSION['selectedLocation'] = $_POST['locations'];
     $_SESSION['foodSearch'] = htmlspecialchars($_POST['fname']);
+    $_SESSION['addFoodErrMsg'] = '';
 
     try {
         $dbUrl = getenv('DATABASE_URL');
@@ -24,7 +25,9 @@
         die();
     }
 
+    // INSERT new location
     if ($_POST['lAddName']) {
+        // with details
         if ($_POST['lAddDetails']) {
             $statement = $db->prepare('INSERT INTO locations(location_name, details, added_by) VALUES (:name, :details, :id)');
             $statement->execute(array(':name' => htmlspecialchars($_POST['lAddName']), ':details' => htmlspecialchars($_POST['lAddDetails']), ':id' => $_SESSION['userId']));
@@ -34,11 +37,14 @@
         }
     }
 
+    // INSERT new food
     if ($_POST['fAddName']) {
+        // check for missing/incorrect information
         if ((empty($_POST['fAddQuantity']) || $_POST['fAddQuantity'] <= 0) || $_POST['fAddLocation'] == 0) {
             $_SESSION['addFoodErrMsg'] = '<p class="errMsg">Not all fields for new food item where filled out correctly. New food not added.';
         } else {
             $_SESSION['addFoodErrMsg'] = '';
+            // with details
             if ($_POST['fAddDetails']) {
                 $statement = $db->prepare('INSERT INTO foods(food_name, details, location_id, quantity, added_by) VALUES (:name, :details, :locationId, :amount, :id)');
                 $statement->execute(array(':name' => htmlspecialchars($_POST['fAddName']), ':details' => htmlspecialchars($_POST['fAddDetails']), ':locationId' => $_POST['fAddLocation'], ':amount' => $_POST['fAddQuantity'], ':id' => $_SESSION['userId'])); 
@@ -49,6 +55,7 @@
         }
     }
 
+    // INSERT new food quantities
     foreach($_POST as $key => $val) {
         if (preg_match('/newAmount\d/m', $key)) {
             $foodId = trim($key,"newAmount");
@@ -70,17 +77,30 @@
         <h1>Food Inventory Data Modification</h1>
         <br>
         <?php
-            if(true) {echo $_SESSION['addFoodErrMsg'];} // TODO:
+            echo $_SESSION['addFoodErrMsg'];
             echo '<form method="post" action="';
             echo htmlspecialchars($_SERVER["PHP_SELF"]);
             echo '">';
-            echo '<select name="users" id="users"><option value="0" disabled selected> -- Select user -- </option>';
-            foreach ($db->query('SELECT id, user_name FROM users') as $row) {
-                echo '<option value="' . $row['id'] . '"';
-                if ($_POST['users'] == $row['id']) { echo ' selected'; }
-                echo '>' . $row['user_name'] . '</option>';
-            }
-            echo '</select><br><br>';
+            // echo '<select name="users" id="users"><option value="0" disabled selected> -- Select user -- </option>';
+            // foreach ($db->query('SELECT id, user_name FROM users') as $row) {
+            //     echo '<option value="' . $row['id'] . '"';
+            //     if ($_POST['users'] == $row['id']) { echo ' selected'; }
+            //     echo '>' . $row['user_name'] . '</option>';
+            // }
+            // echo '</select><br><br>';
+            echo '<h3>Return User Login</h3>';
+            echo '<label for="rname"><b>Username</b></label>';
+            echo '<input type="text" placeholder="Enter Username" name="rname"><br>';
+            echo '<label for="rpsw"><b>Password</b></label>';
+            echo '<input type="password" placeholder="Enter Password" name="rpsw">';
+
+            echo '<h3>New User Login</h3>';
+            echo '<label for="nname"><b>Username</b></label>';
+            echo '<input type="text" placeholder="Enter Username" name="nname"><br>';
+            echo '<label for="npsw"><b>Password</b></label>';
+            echo '<input type="password" placeholder="Enter Password" name="npsw">';
+            echo '<label for="cpsw"><b>Confirm Password</b></label>';
+            echo '<input type="password" placeholder="Confirm Password" name="cpsw">';
 
             if ($_SESSION['userId']) {
                 // User's locations 
@@ -131,6 +151,7 @@
 
                 // New food item input
                 echo '<br><h3>Add new food item:</h3><label for="fAddName">Name:</label><br><input type="text" id="fAddName" name="fAddName"><br><br>';
+                echo '<label for="fAddLocation">Location:</label><br>';
                 echo '<select name="fAddLocation" id="fAddLocation"><option value="0" disabled selected> -- Select location -- </option>';
                 $statement = $db->prepare('SELECT id, location_name FROM locations WHERE added_by = :id');
                 $statement->execute(array(':id' => $_SESSION['userId']));
@@ -138,7 +159,7 @@
                     echo '<option value="' . $row['id'] . '">' . $row['location_name'] . '</option>';
                 }
                 echo '</select><br>';
-                echo '<label for="fAddQuantity">Quantity:</label><br><input type="number" id="fAddQuantity" name="fAddQuantity" min="0"><br><br>';
+                echo '<label for="fAddQuantity">Quantity:</label><br><input type="number" id="fAddQuantity" name="fAddQuantity" min="0"><br>';
                 echo '<label for="fAddDetails">Details:</label><br><input type="textarea" id="fAddDetails" name="fAddDetails"><br><br>';
                 
                 // New location input
