@@ -104,7 +104,6 @@
     </head>
     <body>
         <h1>Food Inventory Data Modification</h1>
-        <br>
         <?php
             echo $_SESSION['errMsg'];
             echo '<form method="post" action="';
@@ -117,21 +116,24 @@
             //     echo '>' . $row['user_name'] . '</option>';
             // }
             // echo '</select><br><br>';
-            echo '<h3>Return User Login</h3>';
-            echo '<label for="rname"><b>Username: </b></label>';
-            echo '<input type="text" placeholder="Enter Username" name="rname" minlength="8" maxlength="16"><br><br>';
-            echo '<label for="rpsw"><b>Password: </b></label>';
-            echo '<input type="password" placeholder="Enter Password" name="rpsw" minlength="8" maxlength="16">';
+            if (!isset($_SESSION['userId'])) {
+                echo '<h3>Return User Login</h3>';
+                echo '<label for="rname"><b>Username: </b></label>';
+                echo '<input type="text" placeholder="Enter Username" name="rname" minlength="8" maxlength="16"><br><br>';
+                echo '<label for="rpsw"><b>Password: </b></label>';
+                echo '<input type="password" placeholder="Enter Password" name="rpsw" minlength="8" maxlength="16">';
 
-            echo '<h3>New User Login</h3>';
-            echo '<label for="nname"><b>Username: </b></label>';
-            echo '<input type="text" placeholder="8 to 16 characters" name="nname" minlength="8" maxlength="16"><br><br>';
-            echo '<label for="npsw"><b>Password: </b></label>';
-            echo '<input type="password" placeholder="8 to 16 characters" name="npsw" minlength="8" maxlength="16"><br><br>';
-            echo '<label for="cpsw"><b>Confirm Password: </b></label>';
-            echo '<input type="password" placeholder="8 to 16 characters" name="cpsw" minlength="8" maxlength="16"><br><br>';
+                echo '<h3>New User Login</h3>';
+                echo '<label for="nname"><b>Username: </b></label>';
+                echo '<input type="text" placeholder="8 to 16 characters" name="nname" minlength="8" maxlength="16"><br><br>';
+                echo '<label for="npsw"><b>Password: </b></label>';
+                echo '<input type="password" placeholder="8 to 16 characters" name="npsw" minlength="8" maxlength="16"><br><br>';
+                echo '<label for="cpsw"><b>Confirm Password: </b></label>';
+                echo '<input type="password" placeholder="8 to 16 characters" name="cpsw" minlength="8" maxlength="16"><br><br>';
+            }
+            else {
 
-            if ($_SESSION['userId']) {
+            // if ($_SESSION['userId']) {
                 echo '<h2>Welcome, ' . $_SESSION['userName'] . '</h2>';
                 // User's locations 
                 echo '<select name="locations" id="locations"><option value="0" selected>All locations</option>';
