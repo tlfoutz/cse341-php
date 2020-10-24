@@ -1,6 +1,5 @@
 <?php
     session_start();
-    print_r($_POST);
     $_SESSION['userId'] = $_POST['users'];
     $_SESSION['selectedLocation'] = $_POST['locations'];
     $_SESSION['foodSearch'] = htmlspecialchars($_POST['fname']);
@@ -51,8 +50,7 @@
     }
 
     foreach($_POST as $key => $val) {
-        if (preg_match('/newAmount\d/m', $key) && empty($_POST['$key'])) {
-        // if ($key == 'newAmount2') {
+        if (preg_match('/newAmount\d/m', $key)) {
             $foodId = trim($key,"newAmount");
             $statement = $db->prepare('UPDATE foods SET quantity = :quantity WHERE id = :id');
             $statement->execute(array(':quantity' => intval($val), ':id' => intval($foodId)));
