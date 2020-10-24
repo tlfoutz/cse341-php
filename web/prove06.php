@@ -3,7 +3,7 @@
     $_SESSION['userId'] = $_POST['users'];
     $_SESSION['selectedLocation'] = $_POST['locations'];
     $_SESSION['foodSearch'] = htmlspecialchars($_POST['fname']);
-    $_SESSION['addFoodErrMsg'] = '';
+    $_SESSION['errMsg'] = '';
 
     try {
         $dbUrl = getenv('DATABASE_URL');
@@ -25,6 +25,22 @@
         die();
     }
 
+    //INSERT user
+    if ($_POST['nname']) {
+        if($_POST['npsw'] != $_POST['cpsw']) {
+            $_SESSION['errMsg'] = 'The new and confirmation passwords did not match. New user not created.';
+        } else {
+            $statement = $db->prepare('INSERT INTO users(user_name, user_password) VALUES (:name, :password)');
+            try {$statement->execute(array(':name' => htmlspecialchars($_POST['nname']), ':password' => htmlspecialchars($_POST['npsw'])));}
+            catch (PDOException $ex) {
+                $_SESSION['errMsg'] = 'Username already exists';
+                die();
+            }
+        }
+    }
+
+    //SELECT user
+
     // INSERT new location
     if ($_POST['lAddName']) {
         // with details
@@ -41,9 +57,8 @@
     if ($_POST['fAddName']) {
         // check for missing/incorrect information
         if ((empty($_POST['fAddQuantity']) || $_POST['fAddQuantity'] <= 0) || $_POST['fAddLocation'] == 0) {
-            $_SESSION['addFoodErrMsg'] = '<p class="errMsg">Not all fields for new food item where filled out correctly. New food not added.';
+            $_SESSION['errMsg'] = '<p class="errMsg">Not all fields for new food item where filled out correctly. New food not added.';
         } else {
-            $_SESSION['addFoodErrMsg'] = '';
             // with details
             if ($_POST['fAddDetails']) {
                 $statement = $db->prepare('INSERT INTO foods(food_name, details, location_id, quantity, added_by) VALUES (:name, :details, :locationId, :amount, :id)');
@@ -77,7 +92,7 @@
         <h1>Food Inventory Data Modification</h1>
         <br>
         <?php
-            echo $_SESSION['addFoodErrMsg'];
+            echo $_SESSION['errMsg'];
             echo '<form method="post" action="';
             echo htmlspecialchars($_SERVER["PHP_SELF"]);
             echo '">';
@@ -90,17 +105,17 @@
             // echo '</select><br><br>';
             echo '<h3>Return User Login</h3>';
             echo '<label for="rname"><b>Username: </b></label>';
-            echo '<input type="text" placeholder="Enter Username" name="rname"><br><br>';
+            echo '<input type="text" placeholder="Enter Username" name="rname" minlength="8" maxlength="16"><br><br>';
             echo '<label for="rpsw"><b>Password: </b></label>';
-            echo '<input type="password" placeholder="Enter Password" name="rpsw">';
+            echo '<input type="password" placeholder="Enter Password" name="rpsw" minlength="8" maxlength="16">';
 
             echo '<h3>New User Login</h3>';
             echo '<label for="nname"><b>Username: </b></label>';
-            echo '<input type="text" placeholder="Enter Username" name="nname"><br><br>';
+            echo '<input type="text" placeholder="8 to 16 characters" name="nname" minlength="8" maxlength="16"><br><br>';
             echo '<label for="npsw"><b>Password: </b></label>';
-            echo '<input type="password" placeholder="Enter Password" name="npsw"><br><br>';
+            echo '<input type="password" placeholder="8 to 16 characters" name="npsw" minlength="8" maxlength="16"><br><br>';
             echo '<label for="cpsw"><b>Confirm Password: </b></label>';
-            echo '<input type="password" placeholder="Confirm Password" name="cpsw"><br><br>';
+            echo '<input type="password" placeholder="8 to 16 characters" name="cpsw" minlength="8" maxlength="16"><br><br>';
 
             if ($_SESSION['userId']) {
                 // User's locations 
