@@ -31,14 +31,18 @@
             $_SESSION['errMsg'] = '<p class="errMsg">The new and confirmation passwords did not match. New user not created.</p>';
         } else {
             $statement = $db->prepare('INSERT INTO users(user_name, user_password) VALUES (:name, :password)');
-            try {$statement->execute(array(':name' => htmlspecialchars($_POST['nname']), ':password' => htmlspecialchars($_POST['npsw'])));}
+            try {
+                $statement->execute(array(':name' => htmlspecialchars($_POST['nname']), ':password' => htmlspecialchars($_POST['npsw'])));
+                // SELECT as the current user as well
+                $statement = $db->prepare('SELECT id, user_name FROM users WHERE user_name = :username');
+                $statement->execute(array(':username' => htmlspecialchars($_POST['nname'])));
+                while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
+                    $_SESSION['userId'] = $row['id'];
+                    $_SESSION['userName'] = $row['user_name'];
+                }
+            }
             catch (PDOException $ex) {
                 $_SESSION['errMsg'] = '<p class="errMsg">Username already exists.</p>';
-            }
-            // set as the current user as well
-            while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-                $_SESSION['userId'] = 8;
-                $_SESSION['userName'] = $_POST['nname'];
             }
         }
     }
