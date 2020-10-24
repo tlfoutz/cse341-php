@@ -1,5 +1,6 @@
 <?php
     session_start();
+    if($_POST['logout']) { unset($_SESSION['userId']); }
     $_SESSION['selectedLocation'] = $_POST['locations'];
     $_SESSION['foodSearch'] = htmlspecialchars($_POST['fname']);
     $_SESSION['errMsg'] = '';
@@ -197,6 +198,8 @@
                 // New location input
                 echo '<h3>Add new food location:</h3><label for="lAddName">Name:</label><br><input type="text" id="lAddName" name="lAddName"><br>';
                 echo '<label for="lAddDetails">Details:</label><br><input type="textarea" id="lAddDetails" name="lAddDetails"><br><br>';
+                echo '<input type="checkbox" id="logout" name="logout" value="1">';
+                echo '<label for="logout"> Check this box to logout after submitting.</label><br><br>';
             }
 
             echo '<input type="submit" name="submit" value="Submit"></form><br>';
