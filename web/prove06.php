@@ -1,6 +1,5 @@
 <?php
     session_start();
-    $_SESSION['userId'] = $_POST['users'];
     $_SESSION['selectedLocation'] = $_POST['locations'];
     $_SESSION['foodSearch'] = htmlspecialchars($_POST['fname']);
     $_SESSION['errMsg'] = '';
@@ -25,20 +24,36 @@
         die();
     }
 
-    //INSERT user
+    //INSERT new user
     if ($_POST['nname']) {
         if($_POST['npsw'] != $_POST['cpsw']) {
-            $_SESSION['errMsg'] = 'The new and confirmation passwords did not match. New user not created.';
+            $_SESSION['errMsg'] = '<p class="errMsg">The new and confirmation passwords did not match. New user not created.</p>';
         } else {
             $statement = $db->prepare('INSERT INTO users(user_name, user_password) VALUES (:name, :password)');
             try {$statement->execute(array(':name' => htmlspecialchars($_POST['nname']), ':password' => htmlspecialchars($_POST['npsw'])));}
             catch (PDOException $ex) {
-                $_SESSION['errMsg'] = 'Username already exists';
+                $_SESSION['errMsg'] = '<p class="errMsg">Username already exists.</p>';
+            }
+            // set as the current user as well
+            while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
+                $_SESSION['userId'] = $db->lastInsertId('users_id_seq');
+                $_SESSION['userName'] = $_POST['nname'];
             }
         }
     }
 
-    //SELECT user
+    //SELECT return user
+    if ($_POST['rname']) {
+        $statement = $db->prepare('SELECT id, user_name, user_password FROM users WHERE user_name = :username AND user_password = :password');
+        try {$statement->execute(array(':name' => htmlspecialchars($_POST['rname']), ':password' => htmlspecialchars($_POST['rpsw'])));}
+        catch (PDOException $ex) {
+            $_SESSION['errMsg'] = '<p class="errMsg">Incorrect username and/or password.</p>';
+        }
+        while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
+            $_SESSION['userId'] = $row['id'];
+            $_SESSION['userName'] = $row['user_name'];
+        }
+    }
 
     // INSERT new location
     if ($_POST['lAddName']) {
@@ -56,7 +71,7 @@
     if ($_POST['fAddName']) {
         // check for missing/incorrect information
         if ((empty($_POST['fAddQuantity']) || $_POST['fAddQuantity'] <= 0) || $_POST['fAddLocation'] == 0) {
-            $_SESSION['errMsg'] = '<p class="errMsg">Not all fields for new food item where filled out correctly. New food not added.';
+            $_SESSION['errMsg'] = '<p class="errMsg">Not all fields for new food item where filled out correctly. New food not added.</p>';
         } else {
             // with details
             if ($_POST['fAddDetails']) {
@@ -92,6 +107,7 @@
         <br>
         <?php
             echo $_SESSION['errMsg'];
+            echo '<h2>Welcome, ' . $_SESSION['userName'] . '</h2>';
             echo '<form method="post" action="';
             echo htmlspecialchars($_SERVER["PHP_SELF"]);
             echo '">';
