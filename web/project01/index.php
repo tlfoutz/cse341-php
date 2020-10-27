@@ -152,9 +152,9 @@
                     while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
                         echo '<tr><td>' . $row['food_name'] . '</td><td>';
                         echo '<select name="' . $row['id'] . 'locations" id="' . $row['id'] . 'locations"><option value="0" disabled> -- Select location -- </option>';
-                        $statement = $db->prepare('SELECT id, location_name FROM locations WHERE added_by = :id ORDER BY location_name');
-                        $statement->execute(array(':id' => $_SESSION['userId']));
-                        while ($innerRow = $statement->fetch(PDO::FETCH_ASSOC)) {
+                        $sttmnt = $db->prepare('SELECT id, location_name FROM locations WHERE added_by = :id ORDER BY location_name');
+                        $sttmnt->execute(array(':id' => $_SESSION['userId']));
+                        while ($innerRow = $sttmnt->fetch(PDO::FETCH_ASSOC)) {
                             echo '<option value="' . $innerRow['id'] . '"';
                             if ($row['location_id'] == $innerRow['id']) { echo ' selected'; }
                             echo '>' . $innerRow['location_name'] . '</option>';
