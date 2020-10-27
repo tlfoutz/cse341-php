@@ -2,7 +2,7 @@
     session_start();
     if($_POST['logout']) { unset($_SESSION['userId']); }
     $_SESSION['selectedLocation'] = $_POST['locations'];
-    $_SESSION['foodSearch'] = htmlspecialchars(strtolower($_POST['fname']));
+    $_SESSION['foodSearch'] = htmlspecialchars($_POST['fname']);
     $_SESSION['errMsg'] = '';
 
     // Connect to Postgres
@@ -146,8 +146,8 @@
                         // TODO:
                         // $statement = $db->prepare("SELECT f.id, f.food_name, f.location_id, f.details, f.quantity, l.location_name FROM foods f INNER JOIN locations l ON f.location_id = l.id WHERE lower(f.food_name) LIKE '%' || :pattern || '%' AND f.added_by = :id ORDER BY f.food_name");
                         // $statement->execute(array(':pattern' => $_SESSION['foodSearch']));
-                        $statement = $db->prepare("SELECT f.id, f.food_name, f.location_id, f.details, f.quantity, l.location_name FROM foods f INNER JOIN locations l ON f.location_id = l.id WHERE lower(f.food_name) LIKE :pattern AND f.added_by = :id ORDER BY f.food_name");
-                        $statement->execute(array(':pattern' => '%' . $_SESSION['foodSearch'] . '%'));
+                        $statement = $db->prepare("SELECT f.id, f.food_name, f.location_id, f.details, f.quantity, l.location_name FROM foods f INNER JOIN locations l ON f.location_id = l.id WHERE lower(f.food_name) LIKE '%i%' AND f.added_by = :id ORDER BY f.food_name");
+                        //$statement->execute(array(':pattern' => '%' . $_SESSION['foodSearch'] . '%'));
 
                     } else {
                         $statement = $db->prepare('SELECT f.id, f.food_name, f.location_id, f.details, f.quantity, l.location_name FROM foods f INNER JOIN locations l ON f.location_id = l.id WHERE f.added_by = :id ORDER BY f.food_name');
