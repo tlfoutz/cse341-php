@@ -146,13 +146,12 @@
                         // TODO:
                         // $statement = $db->prepare("SELECT f.id, f.food_name, f.location_id, f.details, f.quantity, l.location_name FROM foods f INNER JOIN locations l ON f.location_id = l.id WHERE lower(f.food_name) LIKE '%' || :pattern || '%' AND f.added_by = :id ORDER BY f.food_name");
                         // $statement->execute(array(':pattern' => $_SESSION['foodSearch']));
-                        $statement = $db->prepare("SELECT f.id, f.food_name, f.location_id, f.details, f.quantity, l.location_name FROM foods f INNER JOIN locations l ON f.location_id = l.id WHERE lower(f.food_name) LIKE '%i%' AND f.added_by = :id ORDER BY f.food_name");
-                        //$statement->execute(array(':pattern' => '%' . $_SESSION['foodSearch'] . '%'));
-
+                        $statement = $db->prepare("SELECT f.id, f.food_name, f.location_id, f.details, f.quantity, l.location_name FROM foods f INNER JOIN locations l ON f.location_id = l.id WHERE lower(f.food_name) LIKE :pattern AND f.added_by = :id ORDER BY f.food_name");
+                        $statement->execute(array(':id' => $_SESSION['userId'], ':pattern' => '%' . $_SESSION['foodSearch'] . '%'));
                     } else {
                         $statement = $db->prepare('SELECT f.id, f.food_name, f.location_id, f.details, f.quantity, l.location_name FROM foods f INNER JOIN locations l ON f.location_id = l.id WHERE f.added_by = :id ORDER BY f.food_name');
+                        $statement->execute(array(':id' => $_SESSION['userId']));
                     }
-                    $statement->execute(array(':id' => $_SESSION['userId']));
                     while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
                         echo '<tr><td>' . $row['food_name'] . '</td><td>' . $row['location_name'] . '</td><td><input type="number" value="' . $row['quantity'] . '" name="newAmount' .$row['id'] . '" min="0"></td><td>' . $row['details'] . '</td></tr>';
                         $counter++;
