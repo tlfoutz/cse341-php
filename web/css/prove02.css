@@ -24,7 +24,6 @@ body {
 
 .header {
   background-image: url("../images/header-background.jpg");
-  background-repeat: repeat-y;
   background-size: cover;
   background-position: center;
   position: relative;
@@ -47,15 +46,11 @@ body {
   text-align: center;
 }
 
-.description h1, h2 {
+.description h1 {
   color: #6ab446;
 }
 
-form + h3 {
-  color: #6ab446;
-}
-
-.description p, label {
+.description p {
   color: #fff;
   font-size: 1.3rem;
   line-height: 1.5;
