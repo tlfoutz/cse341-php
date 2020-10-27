@@ -2,7 +2,7 @@
     session_start();
     if($_POST['logout']) { unset($_SESSION['userId']); }
     $_SESSION['selectedLocation'] = $_POST['locations'];
-    // $_SESSION['foodSearch'] = htmlspecialchars($_POST['fname']);
+    $_SESSION['foodSearch'] = htmlspecialchars($_POST['fname']);
     $_SESSION['errMsg'] = '';
 
     // Connect to Postgres
@@ -142,27 +142,31 @@
                 $counter = 0;
                 
                 if ($_SESSION['selectedLocation'] == 0 || empty($_SESSION['selectedLocation'])) {
-                    // if ($_SESSION['foodSearch']) {
-                    //     // TODO:
-                    // } else {
+                    if ($_SESSION['foodSearch']) {
+                        // TODO:
+                        $statement = $db->prepare('SELECT f.id, f.food_name, f.location_id, f.details, f.quantity, l.location_name FROM foods f INNER JOIN locations l ON f.location_id = l.id WHERE lower(f.food_name) LIKE lower("pattern") AND f.added_by = :id ORDER BY f.food_name');
+                        $statement->execute(array(':pattern' => '%' . $_SESSION['foodSearch'] . '%'));
+                    } else {
                         $statement = $db->prepare('SELECT f.id, f.food_name, f.location_id, f.details, f.quantity, l.location_name FROM foods f INNER JOIN locations l ON f.location_id = l.id WHERE f.added_by = :id ORDER BY f.food_name');
-                        $statement->execute(array(':id' => $_SESSION['userId']));
-                        while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-                            echo '<tr><td>' . $row['food_name'] . '</td><td>' . $row['location_name'] . '</td><td><input type="number" value="' . $row['quantity'] . '" name="newAmount' .$row['id'] . '" min="0"></td><td>' . $row['details'] . '</td></tr>';
-                            $counter++;
-                        }
-                    // }
+                    }
+                    $statement->execute(array(':id' => $_SESSION['userId']));
+                    while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
+                        echo '<tr><td>' . $row['food_name'] . '</td><td>' . $row['location_name'] . '</td><td><input type="number" value="' . $row['quantity'] . '" name="newAmount' .$row['id'] . '" min="0"></td><td>' . $row['details'] . '</td></tr>';
+                        $counter++;
+                    }
                 } else {
-                    // if ($_SESSION['foodSearch']) {
-                    //     // TOD0:
-                    // } else {
+                    if ($_SESSION['foodSearch']) {
+                        // TOD0:
+                        $statement = $db->prepare('SELECT f.id, f.food_name, f.location_id, f.details, f.quantity, l.location_name FROM foods f INNER JOIN locations l ON f.location_id = l.id WHERE lower(f.food_name) LIKE lower("pattern") AND f.added_by = :id AND f.location_id = :locationId ORDER BY f.food_name');
+                        $statement->execute(array(':pattern' => '%' . $_SESSION['foodSearch'] . '%'));
+                    } else {
                         $statement = $db->prepare('SELECT f.id, f.food_name, f.location_id, f.details, f.quantity, l.location_name FROM foods f INNER JOIN locations l ON f.location_id = l.id WHERE f.added_by = :id AND f.location_id = :locationId ORDER BY f.food_name');
-                        $statement->execute(array(':id' => $_SESSION['userId'], ':locationId' => $_SESSION['selectedLocation']));
-                        while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-                            echo '<tr><td>' . $row['food_name'] . '</td><td>' . $row['location_name'] . '</td><td><input type="number" value="' . $row['quantity'] . '" name="newAmount' .$row['id'] . '" min="0"></td><td>' . $row['details'] . '</td></tr>';
-                            $counter++;
-                        }
-                    // }
+                    }
+                    $statement->execute(array(':id' => $_SESSION['userId'], ':locationId' => $_SESSION['selectedLocation']));
+                    while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
+                        echo '<tr><td>' . $row['food_name'] . '</td><td>' . $row['location_name'] . '</td><td><input type="number" value="' . $row['quantity'] . '" name="newAmount' .$row['id'] . '" min="0"></td><td>' . $row['details'] . '</td></tr>';
+                        $counter++;
+                    }
                 }
                 echo '</table>';
                 if ($counter == 0) { echo 'No food found.<br>'; }
@@ -179,10 +183,10 @@
                 }
                 echo '</select><br>';
                 
-                // Food name search * NOT READY * 
-                // echo '<label for="fname">Find food by name:</label><br><input type="search" id="fname" name="fname"';
-                // if($_SESSION['foodSearch']) { echo ' value="' . $_SESSION['foodSearch'] . '"';}
-                // echo '>';
+                // Food name search 
+                echo '<label for="fname">Find food by name:</label><br><input type="search" id="fname" name="fname"';
+                if($_SESSION['foodSearch']) { echo ' value="' . $_SESSION['foodSearch'] . '"';}
+                echo '><br>';
 
                 // New food item input
                 echo '<br><h3>Add new food item:</h3><label for="fAddName">Name:</label><br><input type="text" id="fAddName" name="fAddName"><br>';
