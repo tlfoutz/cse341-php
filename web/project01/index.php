@@ -90,12 +90,17 @@
         }
     }
 
-    // INSERT new food quantities
+    // UPDATE new food quantities and locations
     foreach($_POST as $key => $val) {
         if (preg_match('/newAmount\d/m', $key)) {
             $foodId = trim($key,"newAmount");
             $statement = $db->prepare('UPDATE foods SET quantity = :quantity WHERE id = :id');
             $statement->execute(array(':quantity' => intval($val), ':id' => intval($foodId)));
+        }
+        if (preg_match('/locations\d/m', $key)) {
+            $locationId = trim($key,"locations");
+            $statement = $db->prepare('UPDATE foods SET location_id = :locationId WHERE id = :id');
+            $statement->execute(array(':locationId' => intval($val), ':id' => intval($locationId)));
         }
     }
 ?>
@@ -151,7 +156,7 @@
                     }
                     while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
                         echo '<tr><td>' . $row['food_name'] . '</td><td>';
-                        echo '<select name="' . $row['id'] . 'locations" id="' . $row['id'] . 'locations"><option value="0" disabled> -- Select location -- </option>';
+                        echo '<select name="locations' . $row['id'] . '" id="locations' . $row['id'] . '"><option value="0" disabled> -- Select location -- </option>';
                         $sttmnt = $db->prepare('SELECT id, location_name FROM locations WHERE added_by = :id ORDER BY location_name');
                         $sttmnt->execute(array(':id' => $_SESSION['userId']));
                         while ($innerRow = $sttmnt->fetch(PDO::FETCH_ASSOC)) {
