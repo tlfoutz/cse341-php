@@ -1,0 +1,93 @@
+*
+{
+    outline: none !important;
+    scroll-behavior: smooth;
+}
+body{
+    font-family: 'Nanum Gothic', sans-serif;
+    background-color: #fff;
+}
+header
+{
+    position: relative;
+    z-index: 1000000;
+}
+.banner
+{
+    margin-top: 200px;
+}
+
+p
+{
+    font-size: 1.15rem;
+}
+.navbar-light .navbar-brand,
+.navbar-light .navbar-brand:hover,
+.navbar-light .navbar-brand:focus,
+.navbar-light .navbar-brand:visited
+{
+    color: rgba(000,000,000,1);
+    font-size: 2.4rem;
+    font-weight: 600;
+}
+
+
+:target {
+    display: block;
+    position: relative;
+    top: -135px; 
+    visibility: hidden;
+  }
+
+
+.product
+{
+    position: relative;
+    padding: 100px 0;
+    background: #fff;
+}
+
+.productSnip
+{
+    position: relative;
+    width: 100%;
+    margin-bottom: 30px;
+    background: lavender;
+}
+.productSnip .imgBox
+{
+    height: 200px;
+}
+.productSnip .imgBox img
+{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.productSnip .content
+{
+    padding: 15px;
+}
+.productSnip .content h1
+{
+    margin: 0;
+    padding: 0 0 10px;
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+.mybtn,
+.mybtn:hover
+{
+    background: #4bce00;
+    color: beige;
+    border-radius: 30px;
+    padding: 10px 20px;
+    float: right;
+}
+footer
+{
+    background: lavender;
+    padding: 20px 0 5px;
+    text-align: center;
+    color: #000;
+}
