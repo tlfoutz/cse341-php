@@ -46,11 +46,11 @@ body {
   text-align: center;
 }
 
-.description h1 {
+.description h1, h2, h3 {
   color: #6ab446;
 }
 
-.description p {
+.description p, label, input {
   color: #fff;
   font-size: 1.3rem;
   line-height: 1.5;
