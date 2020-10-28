@@ -21,7 +21,7 @@
             <label for="lAddName">Name:</label><br>
             <input type="text" id="lAddName" name="lAddName"><br>
             <label for="lAddDetails">Details:</label><br>
-            <input type="text" id="lAddDetails" name="lAddDetails">
+            <input type="text" id="lAddDetails" name="lAddDetails"><br>
             <input type="submit" name="addLocation" value="Add Location">
         </form>
     </body>
