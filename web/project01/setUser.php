@@ -11,15 +11,15 @@
             $_SESSION['errMsg'] = '';
             header("Location: index.php");
             die();
-        } else if ($row['user_name'] != $_POST['rname'] && $row['user_password'] != $_POST['rpsw']) {
+        } else if ($row['user_name'] !== $_POST['rname'] && $row['user_password'] !== $_POST['rpsw']) {
             $_SESSION['errMsg'] = '<p style="color:red">Incorrect username and password.</p>';
             header("Location: signIn.php");
             die();
-        } else if ($row['user_name'] != $_POST['rname']) {
+        } else if ($row['user_name'] !== $_POST['rname']) {
             $_SESSION['errMsg'] = '<p style="color:red">Incorrect username.</p>';
             header("Location: signIn.php");
             die();
-        } else if ($row['user_password'] == $_POST['rpsw']) {
+        } else if ($row['user_password'] !== $_POST['rpsw']) {
             $_SESSION['errMsg'] = '<p style="color:red">Incorrect username.</p>';
             header("Location: signIn.php");
             die();
