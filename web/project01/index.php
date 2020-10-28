@@ -143,7 +143,7 @@
             <table><tr><th>Food</th><th>Location</th><th>Quantity</th><th>Details</th></tr>
                 <?php include 'renderFoodTable.php'; ?>
             </table><br>
-            <input type="submit" name="update" value="Update">
+            <input type="submit" name="update" value="Update"><br>
         </form>
 
         <a href="addLocation.php">Add Location</a><br>
