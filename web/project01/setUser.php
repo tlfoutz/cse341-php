@@ -8,12 +8,12 @@
         $row = $statement->fetch(PDO::FETCH_ASSOC);
         $_SESSION['userId'] = $row['id'];
         $_SESSION['userName'] = $row['user_name'];
-        $_SESSION['errMsg'] = '';
+        $_SESSION['errMsg'] = 'test';
         header("Location: index.php");
         die();
     } else {
         $_SESSION['errMsg'] = '<p style="color:red">Incorrect username/password.</p>';
-        header("Location: signIn.php?test=true");
+        header("Location: signIn.php");
         die();
     }
 ?>
