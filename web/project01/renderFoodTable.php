@@ -21,7 +21,7 @@
                 if ($row['location_id'] == $innerRow['id']) { echo ' selected'; }
                 echo '>' . $innerRow['location_name'] . '</option>';
             }
-            echo '</select></td><td><input type="number" value="' . $row['quantity'] . '" name="newAmount' .$row['id'] . '" min="0"></td></td>';
+            echo '</select></td><td><input type="number" value="' . $row['quantity'] . '" name="newAmount' .$row['id'] . '" min="0"></td>';
             echo '<td><input type="textarea" value="' . $row['details'] . '" name="descriptField' .$row['id'] . '></td></tr>';
             $counter++;
         }

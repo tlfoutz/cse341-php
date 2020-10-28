@@ -121,7 +121,7 @@
     <body>
         <h1>Food Inventory Application</h1>
         
-        <h2>Welcome, <?php echo $_SESSION['userName'] ?></h2><br>
+        <h2>Welcome, <?php echo $_SESSION['userName'] ?></h2>
         
         <?php echo $_SESSION['errMsg'] . "<br><br>"?>
         <form id="signInForm" method="post" action="setUser.php">
