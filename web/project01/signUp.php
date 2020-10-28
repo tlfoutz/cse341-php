@@ -1,6 +1,5 @@
 <?php
     start_session();
-    require "dbConnect.php";
 ?>
 
 <!DOCTYPE html>

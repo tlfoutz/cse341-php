@@ -1,6 +1,5 @@
 <?php
     start_session();
-    require "dbConnect.php";
 ?>
 
 <!DOCTYPE html>
@@ -21,7 +20,6 @@
             <input type="password" placeholder="Enter Password" name="rpsw" minlength="8" maxlength="16">
             <input type="submit" name="signIn" value="Sign In">
         </form><br>
-        <?php echo $_SESSION['errMsg'] ?>
         <p><a href="signUp.php">Click here</a> if new user</p>
     </body>
 </html>
