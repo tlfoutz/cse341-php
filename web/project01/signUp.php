@@ -18,15 +18,14 @@
         <h1>User Sign Up</h1>
         <form id="signUpForm" method="post" action="createUser.php">
             <label for="nname"><b>Username: </b></label>
-            <input type="text" placeholder="8 to 16 characters" name="nname" minlength="8" maxlength="16" required><br><br>
+            <input type="text" placeholder="8 to 16 characters" name="nname" minlength="8" maxlength="16"><br><br>
             <label for="npsw"><b>Password: </b></label>
-            <input type="password" placeholder="8 to 16 characters" name="npsw" minlength="8" maxlength="16" required><br><br>
+            <input type="password" placeholder="8 to 16 characters" name="npsw" minlength="8" maxlength="16"><br><br>
             <label for="cpsw"><b>Confirm Password: </b></label>
-            <input type="password" placeholder="8 to 16 characters" name="cpsw" minlength="8" maxlength="16" required><br><br>
+            <input type="password" placeholder="8 to 16 characters" name="cpsw" minlength="8" maxlength="16"><br><br>
             <input type="submit" name="signUp" value="Sign Up">
         </form><br>
-        <?php echo $_SESSION['errMsg']; ?>
-        <br><br>
+        <?php echo $_SESSION['errMsg'] . "<br><br>"; ?>
         <p><a href="signIn.php">Click here</a> if returning user</p>
     </body>
 </html>

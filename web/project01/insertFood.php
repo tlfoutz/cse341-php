@@ -6,7 +6,7 @@
     if ($_POST['fAddName']) {
         // check for missing/incorrect information
         if ((empty($_POST['fAddQuantity']) || $_POST['fAddQuantity'] <= 0) || $_POST['fAddLocation'] == 0) {
-            $_SESSION['errMsg'] = '<p style="color:red;">Not all fields for new food item where filled out correctly. New food not added.</p>';
+            $_SESSION['errMsg'] = '<p style="color:red">Not all fields for new food item where filled out correctly. New food not added.</p>';
             header("Location: addFood.php");
             die();
         } else {

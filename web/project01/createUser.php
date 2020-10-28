@@ -3,7 +3,7 @@
     require "dbConnect.php";
 
     if($_POST['npsw'] != $_POST['cpsw']) {
-        $_SESSION['errMsg'] = '<p style="color:red;">The new and confirmation passwords did not match.</p>';
+        $_SESSION['errMsg'] = '<p style="color:red">The new and confirmation passwords did not match.</p>';
         header("Location: signUp.php");
         die();
     } else {
@@ -19,7 +19,7 @@
             }
         }
         catch (PDOException $ex) {
-            $_SESSION['errMsg'] = '<p style="color:red;">Username already exists.</p>';
+            $_SESSION['errMsg'] = '<p style="color:red">Username already exists.</p>';
             header("Location: signUp.php");
             die();
         }
@@ -27,6 +27,4 @@
     $_SESSION['errMsg'] = '';
     header("Location: index.php");
     die();
-
-
 ?>
