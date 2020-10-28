@@ -5,8 +5,8 @@
         die();
     }
     // if($_POST['logout']) { unset($_SESSION['userId']); }
-    $_SESSION['selectedLocation'] = $_POST['locations'];
-    $_SESSION['foodSearch'] = htmlspecialchars(strtolower($_POST['fname']));
+    // $_SESSION['selectedLocation'] = $_POST['locations'];
+    // $_SESSION['foodSearch'] = htmlspecialchars(strtolower($_POST['fname']));
     // $_SESSION['errMsg'] = '';
 
     require 'dbConnect.php';

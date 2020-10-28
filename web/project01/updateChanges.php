@@ -1,6 +1,8 @@
 <?php
     session_start();
     require "dbConnect.php";
+    $_SESSION['foodSearch'] = htmlspecialchars(strtolower($_POST['fname']));
+    $_SESSION['selectedLocation'] = $_POST['locations'];
 
     foreach($_POST as $key => $val) {
         if (preg_match('/newAmount\d/m', $key)) {
