@@ -22,7 +22,7 @@
             <input type="password" placeholder="8 to 16 characters" name="cpsw" minlength="8" maxlength="16"><br><br>
             <input type="submit" name="signUp" value="Sign Up">
         </form><br>
-        <?php echo $_SESSION['errMsg'] ?>
+        <?php echo $_SESSION['errMsg'] . "<br><br>"?>
         <p><a href="signIn.php">Click here</a> if returning user</p>
     </body>
 </html>
