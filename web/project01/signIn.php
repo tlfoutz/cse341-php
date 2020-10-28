@@ -18,12 +18,13 @@
         <h1>User Sign In</h1>
         <form id="signInForm" method="post" action="setUser.php">
             <label for="rname"><b>Username: </b></label>
-            <input type="text" placeholder="Enter Username" name="rname" minlength="8" maxlength="16"><br><br>
+            <input type="text" placeholder="Enter Username" name="rname" minlength="8" maxlength="16" required><br><br>
             <label for="rpsw"><b>Password: </b></label>
-            <input type="password" placeholder="Enter Password" name="rpsw" minlength="8" maxlength="16"><br><br>
+            <input type="password" placeholder="Enter Password" name="rpsw" minlength="8" maxlength="16" required><br><br>
             <input type="submit" name="signIn" value="Sign In">
         </form><br>
-        <?php echo $_SESSION['errMsg'] . "<br><br>"?>
+        <?php echo $_SESSION['errMsg']; ?>
+        <br><br>
         <p><a href="signUp.php">Click here</a> if new user</p>
     </body>
 </html>
