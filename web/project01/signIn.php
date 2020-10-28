@@ -23,7 +23,7 @@
             <input type="password" placeholder="Enter Password" name="rpsw" minlength="8" maxlength="16"><br><br>
             <input type="submit" name="signIn" value="Sign In">
         </form><br>
-        <?php if (!isset($_GET['from'])) {echo $_SESSION['errMsg'] . "<br><br>";} ?>
+        <?php if (!isset($_GET['from'])) {echo $_SESSION['errMsg'];} ?>
         <p><a href="signUp.php?from=in">Click here</a> if new user</p>
     </body>
 </html>
