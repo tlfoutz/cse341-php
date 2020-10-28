@@ -138,7 +138,7 @@
             </select><br>
             
             <label for="fname">Find food by name:</label><br><input type="search" id="fname" name="fname"
-                <?php if($_SESSION['foodSearch']) { echo ' value="' . $_SESSION['foodSearch'] . '"';} ?>><br>
+                <?php if($_SESSION['foodSearch']) { echo ' value="' . $_SESSION['foodSearch'] . '"';} ?>><br><br>
             
             <table><tr><th>Food</th><th>Location</th><th>Quantity</th><th>Details</th></tr>
                 <?php include 'renderFoodTable.php'; ?>
