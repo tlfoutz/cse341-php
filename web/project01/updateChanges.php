@@ -16,7 +16,7 @@
         if (preg_match('/descriptField\d/m', $key)) {
             $foodId = trim($key,"descriptField");
             $statement = $db->prepare('UPDATE foods SET details = :detailChange WHERE id = :id');
-            $statement->execute(array(':detailChange' => intval($val), ':id' => intval($foodId)));
+            $statement->execute(array(':detailChange' => $val, ':id' => intval($foodId)));
         }
     }
     header("Location: index.php");
