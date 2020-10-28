@@ -1,5 +1,9 @@
 <?php
     session_start();
+    if (!isset($_SESSION['userId'])) {
+        header("Location: signIn.php");
+        die();
+    }
     // if($_POST['logout']) { unset($_SESSION['userId']); }
     $_SESSION['selectedLocation'] = $_POST['locations'];
     $_SESSION['foodSearch'] = htmlspecialchars(strtolower($_POST['fname']));

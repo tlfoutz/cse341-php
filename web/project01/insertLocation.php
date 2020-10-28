@@ -1,4 +1,6 @@
 <?php
+    require "dbConnect.php";
+
     // INSERT new location
     if ($_POST['lAddName']) {
         // with details

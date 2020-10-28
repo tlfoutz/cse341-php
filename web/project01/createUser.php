@@ -1,4 +1,6 @@
 <?php
+    require "dbConnect.php";
+
     if ($_POST['nname']) {
         if($_POST['npsw'] != $_POST['cpsw']) {
             $_SESSION['errMsg'] = '<p style="color:red;">The new and confirmation passwords did not match.</p>';

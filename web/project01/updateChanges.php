@@ -1,4 +1,6 @@
 <?php
+    require "dbConnect.php";
+
     foreach($_POST as $key => $val) {
         if (preg_match('/newAmount\d/m', $key)) {
             $foodId = trim($key,"newAmount");

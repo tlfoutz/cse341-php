@@ -4,6 +4,8 @@
         header("Location: signIn.php");
         die();
     }
+    require 'dbConnect.php';
+
 ?>
 <!DOCTYPE html>
 <html lang="en" >

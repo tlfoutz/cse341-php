@@ -1,4 +1,6 @@
 <?php
+    require "dbConnect.php";
+
     // INSERT new food
     if ($_POST['fAddName']) {
         // check for missing/incorrect information
