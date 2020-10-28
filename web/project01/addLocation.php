@@ -15,10 +15,11 @@
         <title>Add a new location</title>
     </head>
     <body>
-        <h1>Add new food location:</h1><br>
+        <h1>Food Inventory Application</h1>
+        <h2>Add new food location:</h2><br>
         <form method="post" action="insertLocation.php">
             <label for="lAddName">Name:</label><br>
-            <input type="text" id="lAddName" name="lAddName" maxlength="64"><br>
+            <input type="text" id="lAddName" name="lAddName" maxlength="64" required><br>
             <label for="lAddDetails">Details:</label><br>
             <input type="text" id="lAddDetails" name="lAddDetails" maxlength="255"><br><br>
             <input type="submit" name="addLocation" value="Add Location">

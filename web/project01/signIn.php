@@ -15,7 +15,8 @@
         <title>Sign In - Food Inventory Application</title>
     </head>
     <body>
-        <h1>User Sign In</h1>
+        <h1>Food Inventory Application</h1>
+        <h2>User Sign In</h2>
         <form id="signInForm" method="post" action="setUser.php">
             <label for="rname"><b>Username: </b></label>
             <input type="text" placeholder="Enter Username" name="rname" minlength="8" maxlength="16"><br><br>

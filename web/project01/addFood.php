@@ -17,13 +17,14 @@
         <title>Add new food to inventory</title>
     </head>
     <body>
-        <h1>Add new food item:</h1><br>
+        <h1>Food Inventory Application</h1>
+        <h2>Add new food item:</h2><br>
         <?php if(isset($_GET['error'])){ echo $_SESSION['errMsg'] . "<br>"; }?>
         <form id="addFoodForm" method="post" action="insertFood.php">
             <label for="fAddName">Name:</label><br>
-            <input type="text" id="fAddName" name="fAddName" maxlength="64"><br>
+            <input type="text" id="fAddName" name="fAddName" maxlength="64" required><br>
             <label for="fAddLocation">Location:</label><br>
-            <select name="fAddLocation" id="fAddLocation">
+            <select name="fAddLocation" id="fAddLocation" required>
                 <option value="0" disabled selected> -- Select location -- </option>
                 <?php
                     $statement = $db->prepare('SELECT id, location_name FROM locations WHERE added_by = :id ORDER BY location_name');
@@ -33,7 +34,7 @@
                     }
                     echo '</select><br>';
                 ?>
-            <label for="fAddQuantity">Quantity:</label><br><input type="number" id="fAddQuantity" name="fAddQuantity" min="0"><br>
+            <label for="fAddQuantity">Quantity:</label><br><input type="number" id="fAddQuantity" name="fAddQuantity" min="0" required><br>
             <label for="fAddDetails">Details:</label><br><input type="text" id="fAddDetails" name="fAddDetails" maxlength="255"><br><br>
             <input type="submit" name="addFood" value="Add Food">
         </form><br><br>
