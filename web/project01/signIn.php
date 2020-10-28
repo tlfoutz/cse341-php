@@ -24,6 +24,6 @@
             <input type="submit" name="signIn" value="Sign In">
         </form><br>
         <?php echo $_SESSION['errMsg'] . "<br><br>"; ?>
-        <p><a href="signUp.php">Click here</a> if new user</p>
+        <p><a href="clear.php?sign=up">Click here</a> if new user</p>
     </body>
 </html>
