@@ -23,7 +23,7 @@
             }
             echo '</select></td><td><input type="number" value="' . $row['quantity'] . '" name="newAmount' .$row['id'] . '" min="0"></td>';
             echo '<td><input type="text"';
-            // if ($row['details']) { echo ' value="' . $row['details'] . '"'; }
+            if ($row['details']) { echo ' value="' . $row['details'] . '"'; }
             echo ' name="descriptField' . $row['id'] . '"></td></tr>';
             echo '</tr>';
 
@@ -49,7 +49,7 @@
             }
             echo '</select></td><td><input type="number" value="' . $row['quantity'] . '" name="newAmount' .$row['id'] . '" min="0"></td>';
             echo '<td><input type="text"';
-            // if ($row['details']) { echo ' value="' . $row['details'] . '"'; }
+            if ($row['details']) { echo ' value="' . $row['details'] . '"'; }
             echo ' name="descriptField' . $row['id'] . '"></td>';
             echo '</tr>';
 
