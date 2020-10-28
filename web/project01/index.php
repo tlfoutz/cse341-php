@@ -123,7 +123,7 @@
         
         <h2>Welcome, <?php echo $_SESSION['userName'] ?></h2>
         
-        <?php echo $_SESSION['errMsg'] . "<br><br>"?>
+        <?php if(isset($_GET['error'])){ echo $_SESSION['errMsg'] . "<br>"; }?>
         <form id="updateForm" method="post" action="updateChanges.php">
             <select name="locations" id="locations"><option value="0" selected>All locations</option>
             <?php
