@@ -1,4 +1,5 @@
 <?php
+    session_start();
     require "dbConnect.php";
 
     if ($_POST['nname']) {

@@ -1,4 +1,5 @@
 <?php
+    session_start();
     require "dbConnect.php";
 
     foreach($_POST as $key => $val) {

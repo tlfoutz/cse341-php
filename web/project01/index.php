@@ -1,6 +1,6 @@
 <?php
     session_start();
-    if (!$_SESSION['userId']) {
+    if (!isset($_SESSION['userId'])) {
         header("Location: signIn.php");
         die();
     }
