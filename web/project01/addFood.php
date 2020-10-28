@@ -34,7 +34,7 @@
                     echo '</select><br>';
                 ?>
             <label for="fAddQuantity">Quantity:</label><br><input type="number" id="fAddQuantity" name="fAddQuantity" min="0"><br>
-            <label for="fAddDetails">Details:</label><br><input type="textarea" id="fAddDetails" name="fAddDetails">
+            <label for="fAddDetails">Details:</label><br><input type="text" id="fAddDetails" name="fAddDetails">
             <input type="submit" name="addFood" value="Add Food">
         </form>
     </body>
