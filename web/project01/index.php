@@ -124,7 +124,7 @@
         <h2>Welcome, <?php echo $_SESSION['userName'] ?></h2>
         
         <?php echo $_SESSION['errMsg'] . "<br><br>"?>
-        <form id="signInForm" method="post" action="setUser.php">
+        <form id="updateForm" method="post" action="updateChanges.php">
             <select name="locations" id="locations"><option value="0" selected>All locations</option>
             <?php
                 $statement = $db->prepare('SELECT id, location_name FROM locations WHERE added_by = :id ORDER BY location_name');

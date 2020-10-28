@@ -19,8 +19,8 @@
                 $statement->execute(array(':name' => htmlspecialchars($_POST['fAddName']), ':locationId' => $_POST['fAddLocation'], ':amount' => $_POST['fAddQuantity'], ':id' => $_SESSION['userId']));              
             }
         }
-        $_SESSION['errMsg'] = '';
-        header("Location: index.php");
-        die();
     }
+    $_SESSION['errMsg'] = '';
+    header("Location: index.php");
+    die();
 ?>

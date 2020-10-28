@@ -14,9 +14,9 @@
             $_SESSION['userId'] = $row['id'];
             $_SESSION['userName'] = $row['user_name'];
         }
-        $_SESSION['errMsg'] = '';
-        header("Location: index.php");
-        die();
     }
+    $_SESSION['errMsg'] = '';
+    header("Location: index.php");
+    die();
 
 ?>

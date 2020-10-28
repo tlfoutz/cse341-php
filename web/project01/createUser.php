@@ -24,9 +24,9 @@
                 header("Location: signUp.php");
                 die();
             }
-            $_SESSION['errMsg'] = '';
-            header("Location: index.php");
-            die();
         }
     }
+    $_SESSION['errMsg'] = '';
+    header("Location: index.php");
+    die();
 ?>
