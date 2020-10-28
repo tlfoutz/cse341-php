@@ -36,6 +36,7 @@
             <label for="fAddQuantity">Quantity:</label><br><input type="number" id="fAddQuantity" name="fAddQuantity" min="0"><br>
             <label for="fAddDetails">Details:</label><br><input type="text" id="fAddDetails" name="fAddDetails"><br><br>
             <input type="submit" name="addFood" value="Add Food">
-        </form>
+        </form><br><br>
+        <a href="index.php">Back</a>
     </body>
 </htmll>

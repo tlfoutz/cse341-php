@@ -23,6 +23,7 @@
             <label for="lAddDetails">Details:</label><br>
             <input type="text" id="lAddDetails" name="lAddDetails"><br><br>
             <input type="submit" name="addLocation" value="Add Location">
-        </form>
+        </form><br><br>
+        <a href="index.php">Back</a>
     </body>
 </htmll>

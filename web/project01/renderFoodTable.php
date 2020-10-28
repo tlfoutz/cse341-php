@@ -22,10 +22,11 @@
                 echo '>' . $innerRow['location_name'] . '</option>';
             }
             echo '</select></td><td><input type="number" value="' . $row['quantity'] . '" name="newAmount' .$row['id'] . '" min="0"></td>';
-            echo '</tr>';
-            // echo '<td><input type="text"';
+            echo '<td><input type="text"';
             // if ($row['details']) { echo ' value="' . $row['details'] . '"'; }
-            // echo ' name="descriptField' . $row['id'] . '></td></tr>';
+            echo ' name="descriptField' . $row['id'] . '"></td></tr>';
+            echo '</tr>';
+
             $counter++;
         }
     } else {
@@ -47,10 +48,11 @@
                 echo '>' . $innerRow['location_name'] . '</option>';
             }
             echo '</select></td><td><input type="number" value="' . $row['quantity'] . '" name="newAmount' .$row['id'] . '" min="0"></td>';
-            echo '</tr>';
-            // echo '<td><input type="text"';
+            echo '<td><input type="text"';
             // if ($row['details']) { echo ' value="' . $row['details'] . '"'; }
-            // echo ' name="descriptField' . $row['id'] . '></td></tr>';
+            echo ' name="descriptField' . $row['id'] . '"></td>';
+            echo '</tr>';
+
             $counter++;
         }
     }
