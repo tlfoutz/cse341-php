@@ -13,7 +13,7 @@
         die();
     } else {
         $_SESSION['errMsg'] = '<p style="color:red">Incorrect username/password.</p>';
-        header("Location: signIn.php");
+        header("Location: signIn.php?test=true");
         die();
     }
 ?>
