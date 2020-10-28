@@ -16,12 +16,11 @@
     </head>
     <body>
         <h1>Add new food location:</h1><br>
-        <?php echo $_SESSION['errMsg'] . "<br><br>"?>
         <form method="post" action="insertLocation.php">
             <label for="lAddName">Name:</label><br>
-            <input type="text" id="lAddName" name="lAddName"><br>
+            <input type="text" id="lAddName" name="lAddName" maxlength="64"><br>
             <label for="lAddDetails">Details:</label><br>
-            <input type="text" id="lAddDetails" name="lAddDetails"><br><br>
+            <input type="text" id="lAddDetails" name="lAddDetails" maxlength="255"><br><br>
             <input type="submit" name="addLocation" value="Add Location">
         </form><br><br>
         <a href="index.php">Back</a>

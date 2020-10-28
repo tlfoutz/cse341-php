@@ -18,10 +18,10 @@
     </head>
     <body>
         <h1>Add new food item:</h1><br>
-        <?php echo $_SESSION['errMsg'] . "<br><br>"?>
+        <?php if(isset($_GET['error'])){ echo $_SESSION['errMsg'] . "<br>"; }?>
         <form id="addFoodForm" method="post" action="insertFood.php">
             <label for="fAddName">Name:</label><br>
-            <input type="text" id="fAddName" name="fAddName"><br>
+            <input type="text" id="fAddName" name="fAddName" maxlength="64"><br>
             <label for="fAddLocation">Location:</label><br>
             <select name="fAddLocation" id="fAddLocation">
                 <option value="0" disabled selected> -- Select location -- </option>
@@ -34,7 +34,7 @@
                     echo '</select><br>';
                 ?>
             <label for="fAddQuantity">Quantity:</label><br><input type="number" id="fAddQuantity" name="fAddQuantity" min="0"><br>
-            <label for="fAddDetails">Details:</label><br><input type="text" id="fAddDetails" name="fAddDetails"><br><br>
+            <label for="fAddDetails">Details:</label><br><input type="text" id="fAddDetails" name="fAddDetails" maxlength="255"><br><br>
             <input type="submit" name="addFood" value="Add Food">
         </form><br><br>
         <a href="index.php">Back</a>
