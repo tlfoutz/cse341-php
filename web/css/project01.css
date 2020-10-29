@@ -97,7 +97,11 @@ body {
     font-size: 2em;
   }
   
-  .description p, form {
+  .description p {
     font-size: 1.2rem;
+  }
+
+  form {
+    font-size: .5rem;
   }
 }
