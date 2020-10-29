@@ -72,15 +72,15 @@
         </form>
         <div class="container features">
           <div class="row">
-            <div class="col-lg-4 col-md-4 col-sm-12">
+            <div class="col-md-3">
               <h3 class="feature-title">Add Location</h3>
               <a href="addLocation.php">Click here</a>
             </div>
-            <div class="col-lg-4 col-md-4 col-sm-12">
+            <div class="col-md-3">
               <h3 class="feature-title">Add Food</h3>
               <a href="addFood.php">Click here</a>
             </div>
-            <div class="col-lg-4 col-md-4 col-sm-12">
+            <div class="col-md-3">
               <h3 class="feature-title">Sign Out</h3>
               <a href="signOut.php">Click here</a>
             </div>
