@@ -36,12 +36,13 @@
             </div>
         </nav>
         <header class="page-header header container-fluid">
+        <form id="updateForm" method="post" action="updateChanges.php">
+
             <div class="overlay"></div>
             <div class="description">
                 <h1>Food Inventory Application</h1>
                 <h2>Welcome, <?php echo $_SESSION['userName'] ?></h2>
 
-                <form id="updateForm" method="post" action="updateChanges.php">
                     <select name="locations" id="locations"><option value="0" selected>All locations</option>
                     <?php
                         $statement = $db->prepare('SELECT id, location_name FROM locations WHERE added_by = :id ORDER BY location_name');
@@ -61,8 +62,9 @@
                         <?php include 'renderFoodTable.php'; ?>
                     </table><br>
                     <input type="submit" name="update" value="Update">
-                </form>
             </div>
+            </form>
+
         </header>
         <a href="addLocation.php">Add Location </a>
         <a href="addFood.php">Add Food </a>
