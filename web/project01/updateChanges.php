@@ -15,8 +15,13 @@
             $statement = $db->prepare('UPDATE foods SET location_id = :locationId WHERE id = :id');
             $statement->execute(array(':locationId' => intval($val), ':id' => intval($foodId)));
         }
-        if (preg_match('/descriptField\d/m', $key)) {
-            $foodId = trim($key,"descriptField");
+        if (preg_match('/descriptFieldLocation\d/m', $key)) {
+            $locationId = trim($key,"descriptFieldLocation");
+            $statement = $db->prepare('UPDATE locations SET details = :detailChange WHERE id = :id');
+            $statement->execute(array(':detailChange' => $val, ':id' => intval($locationId)));
+        }
+        if (preg_match('/descriptFieldFood\d/m', $key)) {
+            $foodId = trim($key,"descriptFieldFood");
             $statement = $db->prepare('UPDATE foods SET details = :detailChange WHERE id = :id');
             $statement->execute(array(':detailChange' => $val, ':id' => intval($foodId)));
         }
