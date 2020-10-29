@@ -49,8 +49,8 @@ body {
   position: relative;
   color: #6ab446;
 }
-.description p, form {
-  color: #fff;
+.description form {
+  color: #00e6e6;
   font-size: 1.3rem;
   line-height: 1.5;
 }
