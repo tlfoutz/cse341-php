@@ -63,7 +63,7 @@
         </header>
         <div class="container features">
           <div class="row">
-            <div class="col-lg-1 col-md-1 col-sm-1">
+            <div class="col-lg-1">
             <table><tr><th>Food</th><th>Location</th><th>Details (Location)</th><th>Quantity</th><th>Details (Food)</th></tr>
                         <?php include 'renderFoodTable.php'; ?>
                     </table><br>
