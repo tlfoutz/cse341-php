@@ -49,9 +49,9 @@ body {
   color: #6ab446;
 }
 .description h2 {
-  color: #6ab446;
+  color: #fff;
 }
-.description p {
+.description p, label{
   color: #fff;
   font-size: 1.3rem;
   line-height: 1.5;
