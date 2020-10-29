@@ -46,11 +46,10 @@ body {
   text-align: center;
 }
 .description h1 {
-  position: relative;
   color: #6ab446;
 }
-.description form {
-  color: #00e6e6;
+.description p {
+  color: #fff;
   font-size: 1.3rem;
   line-height: 1.5;
 }
