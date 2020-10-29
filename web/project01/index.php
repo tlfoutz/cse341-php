@@ -36,47 +36,56 @@
             </div>
         </nav>
         <form id="updateForm" method="post" action="updateChanges.php">
+            <header class="page-header header container-fluid">
+                <div class="overlay"></div>
+                <div class="description">
+                    <h1>Food Inventory Application</h1>
+                    <h2>Welcome, <?php echo $_SESSION['userName'] ?></h2>
 
-        <header class="page-header header container-fluid">
+                        <select name="locations" id="locations"><option value="0" selected>All locations</option>
+                        <?php
+                            $statement = $db->prepare('SELECT id, location_name FROM locations WHERE added_by = :id ORDER BY location_name');
+                            $statement->execute(array(':id' => $_SESSION['userId']));
+                            while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
+                                echo '<option value="' . $row['id'] . '"';
+                                if ($_SESSION['selectedLocation'] == $row['id']) { echo ' selected'; }
+                                echo '>' . $row['location_name'] . '</option>';
+                            }
+                        ?>
+                        </select><br>
+                        
+                        <label for="fname">Find food by name:</label><br><input type="search" id="fname" name="fname"
+                            <?php if($_SESSION['foodSearch']) { echo ' value="' . $_SESSION['foodSearch'] . '"';} ?>>
+                </div>
 
-            <div class="overlay"></div>
-            <div class="description">
-                <h1>Food Inventory Application</h1>
-                <h2>Welcome, <?php echo $_SESSION['userName'] ?></h2>
-
-                    <select name="locations" id="locations"><option value="0" selected>All locations</option>
-                    <?php
-                        $statement = $db->prepare('SELECT id, location_name FROM locations WHERE added_by = :id ORDER BY location_name');
-                        $statement->execute(array(':id' => $_SESSION['userId']));
-                        while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-                            echo '<option value="' . $row['id'] . '"';
-                            if ($_SESSION['selectedLocation'] == $row['id']) { echo ' selected'; }
-                            echo '>' . $row['location_name'] . '</option>';
-                        }
-                    ?>
-                    </select><br>
-                    
-                    <label for="fname">Find food by name:</label><br><input type="search" id="fname" name="fname"
-                        <?php if($_SESSION['foodSearch']) { echo ' value="' . $_SESSION['foodSearch'] . '"';} ?>>
-            </div>
-
-        </header>
-        <div class="container features">
-          <div class="row">
-            <div class="col">
-            <table><tr><th>Food</th><th>Location</th><th>Details (Location)</th><th>Quantity</th><th>Details (Food)</th></tr>
+            </header>
+            <div class="container features">
+            <div class="row">
+                <div class="col">
+                    <table><tr><th>Food</th><th>Location</th><th>Details (Location)</th><th>Quantity</th><th>Details (Food)</th></tr>
                         <?php include 'renderFoodTable.php'; ?>
                     </table><br>
                     <input type="submit" name="update" value="Update">
+                </div>
+            </div> 
+            </div>
+        </form>
+        <div class="container features">
+          <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-12">
+              <h3 class="feature-title">Add Location</h3>
+              <a href="addLocation.php">Click here</a>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12">
+              <h3 class="feature-title">Add Food</h3>
+              <a href="addFood.php">Click here</a>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12">
+              <h3 class="feature-title">Sign Out</h3>
+              <a href="signOut.php">Click here</a>
             </div>
           </div> 
         </div>
-
-        </form>
-
-        <a href="addLocation.php">Add Location </a>
-        <a href="addFood.php">Add Food </a>
-        <a href="signOut.php">Sign Out </a>
         <footer class="page-footer">
           <div class="col-lg-4 col-md-4 col-sm-12">
              <h6 class="text-uppercase font-weight-bold">Contact</h6>

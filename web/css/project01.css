@@ -48,6 +48,9 @@ body {
 .description h1 {
   color: #6ab446;
 }
+.description h2 {
+  color: #6ab446;
+}
 .description p {
   color: #fff;
   font-size: 1.3rem;
@@ -94,6 +97,9 @@ body {
   }
   
   .description h1 {
+    font-size: 2em;
+  }
+  .description h2 {
     font-size: 2em;
   }
   
