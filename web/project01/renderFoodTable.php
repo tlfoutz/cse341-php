@@ -25,8 +25,8 @@
             echo '<td><input type="text"';
             if ($row['details']) { echo ' value="' . $row['details'] . '"'; }
             echo ' name="descriptField' . $row['id'] . '"></td>';
-            echo '<td><label for="foodDelete">Remove this food item </label>';
-            echo '<input type="checkbox" id="foodDelete" name="foodDelete" value="1"></td>';
+            echo '<td><label for="foodDelete' . $row['id'] . '">Delete </label>';
+            echo '<input type="checkbox" id="foodDelete' . $row['id'] . '" name="foodDelete' . $row['id'] . '" value="1"></td>';
             echo '</tr>';
 
             $counter++;
@@ -53,8 +53,8 @@
             echo '<td><input type="text"';
             if ($row['details']) { echo ' value="' . $row['details'] . '"'; }
             echo ' name="descriptField' . $row['id'] . '"></td>';
-            echo '<td><label for="foodDelete">Remove this food item </label>';
-            echo '<input type="checkbox" id="foodDelete" name="foodDelete" value="1"></td>';
+            echo '<td><label for="foodDelete' . $row['id'] . '">Delete </label>';
+            echo '<input type="checkbox" id="foodDelete' . $row['id'] . '" name="foodDelete' . $row['id'] . '" value="1"></td>';
             echo '</tr>';
 
             $counter++;

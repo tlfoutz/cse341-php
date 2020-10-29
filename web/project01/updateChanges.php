@@ -20,6 +20,11 @@
             $statement = $db->prepare('UPDATE foods SET details = :detailChange WHERE id = :id');
             $statement->execute(array(':detailChange' => $val, ':id' => intval($foodId)));
         }
+        if (preg_match('/foodDelete\d/m', $key) && $val == 1) {
+            $foodId = trim($key,"foodDelete");
+            $statement = $db->prepare('DELETE FROM foods WHERE id = :id');
+            $statement->execute(array(':id' => intval($foodId)));
+        }
     }
     header("Location: index.php");
     die();
