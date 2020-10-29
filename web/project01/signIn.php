@@ -9,10 +9,10 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <meta charset="utf-8">
         <link rel="icon" type="image/png" href="../images/moon.gif">
         <link rel="stylesheet" type="text/css" href="../css/project01.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-        <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="author" content="Travis Foutz">
         <meta name="description" content="Project 01 - CSE 341">
@@ -52,13 +52,6 @@
 
 </header>
         </form>
-        <div class="container features">
-            <div class="row">
-                <div class="col">
-
-                </div>
-            </div> 
-            </div>
             <footer class="page-footer">
           <div class="col-lg-4 col-md-4 col-sm-12">
              <h6 class="text-uppercase font-weight-bold">Contact</h6>
