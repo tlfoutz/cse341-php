@@ -26,8 +26,8 @@
             $sttmnt->execute(array(':id' => $row['location_id']));
             while ($innerRow = $sttmnt->fetch(PDO::FETCH_ASSOC)) {
                 echo '<td><input type="text"';
-                if ($innerRrow['details']) { echo ' value="' . $row['details'] . '"'; }
-                echo ' name="descriptFieldLocation' . $row['id'] . '"></td>';
+                if ($innerRow['details']) { echo ' value="' . $innerRow['details'] . '"'; }
+                echo ' name="descriptFieldLocation' . $innerRow['id'] . '"></td>';
             }
             echo '</td><td><input type="number" value="' . $row['quantity'] . '" name="newAmount' .$row['id'] . '" min="0"></td>';
             echo '<td><input type="text"';
