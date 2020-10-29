@@ -46,6 +46,8 @@
             <label for="rpsw"><b>Password: </b></label>
             <input type="password" placeholder="Enter Password" name="rpsw" minlength="8" maxlength="16"><br><br>
             <input type="submit" name="signIn" value="Sign In">
+            <?php if (!isset($_GET['from'])) {echo $_SESSION['errMsg'];} ?>
+        <p><a href="signUp.php?from=in">Click here</a> if new user</p>
             </div>
 
 </header>
@@ -53,8 +55,7 @@
         <div class="container features">
             <div class="row">
                 <div class="col">
-                <?php if (!isset($_GET['from'])) {echo $_SESSION['errMsg'];} ?>
-        <p><a href="signUp.php?from=in">Click here</a> if new user</p>
+
                 </div>
             </div> 
             </div>
