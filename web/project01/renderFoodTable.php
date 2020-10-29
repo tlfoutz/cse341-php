@@ -12,7 +12,7 @@
             $statement->execute(array(':id' => $_SESSION['userId']));
         }
         while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-            echo '<tr><td>' . $row['f.food_name'] . '</td><td>';
+            echo '<tr><td>' . $row['food_name'] . '</td><td>';
             echo '<select name="locations' . $row['id'] . '" id="locations' . $row['id'] . '"><option value="0" disabled> -- Select location -- </option>';
             $sttmnt = $db->prepare('SELECT id, location_name FROM locations WHERE added_by = :id ORDER BY location_name');
             $sttmnt->execute(array(':id' => $_SESSION['userId']));
@@ -22,9 +22,13 @@
                 echo '>' . $innerRow['location_name'] . '</option>';
             }
             echo '</select></td>';
-            // echo '<td><input type="text"';
-            // if ($row['l.details']) { echo ' value="' . $row['l.details'] . '"'; }
-            // echo ' name="descriptFieldLocation' . $row['location_id'] . '"></td>';
+            $sttmnt = $db->prepare('SELECT details FROM locations WHERE id = :id');
+            $sttmnt->execute(array(':id' => $row['location_id']));
+            while ($innerRow = $sttmnt->fetch(PDO::FETCH_ASSOC)) {
+                echo '<td><input type="text"';
+                if ($innerRow['details']) { echo ' value="' . $innerRow['details'] . '"'; }
+                echo ' name="descriptFieldLocation' . $row['location_id'] . '"></td>';
+            }
             echo '</td><td><input type="number" value="' . $row['quantity'] . '" name="newAmount' .$row['id'] . '" min="0"></td>';
             echo '<td><input type="text"';
             if ($row['details']) { echo ' value="' . $row['details'] . '"'; }
