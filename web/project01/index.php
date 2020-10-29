@@ -14,7 +14,7 @@
         <meta name="author" content="Travis Foutz">
         <meta name="description" content="Project 01 - CSE 341">
         <link rel="icon" type="image/png" href="../images/moon.gif">
-        <link rel="stylesheet" type="text/css" href="../css/prove02.css">
+        <link rel="stylesheet" type="text/css" href="../css/project01.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <title>Food Inventory Application</title>
     </head>
@@ -41,7 +41,10 @@
                 <h1>Food Inventory Application</h1>
         
                 <h2>Welcome, <?php echo $_SESSION['userName'] ?></h2>
-                
+                <a href="addLocation.php">Click here</a><br>
+                <a href="addFood.php">Click here</a><br>
+                <a href="signOut.php">Click here</a>
+
                 <form id="updateForm" method="post" action="updateChanges.php">
                     <select name="locations" id="locations"><option value="0" selected>All locations</option>
                     <?php
@@ -65,30 +68,8 @@
                 </form>
             </div>
         </header>
-        <div class="container features">
-          <div class="row">
-            <div class="col-lg-4 col-md-4 col-sm-12">
-              <h3 class="feature-title">Add Location</h3>
-              <a href="addLocation.php">Click here</a><br>
-            </div>
-          </div> 
-        </div>
-        <div class="container features">
-          <div class="row">
-            <div class="col-lg-4 col-md-4 col-sm-12">
-              <h3 class="feature-title">Add Food</h3>
-              <a href="addFood.php">Click here</a><br>
-            </div>
-          </div> 
-        </div>
-        <div class="container features">
-          <div class="row">
-            <div class="col-lg-4 col-md-4 col-sm-12">
-              <h3 class="feature-title">Sign Out</h3>
-              <a href="signOut.php">Click here</a>
-            </div>
-          </div> 
-        </div>
+        <h3 class="feature-title">Get in Touch!</h3>
+
         <footer class="page-footer">
           <div class="col-lg-4 col-md-4 col-sm-12">
              <h6 class="text-uppercase font-weight-bold">Contact</h6>
