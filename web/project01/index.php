@@ -78,7 +78,7 @@
             </div>
             <div class="col-md-3">
               <h3 class="feature-title">Add Food</h3>
-              <a href="addFood.php"><img src="../images/addFood.jpg" class="img-fluid"></a>
+              <a href="addFood.php"><img src="../images/addfood.jpg" class="img-fluid"></a>
             </div>
             <div class="col-md-3">
               <h3 class="feature-title">Sign Out</h3>
