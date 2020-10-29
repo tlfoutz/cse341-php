@@ -74,15 +74,15 @@
           <div class="row">
             <div class="col-md-3">
               <h3 class="feature-title">Add Location</h3>
-              <a href="addLocation.php">Click here</a>
+              <a href="addLocation.php"><img src="../images/addlocation.png" class="img-fluid"></a>
             </div>
             <div class="col-md-3">
               <h3 class="feature-title">Add Food</h3>
-              <a href="addFood.php">Click here</a>
+              <a href="addFood.php"><img src="../images/addFood.jpg" class="img-fluid"></a>
             </div>
             <div class="col-md-3">
               <h3 class="feature-title">Sign Out</h3>
-              <a href="signOut.php">Click here</a>
+              <a href="signOut.php"><img src="../images/signout.png" class="img-fluid"></a>
             </div>
           </div> 
         </div>
