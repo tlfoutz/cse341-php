@@ -35,8 +35,9 @@
               </ul>
             </div>
         </nav>
-        <header class="page-header header container-fluid">
         <form id="updateForm" method="post" action="updateChanges.php">
+
+        <header class="page-header header container-fluid">
 
             <div class="overlay"></div>
             <div class="description">
@@ -58,12 +59,14 @@
                     <label for="fname">Find food by name:</label><br><input type="search" id="fname" name="fname"
                         <?php if($_SESSION['foodSearch']) { echo ' value="' . $_SESSION['foodSearch'] . '"';} ?>>
             </div>
-            <table><tr><th>Food</th><th>Location</th><th>Details (Location)</th><th>Quantity</th><th>Details (Food)</th></tr>
+
+        </header>
+        <table><tr><th>Food</th><th>Location</th><th>Details (Location)</th><th>Quantity</th><th>Details (Food)</th></tr>
                         <?php include 'renderFoodTable.php'; ?>
                     </table><br>
                     <input type="submit" name="update" value="Update">
-                    </form>
-        </header>
+        </form>
+
         <a href="addLocation.php">Add Location </a>
         <a href="addFood.php">Add Food </a>
         <a href="signOut.php">Sign Out </a>
