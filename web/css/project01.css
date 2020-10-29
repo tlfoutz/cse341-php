@@ -48,8 +48,8 @@ body {
 .description h1 {
   color: #6ab446;
 }
-.description form {
-  color: red;
+.description p {
+  color: #fff;
   font-size: 1.3rem;
   line-height: 1.5;
 }
