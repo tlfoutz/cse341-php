@@ -62,13 +62,33 @@
                         <?php include 'renderFoodTable.php'; ?>
                     </table><br>
                     <input type="submit" name="update" value="Update">
-                </form><br><br>
-
-                <a href="addLocation.php">Add Location</a><br>
-                <a href="addFood.php">Add Food</a><br>
-                <a href="signOut.php">Sign Out</a>
+                </form>
             </div>
         </header>
+        <div class="container features">
+          <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-12">
+              <h3 class="feature-title">Add Location</h3>
+              <a href="addLocation.php">Click here</a><br>
+            </div>
+          </div> 
+        </div>
+        <div class="container features">
+          <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-12">
+              <h3 class="feature-title">Add Food</h3>
+              <a href="addFood.php">Click here</a><br>
+            </div>
+          </div> 
+        </div>
+        <div class="container features">
+          <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-12">
+              <h3 class="feature-title">Sign Out</h3>
+              <a href="signOut.php">Click here</a>
+            </div>
+          </div> 
+        </div>
         <footer class="page-footer">
           <div class="col-lg-4 col-md-4 col-sm-12">
              <h6 class="text-uppercase font-weight-bold">Contact</h6>
