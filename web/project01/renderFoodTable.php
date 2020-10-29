@@ -55,11 +55,17 @@
                 if ($row['location_id'] == $innerRow['id']) { echo ' selected'; }
                 echo '>' . $innerRow['location_name'] . '</option>';
             }
-            echo '</select></td><td><input type="number" value="' . $row['quantity'] . '" name="newAmount' .$row['id'] . '" min="0"></td>';
+            echo '</select></td>';
+            $sttmnt = $db->prepare('SELECT details FROM locations WHERE id = :id');
+            $sttmnt->execute(array(':id' => $row['location_id']));
+            while ($innerRow = $sttmnt->fetch(PDO::FETCH_ASSOC)) {
+                echo '<td>' . $innerRow['details'] . '</td>';
+            }
+            echo '<td><input type="number" value="' . $row['quantity'] . '" name="newAmount' .$row['id'] . '" min="0"></td>';
             echo '<td><input type="text"';
             if ($row['details']) { echo ' value="' . $row['details'] . '"'; }
             echo ' name="descriptField' . $row['id'] . '"></td>';
-            echo '<td><label for="foodDelete' . $row['id'] . '">Delete </label>';
+            echo '<td><label for="foodDelete' . $row['id'] . '">Delete</label>';
             echo '<input type="checkbox" id="foodDelete' . $row['id'] . '" name="foodDelete' . $row['id'] . '" value="1"></td>';
             echo '</tr>';
 
