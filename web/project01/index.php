@@ -39,11 +39,7 @@
             <div class="overlay"></div>
             <div class="description">
                 <h1>Food Inventory Application</h1>
-        
                 <h2>Welcome, <?php echo $_SESSION['userName'] ?></h2>
-                <a href="addLocation.php">Click here</a><br>
-                <a href="addFood.php">Click here</a><br>
-                <a href="signOut.php">Click here</a>
 
                 <form id="updateForm" method="post" action="updateChanges.php">
                     <select name="locations" id="locations"><option value="0" selected>All locations</option>
@@ -68,8 +64,9 @@
                 </form>
             </div>
         </header>
-        <h3 class="feature-title">Get in Touch!</h3>
-
+        <a href="addLocation.php">Add Location </a>
+        <a href="addFood.php">Add Food </a>
+        <a href="signOut.php">Sign Out </a>
         <footer class="page-footer">
           <div class="col-lg-4 col-md-4 col-sm-12">
              <h6 class="text-uppercase font-weight-bold">Contact</h6>

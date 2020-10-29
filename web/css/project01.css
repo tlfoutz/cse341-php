@@ -46,6 +46,7 @@ body {
   text-align: center;
 }
 .description h1 {
+  position: relative;
   color: #6ab446;
 }
 .description p, form {
