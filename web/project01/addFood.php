@@ -24,7 +24,7 @@
             <label for="fAddName">Name:</label><br>
             <input type="text" id="fAddName" name="fAddName" maxlength="64" required><br>
             <label for="fAddLocation">Location:</label><br>
-            <select name="fAddLocation" id="fAddLocation" required>
+            <select name="fAddLocation" id="fAddLocation">
                 <option value="0" disabled selected> -- Select location -- </option>
                 <?php
                     $statement = $db->prepare('SELECT id, location_name FROM locations WHERE added_by = :id ORDER BY location_name');

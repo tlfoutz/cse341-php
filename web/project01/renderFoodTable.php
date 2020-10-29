@@ -24,7 +24,9 @@
             echo '</select></td><td><input type="number" value="' . $row['quantity'] . '" name="newAmount' .$row['id'] . '" min="0"></td>';
             echo '<td><input type="text"';
             if ($row['details']) { echo ' value="' . $row['details'] . '"'; }
-            echo ' name="descriptField' . $row['id'] . '"></td></tr>';
+            echo ' name="descriptField' . $row['id'] . '"></td>';
+            echo '<td><label for="foodDelete">Remove this food item </label>';
+            echo '<input type="checkbox" id="foodDelete" name="foodDelete" value="1">';
             echo '</tr>';
 
             $counter++;
@@ -51,6 +53,8 @@
             echo '<td><input type="text"';
             if ($row['details']) { echo ' value="' . $row['details'] . '"'; }
             echo ' name="descriptField' . $row['id'] . '"></td>';
+            echo '<td><label for="foodDelete">Remove this food item </label>';
+            echo '<input type="checkbox" id="foodDelete" name="foodDelete" value="1">';
             echo '</tr>';
 
             $counter++;
