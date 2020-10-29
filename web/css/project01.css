@@ -44,15 +44,12 @@ body {
   top: 45%;
   transform: translate(-50%, -55%);
   text-align: center;
+  color: #fff;
 }
 .description h1 {
   color: #6ab446;
 }
-.description h2 {
-  color: #fff;
-}
-.description p, label{
-  color: #fff;
+.description p{
   font-size: 1.3rem;
   line-height: 1.5;
 }
