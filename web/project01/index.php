@@ -56,15 +56,13 @@
                     </select><br>
                     
                     <label for="fname">Find food by name:</label><br><input type="search" id="fname" name="fname"
-                        <?php if($_SESSION['foodSearch']) { echo ' value="' . $_SESSION['foodSearch'] . '"';} ?>><br><br>
-                    
-                    <table><tr><th>Food</th><th>Location</th><th>Details (Location)</th><th>Quantity</th><th>Details (Food)</th></tr>
+                        <?php if($_SESSION['foodSearch']) { echo ' value="' . $_SESSION['foodSearch'] . '"';} ?>>
+            </div>
+            </form>
+            <table><tr><th>Food</th><th>Location</th><th>Details (Location)</th><th>Quantity</th><th>Details (Food)</th></tr>
                         <?php include 'renderFoodTable.php'; ?>
                     </table><br>
                     <input type="submit" name="update" value="Update">
-            </div>
-            </form>
-
         </header>
         <a href="addLocation.php">Add Location </a>
         <a href="addFood.php">Add Food </a>
