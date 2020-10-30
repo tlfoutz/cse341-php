@@ -18,38 +18,36 @@
         <title>Add a new location</title>
     </head>
     <body>
-    <nav class="navbar navbar-expand-md">
-        <a class="navbar-brand" href="../homepage.php"><img src="../images/moon.gif" alt="Logo" style="width:33%;height:33%;"></a>
-        <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#main-navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="main-navigation">
-            <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="../homepage.php">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="../assignments.php">Assignments</a>
-            </li>
-            </ul>
-        </div>
-    </nav>
-        <form method="post" action="insertLocation.php">
-        <header class="page-header header container-fluid">
-            <div class="overlay"></div>
-            <div class="description">
-        <h1>Food Inventory Application</h1>
-        <h2>Add new food location:</h2>
-            <label for="lAddName">Name:</label><br>
-            <input type="text" id="lAddName" name="lAddName" maxlength="64" required><br>
-            <label for="lAddDetails">Details:</label><br>
-            <input type="text" id="lAddDetails" name="lAddDetails" maxlength="255"><br><br>
-            <input type="submit" name="addLocation" value="Add Location">
-            <p><a href="index.php">Back</a></p>
-
+        <nav class="navbar navbar-expand-md">
+            <a class="navbar-brand" href="../homepage.php"><img src="../images/moon.gif" alt="Logo" style="width:33%;height:33%;"></a>
+            <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#main-navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="main-navigation">
+                <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="../homepage.php">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="../assignments.php">Assignments</a>
+                </li>
+                </ul>
             </div>
-
-</header>
+        </nav>
+        <form method="post" action="insertLocation.php">
+            <header class="page-header header container-fluid">
+                <div class="overlay"></div>
+                <div class="description">
+                    <h1>Food Inventory Application</h1>
+                    <h2>Add new food location:</h2>
+                    <label for="lAddName">Name:</label><br>
+                    <input type="text" id="lAddName" name="lAddName" maxlength="64" required><br>
+                    <label for="lAddDetails">Details:</label><br>
+                    <input type="text" id="lAddDetails" name="lAddDetails" maxlength="255"><br><br>
+                    <input type="submit" name="addLocation" value="Add Location">
+                    <p><a href="index.php">Back</a></p>
+                </div>
+            </header>
         </form>
         <footer class="page-footer">
           <div class="col-lg-4 col-md-4 col-sm-12">
