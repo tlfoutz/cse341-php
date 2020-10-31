@@ -43,6 +43,15 @@
             </div>
           </div> 
         </div>
+        <div class="container features">
+          <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-12">
+              <h3 class="feature-title">Food Inventory Application</h3>
+              <a href="/project01/signIn.php"><img src="images/foodinventory.jpeg" class="img-fluid"></a>
+              <p>Web application for monitoring home food inventory. Developed to gain experience building rich, dynamic, n-tier web applications.</p>
+            </div>
+          </div> 
+        </div>
         <footer class="page-footer">
           <div class="col-lg-4 col-md-4 col-sm-12">
              <h6 class="text-uppercase font-weight-bold">Contact</h6>
