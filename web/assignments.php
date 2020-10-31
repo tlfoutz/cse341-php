@@ -36,7 +36,7 @@
         </header>
         <div class="container features">
           <div class="row">
-            <div class="col">
+            <div class="col-lg-4 col-md-4 col-sm-12">
               <h3 class="feature-title">Shopping Cart Simulation</h3>
               <a href="/prove03/browse.php"><img src="images/shopping_cart.png" class="img-fluid"></a>
               <p>Create a simple PHP application to simulate a shopping cart.</p>
@@ -45,7 +45,7 @@
         </div>
         <div class="container features">
           <div class="row">
-            <div class="col">
+            <div class="col-lg-4 col-md-4 col-sm-12">
               <h3 class="feature-title">Food Inventory Application</h3>
               <a href="/project01/signIn.php"><img src="images/foodinventory.jpeg" class="img-fluid"></a>
               <p>Web application for monitoring home food inventory. Developed to gain experience building rich, dynamic, n-tier web applications.</p>
