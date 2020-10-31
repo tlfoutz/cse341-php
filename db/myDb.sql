@@ -7,37 +7,13 @@ CREATE TABLE users (
     UNIQUE(user_name)
 );
 
--- pre-seeded table of foodtypes
--- either 'standalone', 'ingredient', or 'condiment'
--- CREATE TABLE foodtypes (
---     id	        SERIAL		PRIMARY KEY     NOT NULL,
---     type_name   VARCHAR(32)	                NOT NULL
--- );
-
--- INSERT INTO foodtypes(id,type_name) VALUES (DEFAULT, 'Standalone');
--- INSERT INTO foodtypes(id,type_name) VALUES (DEFAULT, 'Ingredient');
--- INSERT INTO foodtypes(id,type_name) VALUES (DEFAULT, 'Condiment');
-
 -- table of locations
 -- optional details help user clarify location
 CREATE TABLE locations (
     id	            SERIAL          PRIMARY KEY                 NOT NULL,
     location_name   VARCHAR(64)                                 NOT NULL,
     details         VARCHAR(255),
-    -- date_added      DATE                                        NOT NULL,
-    -- date_modified   DATE                                        NOT NULL,
     added_by        INT             REFERENCES users(id)        NOT NULL
-);
-
--- will be a pre-seeded table of units
--- servings, cups, ounces, etc.
--- specifies unit (name or abbreviation) for user to assign food quantity
-CREATE TABLE units (
-    id          SERIAL      PRIMARY KEY     NOT NULL,
-    unit_name   VARCHAR(16)                 NOT NULL,
-    unit_abbr   VARCHAR(6),
-    UNIQUE(unit_name),
-    UNIQUE(unit_abbr)
 );
 
 -- table of foods
@@ -47,34 +23,6 @@ CREATE TABLE foods (
     food_name       VARCHAR(64)                                 NOT NULL,
     details         VARCHAR(255),
     location_id     INT             REFERENCES locations(id)    NOT NULL,
-    -- foodtype_id     INT             REFERENCES foodtypes(id)    NOT NULL,
     quantity        INT                                         NOT NULL,
-    -- unit            INT             REFERENCES units(id),        
-    -- date_added      DATE                                        NOT NULL,
-    -- date_modified   DATE                                        NOT NULL,
     added_by        INT             REFERENCES users(id)        NOT NULL
 );
-
--- table of changes in quantity
--- lists each instance where a food item's amount (and possibly units) is modified, with the before and after values
--- CREATE TABLE changes_quantities (
---     id              SERIAL  PRIMARY KEY             NOT NULL,
---     food_id         INT     REFERENCES foods(id)    NOT NULL,
---     prev_amount     INT                             NOT NULL,
---     prev_units      INT     REFERENCES units(id),
---     new_amount      INT                             NOT NULL,
---     new_units       INT     REFERENCES units(id),
---     date_modified   DATE                            NOT NULL,
---     modified_by     INT     REFERENCES users(id)    NOT NULL
--- );
-
--- table of changes of food location
--- lists each instance where a food item's location is modified
--- CREATE TABLE changes_locations (
---     id                  SERIAL  PRIMARY KEY                 NOT NULL,
---     food_id             INT     REFERENCES foods(id)        NOT NULL,
---     prev_location_id    INT     REFERENCES locations(id)    NOT NULL,
---     new_location_id     INT     REFERENCES locations(id)    NOT NULL,
---     date_modified       DATE                                NOT NULL,
---     modified_by         INT     REFERENCES users(id)        NOT NULL
--- );
